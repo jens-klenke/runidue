@@ -1,2 +1,3 @@
 # BeamerTemplate
-Beamer template for the University of Duisburg-Essen
+
+A Beamer Template for the University of Duisburg-Essen.
