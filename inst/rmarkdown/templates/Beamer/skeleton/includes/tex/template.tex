@@ -240,7 +240,7 @@ $endif$
 \usepackage{booktabs}
 \usepackage[skip=7pt]{caption} % space between floats (figures, tables) and its captions
 \usepackage{tikz}
-\usetikzlibrary{arrows, decorations.markings}
+
 
 
 \usepackage{zref}
@@ -264,6 +264,7 @@ $endif$
 \newcommand{\nbs}{\protect{~}}
 \newcommand{\qedb}{\hfill \textsquare} % to be used outside proof environments
 \newcommand{\pausealt}{ }
+\newcommand{\blue}[1]{{\color{dueblue}{#1}\color{black}}}
 \newcommand{\hil}[1]{\textbf{\color{dueblue}{#1}\color{black}}}
 \newcommand{\hilm}[1]{\mathbf{\color{dueblue}{#1}\color{black}}}
 \newcommand{\GP}{\operatorname{GP}}
@@ -376,17 +377,6 @@ $endif$
 
 
 % ITEMIZE, ENUMERATE and DESCRIPTION
-\newcommand{\inlitem}[1]{
-{\usebeamerfont*{item projected}%
-% \usebeamercolor[bg]{item projected}%
-\begin{pgfpicture}{-.5ex}{0ex}{1ex}{2ex}
-  \color{dueblue}
-  \pgfpathcircle{\pgfpoint{0}{1ex}}{1.2ex}
-  \pgfusepath{fill}
-  \pgfputat{\pgfpoint{0}{1ex}}{\pgfbox[center,center]{\color{white}{#1}}}
-\end{pgfpicture}%
-}}
-
 
 
 \defbeamertemplate*{description item}{defaultperiod}{\insertdescriptionitem.}
@@ -500,12 +490,9 @@ $endif$
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % shade of grey used for chunk background
 
 % Other stuff
-\tikzstyle{vecArrow} = [thick, decoration={markings,mark=at position
-   1 with {\arrow[semithick]{open triangle 60}}},
-   double distance=1.4pt, shorten >= 5.5pt,
-   preaction = {decorate},
-   postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
-\tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt]
+\usetikzlibrary{arrows, decorations.markings}
+\tikzstyle{arrow} = [ultra thick, - latex, shorten >= 2pt, shorten <= 2pt] % default arrow
+\tikzstyle{box} = [rectangle,rounded corners,fill=dueblue, text=white, align=center, node distance=1.25cm] % default node
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
