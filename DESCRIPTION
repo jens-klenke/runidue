@@ -1,0 +1,14 @@
+Package: duebeamer
+Type: Package
+Title: Beamer Template for the University of Duisburg-Essen
+Version: 0.2.5
+Author: Martin Schmelzer
+Maintainer: Martin Schmelzer <martin.schmelzer@vwl.uni-due.de>
+Description: So far, this package provides a beamer template.
+License: GPL-3
+Encoding: UTF-8
+Imports:
+    knitr,
+    rmarkdown,
+    tikzDevice
+LazyData: true
