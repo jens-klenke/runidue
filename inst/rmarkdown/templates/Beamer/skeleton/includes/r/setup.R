@@ -24,7 +24,7 @@ custom.par <- function(...) {
 # Auto set cex parameter
 fwidth  <- c(0.5, 0.6, 0.7, 0.8, 0.9, 1)
 cex     <- c(0.6, 0.7, 0.75, 0.8, 0.85, 0.9)
-magnify <- approxfun(fwidth, cex, yleft = 0.5, yright = 0.9)
+magnify <- approxfun(fwidth, cex, yleft = 0.6, yright = 0.9)
 
 ### Use blue as the default plotting color
 plot <- function(..., col = NULL, pch = NULL) {
