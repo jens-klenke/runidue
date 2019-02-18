@@ -276,8 +276,11 @@ $endif$
 \makeatother
 \newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{includes/img/R_logo} }
 
-% environment that centers content and adds space below and above (alternative to \begin{center})
-\newenvironment{arrange}{\medskip\begin{center}}{\end{center}\medskip}
+%% ALTER COMMANDS
+\AtBeginEnvironment{center}{\medskip}
+\AtEndEnvironment{center}{\medskip}
+\AtBeginEnvironment{itemize}{\smallskip}
+
 
 %%% LAYOUT
 
@@ -312,13 +315,12 @@ $endif$
 %%% Spacing around display equations
 \makeatletter
 \g@addto@macro\normalsize{%
-  \setlength\abovedisplayskip{7pt}
-  \setlength\belowdisplayskip{7pt}
-  \setlength\abovedisplayshortskip{0pt}
-  \setlength\belowdisplayshortskip{3pt}
+  \setlength\abovedisplayskip{\medskipamount}
+  \setlength\belowdisplayskip{\medskipamount}
+  \setlength\abovedisplayshortskip{\smallskipamount}
+  \setlength\belowdisplayshortskip{\smallskipamount}
 }
 \makeatother
-
 
 % TOC
 \setbeamertemplate{section in toc shaded}[default][50]
