@@ -45,9 +45,13 @@ knitr::knit_hooks$set(output = function(x, options) {
 
 knit_hooks$set(c.par = function(before, options, envir) {
   if (before) {
-    custom.par(cex = max((1 + options$fig.width/slide.width) * 0.375), 0.5)
+    fwidth <- c(0.5, 0.6, 0.7, 0.8, 0.9, 1)
+    cex    <- c(0.6, 0.7, 0.75, 0.8, 0.85, 0.9)
+    magnify <- approxfun(x, y, yleft = 0.5)
   }
 })
+
+
 opts_hooks$set(fig.width = function(options) {
   if (options$fig.width <= 1 & options$fig.width > 0) {
     options$fig.width  <- options$fig.width * slide.width
