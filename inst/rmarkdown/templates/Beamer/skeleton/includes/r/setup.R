@@ -59,7 +59,6 @@ opts_hooks$set(fig.width = function(options) {
 
 knit_hooks$set(c.par = function(before, options, envir) {
   if (before) {
-    message(paste0("---------------- ",options$cex, " ----------------"))
     custom.par(cex = options$cex)
   }
 })
