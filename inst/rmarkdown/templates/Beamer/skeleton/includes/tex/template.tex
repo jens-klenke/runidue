@@ -22,6 +22,7 @@ $endif$
 
 
 
+
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 % use microtype if available
@@ -241,7 +242,16 @@ $endif$
 \usepackage[skip=7pt]{caption} % space between floats (figures, tables) and its captions
 \usepackage{tikz}
 \usepackage{makecell}
+\usepackage{subfig}
 
+\AtBeginEnvironment{center}{\medskip}
+\AtEndEnvironment{center}{\medskip}
+\AtBeginEnvironment{itemize}{\smallskip}
+
+
+
+
+%\newenvironment{arrange}{\medskip\begin{center}}{\end{center}\medskip}
 
 
 \usepackage{zref}
@@ -276,12 +286,7 @@ $endif$
 \makeatother
 \newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{includes/img/R_logo} }
 
-%% ALTER COMMANDS
-\AtBeginEnvironment{center}{\medskip}
-\AtEndEnvironment{center}{\medskip}
-\AtBeginEnvironment{itemize}{\smallskip}
-
-
+\newcommand{\source}[1]{\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
 %%% LAYOUT
 
 % New colors
@@ -317,12 +322,25 @@ $endif$
 \g@addto@macro\normalsize{%
   \setlength\abovedisplayskip{\medskipamount}
   \setlength\belowdisplayskip{\medskipamount}
-  \setlength\abovedisplayshortskip{\smallskipamount}
-  \setlength\belowdisplayshortskip{\smallskipamount}
+  \setlength\abovedisplayshortskip{\medskipamount}
+  \setlength\belowdisplayshortskip{\medskipamount}
 }
 \makeatother
 
+
 % TOC
+$if(startatzero)$ 
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\ifnum\beamer@tempcount>0}
+  {\ifnum\beamer@tempcount>-1}
+  {}
+  {}
+\beamer@tocsectionnumber=-1
+\setcounter{section}{-1}
+\makeatother
+$endif$
+
 \setbeamertemplate{section in toc shaded}[default][50]
 \defbeamertemplate{section in toc}{customcircle}
 {\leavevmode\leftskip=2ex%
@@ -447,6 +465,7 @@ $endif$
   \numberwithin{equation}{section}
 }%
 
+
 \setbeamertemplate{theorems}[numbered]
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamertemplate{theorem begin}
@@ -456,7 +475,7 @@ $endif$
   \begin{\inserttheoremblockenv}{%
     \structure{%
       \textbf{\inserttheoremname \inserttheoremnumber}:
-      \ifx\inserttheoremaddition\empty\else\expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\thmncont\inserttheorempunctuation}{\inserttheoremaddition\inserttheorempunctuation}\fi
+      \ifx\inserttheoremaddition\empty\else\expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\thmncont\inserttheorempunctuation}{\inserttheoremaddition\inserttheorempunctuation}\fi%
     }%
   }%
 }
@@ -469,7 +488,7 @@ $endif$
       \def\insertblocktitle{#1}%
       \par%
       \mode<presentation>{%
-        \setbeamercolor{block title}{fg=black,bg=yellow}
+      \setbeamercolor{block title}{fg=black,bg=yellow}
        \setbeamercolor{block body}{fg=black,bg=yellow!20}
        \setbeamercolor{itemize item}{fg=orange!20!black}
        \setbeamertemplate{itemize item}[triangle]
