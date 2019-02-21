@@ -1,4 +1,4 @@
-#' A simple memorandum format.
+#' Beamer Lecture Slides
 #'
 #' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
@@ -9,11 +9,9 @@
 #'
 #' @details Include a logo using the YAML option \code{logo}.
 #'
-#' @note
-#' This template is based on the texMemo class created by \href{http://www.oak-tree.us/2010/08/02/texmemo/}{Rob Oak}.
 #'
 #' @examples
-#' \dontrun{ library(rmarkdown) draft("DinnerMemo.Rmd", template = "texmemo",
+#' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
 #' package = "rmemo") }
 #' @importFrom rmarkdown pdf_document pandoc_path_arg
 #' @export
