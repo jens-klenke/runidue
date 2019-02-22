@@ -12,3 +12,4 @@ Imports:
     rmarkdown,
     tikzDevice
 LazyData: true
+RoxygenNote: 6.1.1
