@@ -16,7 +16,6 @@ $if(linestretch)$
 $endif$
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \usepackage[utf8]{inputenc}
 
 
@@ -231,7 +230,11 @@ $endif$
 
 %%%%%%%%%%%%%%%%%%%% Added Code %%%%%%%%%%%%%%%%%%%%
 %%% Packages
-\input{includes/ee.sty}
+\input{$resources$/ee.sty}
+\input{$resources$/BeamerColor.sty}
+\input{$resources$/hypernat.sty}
+%\input{$resources$/mathtools.sty}
+
 \usepackage{booktabs}
 \usepackage[export]{adjustbox}
 \usepackage{bbm,bm}
@@ -284,7 +287,7 @@ $endif$
 \makeatletter
 \newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
 \makeatother
-\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{includes/img/R_logo} }
+\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{$resources$/Rlogo} }
 
 \newcommand{\source}[1]{\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
 %%% LAYOUT
@@ -385,9 +388,7 @@ $endif$
     \fi
 \end{minipage}\hfill
 \begin{minipage}[t][1cm]{1.9cm}
-\expandafter\ifstrequal\expandafter{$lang$}{de}{%
-\includegraphics[width=2cm,keepaspectratio=true, valign=t]{includes/img/logo_german}}{%
-\includegraphics[width=2cm,keepaspectratio=true, valign=t]{includes/img/logo_english}}%
+\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$resources$/duelogo}
 \end{minipage}
 \vspace{-.3cm}
 }
@@ -497,7 +498,7 @@ $endif$
      }%
       \usebeamertemplate{block begin}
       \begin{center}
-\includegraphics[width=0.15\textwidth]{includes/img/kahoot.png}
+\includegraphics[width=0.15\textwidth]{$resources$/kahoot.png}
 \end{center}}
     {\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
@@ -542,7 +543,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % shade of g
 
 $if(title)$
 $if(towers)$
-{\usebackgroundtemplate{\includegraphics[scale=0.25]{includes/img/due_tower}}
+{\usebackgroundtemplate{\includegraphics[scale=0.25]{$resources$/duetower}}
 \frame[plain]{\titlepage}}
 $else$
 \frame[plain]{\titlepage}

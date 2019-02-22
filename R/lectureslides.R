@@ -13,14 +13,34 @@
 #' @examples
 #' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
 #' package = "rmemo") }
-#' @importFrom rmarkdown pdf_document pandoc_path_arg
+#' @importFrom rmarkdown pdf_document pandoc_path_arg pandoc_variable_arg
 #' @export
-lectureslides = function(...) {
-  template <- pandoc_path_arg(system.file("rmarkdown", "templates", "lectureslides", "resources", "template.tex",
-                                          package = "runidue"))
-  fmt <- pdf_document(..., template = template)
-  return(fmt)
+lectureslides <- function(..., 
+                          lang = "en",
+                          towers = TRUE) {
+  res_path <- find_res_path("lectureslides")
+  
+  # handle arguments
+  args <- c()
+  args <- c(args, c(args, pandoc_variable_arg("resources", res_path)))
+  
+  
+  args <- c(args, pandoc_variable_arg("lang", lang))
+  args <- c(args, pandoc_variable_arg("towers", towers))
+  
+  
+  
+  rmarkdown::beamer_presentation(...,
+                                 template = find_resource("lectureslides", "template.tex"), 
+                                 pandoc_args = args,
+                                 dev = "tikz",
+                                 fig_crop = T)
 }
+
+
+
+
+
 
 
 

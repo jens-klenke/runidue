@@ -2,4 +2,5 @@
 
 export(lectureslides)
 importFrom(rmarkdown,pandoc_path_arg)
+importFrom(rmarkdown,pandoc_variable_arg)
 importFrom(rmarkdown,pdf_document)
