@@ -2,7 +2,7 @@
 title: "Title"
 author: "Author"
 date: "Term X"
-output: runidue::lectureslide
+output: runidue::lectureslides
 lang: "en"
 bibliography: includes/references.bib
 link-citations: true
