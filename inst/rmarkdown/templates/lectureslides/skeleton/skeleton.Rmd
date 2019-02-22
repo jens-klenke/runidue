@@ -3,17 +3,12 @@ title: "Title"
 author: "Author"
 date: "Term X"
 output: runidue::lectureslides
-lang: "en"
-bibliography: includes/references.bib
-link-citations: true
-towers: true
 ---
 
 
 
-
 ```{r setup, include=FALSE}
-source("includes/setup.r")
+source("setup.r")
 ```
 
 # Introduction
