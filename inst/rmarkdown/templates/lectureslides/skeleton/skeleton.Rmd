@@ -2,10 +2,7 @@
 title: "Title"
 author: "Author"
 date: "Term X"
-output:
-  beamer_presentation:
-    template: includes/tex/template.tex
-    keep_tex: true
+output: runidue::lectureslide
 lang: "en"
 bibliography: includes/references.bib
 link-citations: true
@@ -16,7 +13,7 @@ towers: true
 
 
 ```{r setup, include=FALSE}
-source("includes/r/setup.r")
+source("includes/setup.r")
 ```
 
 # Introduction
