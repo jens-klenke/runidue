@@ -7,9 +7,7 @@ output: runidue::lectureslides
 
 
 
-```{r setup, include=FALSE}
-source("setup.r")
-```
+
 
 # Introduction
 
