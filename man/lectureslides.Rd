@@ -5,6 +5,7 @@
 \title{Beamer Lecture Slides}
 \usage{
 lectureslides(lang = "en", towers = T, template = "default",
+  colorlinks = T, tables = T, institute = T, blockstyle = "box",
   toc = TRUE, slide_level = 2, incremental = FALSE, fig_width = 10,
   fig_height = 7, fig_crop = TRUE, fig_caption = TRUE, dev = "pdf",
   df_print = "default", theme = "default", colortheme = "default",

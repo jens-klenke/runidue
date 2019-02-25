@@ -1,0 +1,11 @@
+# Fdb version 3
+["pdflatex"] 1551094795 "newtemplate.tex" "newtemplate.pdf" "newtemplate" 1551094795
+  "$documentclass$.cls" 0 -1 0 ""
+  "/usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf" 1544742277 35176 ce7fee66be1fb01dfc6b702a7dbfa0ea ""
+  "/usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt" 1550764683 4227023 b1fdba70b8069b2dd0b2beb7ccad9c84 ""
+  "/usr/local/texlive/2018/texmf.cnf" 1523934483 577 0b39adfd7c93507ff20c9c14c2f1a33f ""
+  "newtemplate.aux" 1551094795 8 a94a2480d3289e625eea47cd1b285758 ""
+  "newtemplate.tex" 1551094794 12960 c4556b9de6b94f709334df54ba938823 ""
+  (generated)
+  "newtemplate.log"
+  "newtemplate.pdf"

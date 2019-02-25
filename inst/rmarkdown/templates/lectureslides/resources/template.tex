@@ -242,7 +242,6 @@ $endif$
 \usepackage{ifthen}
 \usepackage{textcomp}
 \usepackage{booktabs}
-\usepackage[skip=7pt]{caption} % space between floats (figures, tables) and its captions
 \usepackage{tikz}
 \usepackage{makecell}
 \usepackage{subfig}
@@ -252,11 +251,6 @@ $endif$
 \AtBeginEnvironment{itemize}{\smallskip}
 
 
-
-
-%\newenvironment{arrange}{\medskip\begin{center}}{\end{center}\medskip}
-
-
 \usepackage{zref}
 \usepackage{zref-user}
 \usepackage{zref-xr}
@@ -264,13 +258,6 @@ $if(zref-path)$
 \zexternaldocument[S-]{$zref-path$}
 \newcommand{\zeqref}[1]{(\zref{#1})}
 $endif$
-
-
-%%%
-
-\makeatletter
-\let\@@magyar@captionfix\relax
-\makeatother
 
 
 %%% Additional commands
@@ -297,23 +284,10 @@ $endif$
 \definecolor{duelightblue}{RGB}{223,228,242}
 \definecolor{duebeige}{RGB}{239,228,191}
 
-% \usetheme{Boadilla}
-
-\expandafter\ifstrequal\expandafter{$block-style$}{blank}{}{
-\setbeamerfont{block title}{size=\normalsize}
-\setbeamercolor{block title}{bg=duelightblue,fg=black}
-\setbeamercolor{block body}{bg=duelightblue!37,fg=black}
-}%
-
-\setbeamertemplate{blocks}[rounded][shadow=false]
-
-
 
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
 \setbeamersize{text margin left=10pt, text margin right=10pt}
-
-
 
 % LENGTHS
 \setlength{\parindent}{0pt}
@@ -329,6 +303,9 @@ $endif$
   \setlength\belowdisplayshortskip{\medskipamount}
 }
 \makeatother
+
+%%% spacing above captions
+\setlength{\abovecaptionskip}{-10pt plus 2pt minus 1pt}
 
 
 % TOC
@@ -360,15 +337,6 @@ $endif$
   \hspace{1ex}\inserttocsection\par}
 
 \setbeamertemplate{section in toc}[customcircle]
-
-
-
-% fix for: ! Undefined control sequence.
-%          <argument> \@@magyar@captionfix
-\makeatletter
-\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.05em}{}{}
-\makeatother
-
 
 
 
@@ -406,7 +374,6 @@ $endif$
 \defbeamertemplate*{description item}{defaultperiod}{\insertdescriptionitem.}
 \setbeamersize{description width=15pt} % left margin for description
 
-
 \setlength{\leftmargini}{15pt}
 \setlength{\leftmarginii}{15pt}
 \setlength{\leftmarginiii}{15pt}
@@ -420,9 +387,6 @@ $endif$
 \setbeamertemplate{description subitem}[defaultperiod]
 
 \providecommand{\tightlist}{\setlength{\itemsep}{1ex}\setlength{\parskip}{1.3ex}}
-
-
-
 
 % NEW SECTION
 \AtBeginSection[] {
@@ -506,6 +470,8 @@ $endif$
 % \makeatletter
 % \def\newblock{\beamer@newblock} % to make bibtex work
 % \makeatother
+
+
 
 
 %%% Code chunks

@@ -5,156 +5,19 @@ date: "Term X"
 output: runidue::lectureslides
 ---
 
-
-
-
-
 # Introduction
 
 ## Key Features
-- Set the presentation language to German using `lang: de` in the YAML
-- `\R` returns the \R logo
-- Use external references by `zref-path: path/to/referenced/document`
-- Change the grade of shading for code chunks using `shadecolor: X` where $X \in [0, 1]$
-- For more YAML options check the underlying `template.tex` or visit [R\nbs{}Markdown:\nbs{}The\nbs{}Definitive Guide](http://bookdown.org/yihui/rmarkdown/pdf-document.html)
-- Using ~ for non breaking spaces does not work within this template. Instead use the new command `\\nbs{}` like above. 
-- Add the university towers as a gradient background to the titlepage: `towers: true`.
 
-
-## Key Features
-- Start new sections by using one hash, use two hashes to create a new frame.
-- Frames are automatically closed when you start a new one.
-- Frame subtitles can be inserted by using standard \TeX notation `\framesubtitle{}`.
-- If you want an enumerated list using letters, use
-
-\bigskip
-```
-\begin{description}
-\item[a]
-\item[b]
-...
-\end{description}
+```{r}
+head(mtcars)
 ```
 
-## Key Features
-\framesubtitle{Additional to the pandoc beamer template}
+# Introduction 2
 
-```{r, eval = F, echo = T}
-block-style: "blank"   # set block environments to be blank
-shadecolor: 0.93       # shade of grey for chunk backgrounds ([0, 1])
-lang: "en"             # change the language of the document (en or de)
-zref-path: "path/to/file"   # import labels from external file
-towers: true           # Title page background
+## Key Features 2
+
+```{r, fig.cap = "Test"}
+plot(mpg ~ hp, data = mtcars)
 ```
-
-
-## R Setup
-The file `includes/r/setup.r` defines and sets several chunk options and constants that make it easier to incorporate R code and its output.
-
-- You can also shade R output by using the new chunk option `shadeoutput = T`.
-- Changing the font size used for a certain chunk can be change by e.g. `fontsize = "\\scriptsize"` where you can insert any \LaTeX \nbs font command.
-- The three corporate colors are available in the list `due.col`.
-
-
-
-
-## Code Chunks
-\framesubtitle{Plots}
-
-On the next slide is a basic R plot. It uses the same font as the document itself since we use the tikz device as a default!
-
-- The slide dimensions are accessible through slide.width and slide.height. If you need to resize a plot, use the chunk options `fig.width` and/or `fig.asp`.
-- I redefined `fig.width` to be defined as the share of the slide width (0, 1). `fig.height` is computed as `fig.width * fig.asp`.
-- Several arguments to par() are set to default values, so that a single plot fits nicely to a slide.
-
-## Code Chunks
-\framesubtitle{Plots}
-
-```{r Plot1, fig.cap = "Miles per gallon for different car models."}
-plot(mtcars$mpg, ylab = "Miles per gallon")
-```
-
-
-## Code Chunks
-\framesubtitle{Inline code chunks}
-
-Inline code chunks are generated as follows:
-
-
-```{r, eval = F, echo = T}
-`pi`      This would not be evaluated but formatted with \\texttt
-`r pi`    This is evaluated
-```
-
-Both chunks in action: `pi` = `r pi`.
-
-
-## Block Environments
-
-You can use some user defined block environments, suited for lecture scripts. A new theorem is created using
-
-```
-\thmn[optional title]
-Theorem Content
-\endthmn
-```
-
-\thmn[A great theorem]
-... with zero content.
-\endthmn
-
-
-
-## Block Environments
-If you specify the title to be an asterisk (*), the block is assumed to be a continuation of the last block:
-
-\thmn[*]
-This is a continuation of the last block.
-\endthmn
-
-\thmn
-- A theorem with no title.
-- Notice the empty line (123) after the list item. Without it, one would receive an error!
-
-\endthmn
-
-
-
-## Block Environments
-
-Other predefined blocks are
-
-```{r, echo = T, eval = F}
-\lem  ... \endlem   # Lemma
-\cor  ... \endcor   # Corollary
-\defn ... \enddefn  # Definition
-\ass  ... \endass   # Assumption
-\rem  ... \endrem   # Remark
-\xmpl ... \endxmpl  # Example
-\que  ... \endque   # Question
-```
-
-- You could still use `\begin{thmn} ... \end{thmn}` but then references and code chunks are not properly formatted because pandoc will ignore the content inbetween these two commands.
-- If you want blocks with no background colors, use the YAML option `block-style: blank`.
-
-
-## Citations
-
-- Include references using the YAML option as seen above.
-- Cite using the markdown syntax found at [RStudio - RMarkdown](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html#citations)
-- `[@R]` returns [@R]
-- The references are automatically added to the last frame. Therefore you should end your presentation with a frame named like `## References`.
-
-## Modifications
-
-- If you want to further modify your slides, then make the changes inside `includes/template.tex`.
-- Most of the additional code that was added to the default pandoc template is annotated.
-
-
-## References
-
-
-
-
-
 

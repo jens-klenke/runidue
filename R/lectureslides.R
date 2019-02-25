@@ -13,11 +13,15 @@
 #' @examples
 #' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
 #' package = "rmemo") }
-#' @import rmarkdown
+#' @import rmarkdown knitr
 #' @export
 lectureslides <- function(lang = "en",
                           towers = T,
                           template = "default",
+                          colorlinks = T,
+                          tables = T,
+                          institute = T,
+                          blockstyle = "box",
                           toc = TRUE,
                           slide_level = 2,
                           incremental = FALSE,
@@ -25,7 +29,7 @@ lectureslides <- function(lang = "en",
                           fig_height = 7,
                           fig_crop = TRUE,
                           fig_caption = TRUE,
-                          dev = 'pdf',
+                          dev = "pdf",
                           df_print = "default",
                           theme = "default",
                           colortheme = "default",
@@ -44,7 +48,7 @@ lectureslides <- function(lang = "en",
   
   # template path and assets
   if (!is.null(template)) {
-    if (identical(template, "default")) template <- find_resource("lectureslides", "template.tex")
+    if (identical(template, "default")) template <- find_resource("lectureslides", "newtemplate.tex")
     if (!is.null(template))
       args <- c(args, "--template", pandoc_path_arg(template))
   }
@@ -102,20 +106,57 @@ lectureslides <- function(lang = "en",
   
   args <- c(args, c(args, pandoc_variable_arg("resources", res_path)))
   
+  
+  lang <- match.arg(lang, c("de", "en"))
   args <- c(args, pandoc_variable_arg("lang", lang))
-  args <- c(args, pandoc_variable_arg("towers", towers))
+  
+  args <- c(args, pandoc_variable_arg("colorlinks", colorlinks))
+  args <- c(args, pandoc_variable_arg("tables", tables))
+  
+  if(is.logical(towers))
+    if(towers) args <- c(args, pandoc_variable_arg("towers", towers))
+    
+  if (is.logical(institute)) {
+    if (institute) args <- c(args, pandoc_variable_arg("institute", "default"))
+  } else {
+    if(is.character(institute)) args <- c(args, pandoc_variable_arg("institute", institute))
+  }
+  
+  blockstyle <- match.arg(blockstyle, c("box", "blank"))
+  args <- c(args, pandoc_variable_arg("blockstyle", blockstyle))
+    
+    
+  
   
   
   pre_knit <- function(input, ...) {
     options(tikzDocumentDeclaration = "\\documentclass{beamer}")
     options(tikzMetricsDictionary="Resources/tikzDictionary")
+    options(tikzLatexPackages = c("\\usepackage{tikz}",
+                                  "\\usepackage[active,tightpage]{preview}",
+                                  "\\PreviewEnvironment{pgfpicture}",
+                                  "\\setlength\\PreviewBorder{-3pt}"),
+            tikzXelatexPackages = c("\\usepackage{tikz}\n",
+                                    "\\usepackage[active,tightpage,xetex]{preview}\n",
+                                    "\\usepackage{fontspec,xunicode}\n",
+                                    "\\PreviewEnvironment{pgfpicture}\n",
+                                    "\\setlength\\PreviewBorder{-3pt}\n"),
+            tikzLualatexPackages =c("\\usepackage{tikz}\n",
+                                    "\\usepackage[active,tightpage,psfixbb]{preview}\n",
+                                    "\\usepackage{fontspec,xunicode}\n",
+                                    "\\PreviewEnvironment{pgfpicture}\n",
+                                    "\\setlength\\PreviewBorder{-3pt}\n"))
+    
+    
     options(digits = 4)
     ### Use blue as the default plotting color
-    plot <- function(..., col = NULL, pch = NULL) {
-      graphics::plot(..., bty = "o",
-                     col = ifelse(is.null(col), "steelblue3", col),
-                     pch = ifelse(is.null(pch), 16, pch))
-    }
+    # plot <- function(..., col = NULL, pch = NULL) {
+    #   graphics::plot(..., bty = "o",
+    #                  col = ifelse(is.null(col), "steelblue3", col),
+    #                  pch = ifelse(is.null(pch), 16, pch))
+    # }
+    par(mar = c(4.1, 3.1, 1.5, 1), oma = c(0, 0, 0, 0), pch = 16,
+        mgp = c(1.7, 0.4, 0), tcl = -0.33, col = "steelblue3")
   }
   
   pre_processor <- function(metadata, input_file, runtime, knit_meta,
@@ -140,20 +181,21 @@ lectureslides <- function(lang = "en",
                              cache = T, 
                              message = FALSE, 
                              warning = FALSE,
-                             fig.width = 0.9,
-                             fig.asp = 0.66, 
+                             shadeoutput = NULL,
+                             fig.width = 0.85,
+                             fig.asp = 0.65, 
                              fig.align = "center", 
                              cpar = T,
                              fig.path = "Resources/Plots/",
                              cache.path = "Resources/Cache/")
   
+  
+  
   # return format
   output_format(
-    knitr = knitr_options(opts_chunk = default_chunk_opts,
-                          knit_hooks = list(chunk = chunk_hook,
-                                            output = output_hook,
-                                            cpar = custom_par_hook),
-                          opts_hooks = list(fig.width = fig_width_hook)),
+    knitr  = knitr_options(opts_chunk = default_chunk_opts,
+                           knit_hooks = set_hooks(),
+                           opts_hooks = set_opt_hooks()),
     pandoc = pandoc_options(to = "beamer",
                             from = from_rmarkdown(fig_caption, md_extensions),
                             args = args,
