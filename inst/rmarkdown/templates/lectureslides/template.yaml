@@ -1,4 +1,4 @@
 name: Lecture Slides using Beamer (University of Duisburg-Essen)
 description: >
  Template for creating lecture slides using the corporate design of the University of Duisburg-Essen.
-create_dir: true
+create_dir: false
