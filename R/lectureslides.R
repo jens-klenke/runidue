@@ -22,6 +22,7 @@ lectureslides <- function(lang = "en",
                           tables = T,
                           institute = T,
                           blockstyle = "box",
+                          shadecolor = "default",
                           toc = TRUE,
                           slide_level = 2,
                           incremental = FALSE,
@@ -48,7 +49,7 @@ lectureslides <- function(lang = "en",
   
   # template path and assets
   if (!is.null(template)) {
-    if (identical(template, "default")) template <- find_resource("lectureslides", "newtemplate.tex")
+    if (identical(template, "default")) template <- find_resource("lectureslides", "lectureslides.tex")
     if (!is.null(template))
       args <- c(args, "--template", pandoc_path_arg(template))
   }
@@ -101,30 +102,46 @@ lectureslides <- function(lang = "en",
   # initialize saved files dir
   saved_files_dir <- NULL
   
-  ######
+  # resource path
   res_path <- find_res_path("lectureslides")
-  
   args <- c(args, c(args, pandoc_variable_arg("resources", res_path)))
   
-  
+  # lang
   lang <- match.arg(lang, c("de", "en"))
   args <- c(args, pandoc_variable_arg("lang", lang))
   
+  # colorlinks
   args <- c(args, pandoc_variable_arg("colorlinks", colorlinks))
+  
+  # tables
   args <- c(args, pandoc_variable_arg("tables", tables))
   
+  # tower logo
   if(is.logical(towers))
     if(towers) args <- c(args, pandoc_variable_arg("towers", towers))
     
+  # institute
   if (is.logical(institute)) {
     if (institute) args <- c(args, pandoc_variable_arg("institute", "default"))
   } else {
     if(is.character(institute)) args <- c(args, pandoc_variable_arg("institute", institute))
   }
   
+  # block style
   blockstyle <- match.arg(blockstyle, c("box", "blank"))
   args <- c(args, pandoc_variable_arg("blockstyle", blockstyle))
-    
+  
+  # shadecolor
+  if(!identical(shadecolor, "default")) {
+    if(!is.numeric(shadecolor)) {
+      warning("shadecolor should be a numeric value in [0, 1] (shades of grey)")
+      shadecolor <- "default"
+    } else if (shadecolor < 0 | shadecolor > 1) {
+      warning("shadecolor should be a numeric value in [0, 1] (shades of grey)")
+    } else {
+      args <- c(args, pandoc_variable_arg("shadecolor", shadecolor))
+    }
+  }
     
   
   
@@ -149,22 +166,14 @@ lectureslides <- function(lang = "en",
     
     
     options(digits = 4)
-    ### Use blue as the default plotting color
-    # plot <- function(..., col = NULL, pch = NULL) {
-    #   graphics::plot(..., bty = "o",
-    #                  col = ifelse(is.null(col), "steelblue3", col),
-    #                  pch = ifelse(is.null(pch), 16, pch))
-    # }
-    par(mar = c(4.1, 3.1, 1.5, 1), oma = c(0, 0, 0, 0), pch = 16,
-        mgp = c(1.7, 0.4, 0), tcl = -0.33, col = "steelblue3")
   }
+  
   
   pre_processor <- function(metadata, input_file, runtime, knit_meta,
                             files_dir, output_dir) {
     # save files dir (for generating intermediates)
     saved_files_dir <<- files_dir
-    base_path <<- paste0(input_file, "_resources/")
-
+    
     # no-op other than caching dir location
     invisible(NULL)
   }
@@ -173,6 +182,16 @@ lectureslides <- function(lang = "en",
   intermediates_generator <- function(...) {
     general_intermediates_generator(saved_files_dir, ...)
   }
+  
+  # this is used to copy needed tex files into project dir after knitting
+  # post_knit <- function(metadata, input_file, runtime, ...) {
+  #   provide_latex_pkg("lectureslides", list(
+  #     "BeamerColor.sty",
+  #     "hypernat.sty",
+  #     "ee.sty"
+  #   ))
+  #   return(NULL)
+  # }
   
   # default knitr options
   default_chunk_opts <- list(echo = T, 
@@ -202,7 +221,9 @@ lectureslides <- function(lang = "en",
                             latex_engine = latex_engine,
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
+    # post_knit = post_knit,  # used if latex packages should be moved into rmd dir 
     pre_processor = pre_processor,
+
     intermediates_generator = intermediates_generator,
     clean_supporting = !keep_tex,
     df_print = df_print

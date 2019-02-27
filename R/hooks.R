@@ -1,6 +1,5 @@
 #'@import knitr 
 set_hooks <- function() {
-  # render_latex()
   default_hooks  <- knit_hooks$get()
   list(
     chunk = function(x, options) {
@@ -17,7 +16,6 @@ set_hooks <- function() {
                   x,
                   paste0("\\Shaded\n", x, "\\endShaded\n"))
                   # paste0("\\begin{Shaded}\n\\begin{verbatim}\n", gsub(pattern = "```|^\\s*$", "", x, perl = T), "\\end{verbatim}\n\\end{Shaded}"))
-      message(x)
       x
     }
   )

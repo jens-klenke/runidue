@@ -265,10 +265,19 @@ $endfor$
 % up until here https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Additional packages
-\input{$resources$/ee.sty}
-\input{$resources$/BeamerColor.sty}
-\input{$resources$/hypernat.sty}
-%\input{$resources$/mathtools.sty}
+\makeatletter
+\def\input@path{{$resources$/}}  % make them visible to tex to overcome warnings
+\makeatother
+
+\usepackage{ee}
+\usepackage{BeamerColor}
+\usepackage{hypernat}
+\usepackage{mathtools}
+
+% \input{Resources/ee.sty}
+% \input{Resources/BeamerColor.sty}
+% \input{Resources/hypernat.sty}
+% \input{$resources$/mathtools.sty}
 
 \usepackage[export]{adjustbox}
 \usepackage{makecell}
@@ -522,16 +531,6 @@ $if(abstract)$
   $abstract$
   \end{abstract}
 $endif$
-
-% original titlepage
-% $if(title)$
-% \maketitle
-% $endif$
-% $if(abstract)$
-% \begin{abstract}
-% $abstract$
-% \end{abstract}
-% $endif$
 
 $for(include-before)$
 $include-before$

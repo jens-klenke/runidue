@@ -1,6 +1,0 @@
-PWD /Users/martin/Dropbox/DataScience/R/Projects/runidue/inst/rmarkdown/templates/lectureslides/resources
-INPUT /usr/local/texlive/2018/texmf.cnf
-INPUT /usr/local/texlive/2018/texmf-dist/web2c/texmf.cnf
-INPUT /usr/local/texlive/2018/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT newtemplate.tex
-OUTPUT newtemplate.log
