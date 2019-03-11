@@ -13,7 +13,7 @@ lectureslides(lang = "en", towers = T, template = "default",
   fonttheme = "default", highlight = "default", keep_tex = FALSE,
   latex_engine = "pdflatex", citation_package = c("none", "natbib",
   "biblatex"), self_contained = TRUE, includes = NULL,
-  md_extensions = NULL, pandoc_args = NULL)
+  md_extensions = "+fancy_lists", pandoc_args = NULL)
 }
 \arguments{
 \item{template}{Pandoc template to use for rendering. Pass "default" to use

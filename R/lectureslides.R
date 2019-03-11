@@ -41,7 +41,7 @@ lectureslides <- function(lang = "en",
                           citation_package = c("none", "natbib", "biblatex"),
                           self_contained = TRUE,
                           includes = NULL,
-                          md_extensions = NULL,
+                          md_extensions = "+fancy_lists",
                           pandoc_args = NULL) {
   
   # base pandoc options for all beamer output
@@ -152,20 +152,21 @@ lectureslides <- function(lang = "en",
     options(tikzLatexPackages = c("\\usepackage{tikz}",
                                   "\\usepackage[active,tightpage]{preview}",
                                   "\\PreviewEnvironment{pgfpicture}",
-                                  "\\setlength\\PreviewBorder{-3pt}"),
+                                  "\\setlength\\PreviewBorder{-5pt}"),
             tikzXelatexPackages = c("\\usepackage{tikz}\n",
                                     "\\usepackage[active,tightpage,xetex]{preview}\n",
                                     "\\usepackage{fontspec,xunicode}\n",
                                     "\\PreviewEnvironment{pgfpicture}\n",
-                                    "\\setlength\\PreviewBorder{-3pt}\n"),
+                                    "\\setlength\\PreviewBorder{-5pt}\n"),
             tikzLualatexPackages =c("\\usepackage{tikz}\n",
                                     "\\usepackage[active,tightpage,psfixbb]{preview}\n",
                                     "\\usepackage{fontspec,xunicode}\n",
                                     "\\PreviewEnvironment{pgfpicture}\n",
-                                    "\\setlength\\PreviewBorder{-3pt}\n"))
+                                    "\\setlength\\PreviewBorder{-5pt}\n"))
     
     
     options(digits = 4)
+    library(runidue)
   }
   
   

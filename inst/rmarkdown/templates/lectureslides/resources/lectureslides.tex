@@ -274,14 +274,14 @@ $endfor$
 \usepackage{hypernat}
 \usepackage{mathtools}
 
-% \input{Resources/ee.sty}
-% \input{Resources/BeamerColor.sty}
-% \input{Resources/hypernat.sty}
-% \input{$resources$/mathtools.sty}
 
 \usepackage[export]{adjustbox}
 \usepackage{makecell}
+\usepackage{diagbox}
+\usepackage{bm, bbm}
 \usepackage{subfig}
+\usepackage{forest}
+\usepackage{soul} 
 \usepackage{zref}
 \usepackage{zref-user}
 \usepackage{zref-xr}
@@ -304,6 +304,12 @@ $endif$
 \definecolor{dueblue}{RGB}{0,76,147}
 \definecolor{duelightblue}{RGB}{223,228,242}
 \definecolor{duebeige}{RGB}{239,228,191}
+\definecolor{darkgrey}{RGB}{40, 40, 40}
+\definecolor{salmon}{RGB}{239, 148, 108}
+\definecolor{lime}{RGB}{219, 254, 135}
+\definecolor{sandy}{RGB}{255, 227, 129}
+\definecolor{darklime}{RGB}{153, 194, 77}
+
 
 %%% Additional commands
 \newcommand{\npt}{\\[1ex]\pause}
@@ -315,7 +321,9 @@ $endif$
 \newcommand{\hilm}[1]{\mathbf{\color{dueblue}{#1}\color{black}}}
 \newcommand{\GP}{\operatorname{GP}}
 \newcommand{\GEV}{\operatorname{GEV}}
+\newcommand{\mattheta}{\boldmath\theta}
 \newcommand{\di}{\mathrm{i}}
+\newcommand{\mps}{\par\medbreak}
 
 % Kahoot Block
 \newenvironment<>{kahoot}[1]{%
@@ -338,7 +346,7 @@ $endif$
 \makeatletter
 \newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
 \makeatother
-\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{$resources$/Rlogo}}
+\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{$resources$/Rlogo}\nbs{}}
 \newcommand{\source}[1]{\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
 
 % BLOCK ENVIRONMENTS (THEOREMS)
@@ -381,9 +389,6 @@ $endif$
 }%
 
 
-
-
-
 \setbeamertemplate{theorems}[numbered]
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamertemplate{theorem begin}
@@ -392,16 +397,38 @@ $endif$
   \normalfont
   \begin{\inserttheoremblockenv}{%
     \structure{%
-      \textbf{\inserttheoremname \inserttheoremnumber}:
-      \ifx\inserttheoremaddition\empty\else\expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\thmncont\inserttheorempunctuation}{\inserttheoremaddition\inserttheorempunctuation}\fi%
+      \textcolor{darkgrey}{\textbf{\inserttheoremname \inserttheoremnumber}:
+      \ifx\inserttheoremaddition\empty\else\expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\thmncont\inserttheorempunctuation}{\inserttheoremaddition\inserttheorempunctuation}\fi}%
     }%
   }%
 }
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
-\AtBeginEnvironment{center}{\medskip}
-\AtEndEnvironment{center}{\medskip}
+
+\preto{\xmpl}{
+    \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
+    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
+}
+
+\preto{\exe}{
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+}
+
+
+
+
+
+
+\AtBeginEnvironment{center}{\smallbreak}
+\AtEndEnvironment{center}{\smallbreak}
 \AtBeginEnvironment{itemize}{\smallskip}
+\AtEndEnvironment{itemize}{\smallskip}
+
+\preto{\enumerate}{\medskip}
+
+\AtEndEnvironment{enumerate}{\smallskip}
+
 
 
 
@@ -416,10 +443,11 @@ $endif$
 \makeatletter
 \preto{\@verbatim}{\topsep=-2pt \partopsep=2pt \parskip=-2ex}
 \preto{\Shaded}{\smallskip}{}
+
 \makeatother
 
 % spacing before figure captions
-\setlength{\abovecaptionskip}{-7pt}
+\setlength{\abovecaptionskip}{-2pt}
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
 
@@ -501,10 +529,12 @@ $endif$
 \defbeamertemplate*{description item}{defaultperiod}{\insertdescriptionitem.}
 \setbeamersize{description width=15pt} % left margin for description
 
-
-\setlength{\leftmargini}{15pt}
+\setlength{\topsep}{1ex}
+\setlength{\leftmargini}{10pt+.5\labelwidth}
 \setlength{\leftmarginii}{15pt}
 \setlength{\leftmarginiii}{15pt}
+
+
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamertemplate{itemize item}[circle]
@@ -516,13 +546,16 @@ $endif$
 
 
 \providecommand{\tightlist}{\setlength{\itemsep}{1ex}\setlength{\parskip}{1.3ex}}
-
+% allow environments inside environments
+\let\otherbegin\begin
+\let\otherend\end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 
 
 
 \begin{document}
+
 
 $if(title)$
   $if(towers)$
