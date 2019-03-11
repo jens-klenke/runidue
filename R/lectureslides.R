@@ -1,9 +1,15 @@
 #' Beamer Lecture Slides
 #'
-#' @inheritParams rmarkdown::pdf_document
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
-#'
-#' Format for creating basic memos.
+#' @param template \code{character}. The template to be used. Defaults to \code{default}
+#' @param lang \code{character}. Language of the presentation. One of \code{"de"} or \code{"en"}. Defaults to \code{"en"}.
+#' @param towers \code{logical}. Should the title page include a gradient logo of the university buildings.
+#' @param institute \code{logical} or \code{character}. Should the name of the institution be included on the title page.
+#' Defaults to \code{T} and includes the name of the University Duisburg-Essen in the language specified by \code{lang}.
+#' If a \code{character} object is provided, this string is shown underneath the title.
+#' @param blockstyle \code{character}. The style of the beamer block environments (theorems, examples, etc.). One of \code{"box"} or \code{"blank"}.
+#' Defaults to \code{"box"}.
+#' @param shadecolor \code{numeric}. The shade of grey used as the background color for code chunks. A number between 0 and 1.
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
