@@ -8,7 +8,7 @@ set_hooks <- function() {
     },
     cex = function(before, options, envir) {
       if (before) par(mar = c(3.5, 3.5, 2.5, 1), oma = c(0, 0, 0, 0), pch = 16,
-                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85)
+                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85)
     },
     output = function(x, options) {
       x <- paste0("```\n", x,"```\n")

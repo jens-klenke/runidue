@@ -418,15 +418,13 @@ $endif$
 
 
 
-
-
+% Spacings
+\AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
 \AtBeginEnvironment{center}{\smallbreak}
 \AtEndEnvironment{center}{\smallbreak}
 \AtBeginEnvironment{itemize}{\smallskip}
 \AtEndEnvironment{itemize}{\smallskip}
-
 \preto{\enumerate}{\medskip}
-
 \AtEndEnvironment{enumerate}{\smallskip}
 
 
@@ -442,12 +440,10 @@ $endif$
 % Spacing before and after code chunks / output
 \makeatletter
 \preto{\@verbatim}{\topsep=-2pt \partopsep=2pt \parskip=-2ex}
-\preto{\Shaded}{\smallskip}{}
-
 \makeatother
 
 % spacing before figure captions
-\setlength{\abovecaptionskip}{-2pt}
+\setlength{\abovecaptionskip}{0pt}
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
 
