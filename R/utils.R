@@ -3,8 +3,8 @@ slide.height <- 3.78
 
 # Auto set cex parameter
 fwidth  <- c(0.5, 0.6, 0.7, 0.8, 0.9)
-cex     <- c(0.7, 0.7, 0.75, 0.8, 0.85)
-magnify <- approxfun(fwidth, cex, yleft = 0.7, yright = 0.85)
+cex     <- c(0.7, 0.7, 0.75, 0.8, 0.8)
+magnify <- approxfun(fwidth, cex, yleft = 0.7, yright = 0.8)
 
 due.col <- list(blue      = "#004c93",
                 lightblue = "#dfe4f2",
