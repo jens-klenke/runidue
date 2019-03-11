@@ -41,7 +41,10 @@ highlighters <- function() {
     "haddock")
 }
 
-# Function to auto print inline code including the numerical results
+#' Function to auto print inline code including the numerical results
+#' @param x A R expression.
+#' @examples 
+#' s(pi)
 #' @export
 s <- function(x) {
   paste0("\\texttt{", deparse(substitute(x)), "} = ", knitr::knit_hooks$get("inline")(round(x, 4)))

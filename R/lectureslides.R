@@ -175,7 +175,7 @@ lectureslides <- function(lang = "en",
     library(runidue)
   }
   
-  
+
   pre_processor <- function(metadata, input_file, runtime, knit_meta,
                             files_dir, output_dir) {
     # save files dir (for generating intermediates)
