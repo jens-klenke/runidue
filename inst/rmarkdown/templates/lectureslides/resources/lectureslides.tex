@@ -273,8 +273,6 @@ $endfor$
 \usepackage{BeamerColor}
 \usepackage{hypernat}
 \usepackage{mathtools}
-
-
 \usepackage[export]{adjustbox}
 \usepackage{makecell}
 \usepackage{diagbox}
@@ -292,7 +290,9 @@ $endfor$
 
 % \usepackage{etoolbox}
 
-
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
 
 %%% ZREF
 $if(zref-path)$
