@@ -7,15 +7,14 @@ set_hooks <- function() {
       ifelse(!is.null(options$fontsize), paste0("\n", options$fontsize,"\n\n", x, "\n\n \\normalsize"), x)
     },
     cex = function(before, options, envir) {
-      if (before) par(mar = c(3.5, 3.5, 2.5, 1), oma = c(0, 0, 0, 0), pch = 16,
-                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.9)
+      if (before) par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
+                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.87)
     },
     output = function(x, options) {
       x <- paste0("```\n", x,"```\n")
       x <- ifelse(is.null(options$shadeoutput),
                   x,
                   paste0("\\Shaded\n", x, "\\endShaded\n"))
-                  # paste0("\\begin{Shaded}\n\\begin{verbatim}\n", gsub(pattern = "```|^\\s*$", "", x, perl = T), "\\end{verbatim}\n\\end{Shaded}"))
       x
     }
   )

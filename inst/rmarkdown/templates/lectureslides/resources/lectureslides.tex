@@ -279,7 +279,9 @@ $endfor$
 \usepackage{bm, bbm}
 \usepackage{subfig}
 \usepackage{forest}
-\usepackage{soul} 
+\usepackage[labelfont={footnotesize,color=dueblue},font=footnotesize]{caption}
+\usepackage{soul}
+\usepackage{textcomp}
 \usepackage{zref}
 \usepackage{zref-user}
 \usepackage{zref-xr}
@@ -347,7 +349,8 @@ $endif$
 \newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
 \makeatother
 \newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{$resources$/Rlogo}\nbs{}}
-\newcommand{\source}[1]{\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+\newcommand{\source}[1]{\btVFill\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
 
 % BLOCK ENVIRONMENTS (THEOREMS)
 \expandafter\ifstrequal\expandafter{$blockstyle$}{blank}{
@@ -444,9 +447,9 @@ $endif$
 
 % spacing before figure captions
 \setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{-1em plus 1em minus 0em}
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
-
 
 % Frame Head
 \makeatletter
