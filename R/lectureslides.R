@@ -238,4 +238,6 @@ lectureslides <- function(lang = "en",
 }
 
 
+title
+
 
