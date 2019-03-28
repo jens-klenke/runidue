@@ -467,7 +467,11 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
     \fi
 \end{minipage}\hfill
 \begin{minipage}[t][1cm]{1.9cm}
+$if(logo)$
+\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}
+$else$
 \includegraphics[width=2cm,keepaspectratio=true, valign=t]{$resources$/duelogo}
+$endif$
 \end{minipage}
 \vspace{-.3cm}
 }

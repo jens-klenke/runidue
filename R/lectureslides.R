@@ -13,12 +13,11 @@
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #'
-#' @details Include a logo using the YAML option \code{logo}.
 #'
 #'
 #' @examples
 #' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
-#' package = "rmemo") }
+#' package = "runidue") }
 #' @import rmarkdown knitr
 #' @export
 lectureslides <- function(lang = "en",
@@ -29,6 +28,7 @@ lectureslides <- function(lang = "en",
                           institute = T,
                           blockstyle = "box",
                           shadecolor = "default",
+                          logo = "default",
                           toc = TRUE,
                           slide_level = 2,
                           incremental = FALSE,
@@ -148,6 +148,10 @@ lectureslides <- function(lang = "en",
       args <- c(args, pandoc_variable_arg("shadecolor", shadecolor))
     }
   }
+  
+  # logo
+  if (!identical(logo, "default"))
+    args <- c(args, pandoc_variable_arg("logo", logo))
     
   
   
@@ -172,7 +176,7 @@ lectureslides <- function(lang = "en",
     
     
     options(digits = 4)
-    library(runidue)
+    
   }
   
 
