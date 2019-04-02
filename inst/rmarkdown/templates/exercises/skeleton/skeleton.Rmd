@@ -1,0 +1,16 @@
+---
+title: "Title"
+author: "Author"
+date: "Term X"
+output: runidue::exercises
+---
+
+# Introduction
+
+## Aufgabe 1
+
+
+
+## Aufgabe 2
+
+

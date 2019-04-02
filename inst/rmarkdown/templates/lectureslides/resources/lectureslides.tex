@@ -352,6 +352,8 @@ $endif$
 \newcommand{\btVFill}{\vskip0pt plus 1filll}
 \newcommand{\source}[1]{\btVFill\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
 
+
+
 % BLOCK ENVIRONMENTS (THEOREMS)
 \expandafter\ifstrequal\expandafter{$blockstyle$}{blank}{
 }{
@@ -448,6 +450,10 @@ $endif$
 % spacing before figure captions
 \setlength{\abovecaptionskip}{0pt}
 \setlength{\belowcaptionskip}{-1em plus 1em minus 0em}
+
+% spacing aorund display equations
+\setlength{\abovedisplayskip}{3pt}
+%\setlength{\belowdisplayskip}{3pt}
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
 

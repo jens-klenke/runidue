@@ -194,15 +194,7 @@ lectureslides <- function(lang = "en",
     general_intermediates_generator(saved_files_dir, ...)
   }
   
-  # this is used to copy needed tex files into project dir after knitting
-  # post_knit <- function(metadata, input_file, runtime, ...) {
-  #   provide_latex_pkg("lectureslides", list(
-  #     "BeamerColor.sty",
-  #     "hypernat.sty",
-  #     "ee.sty"
-  #   ))
-  #   return(NULL)
-  # }
+  post_processor <- function(metadata, input_file, output_file, clean, verbose)
   
   # default knitr options
   default_chunk_opts <- list(echo = T, 
@@ -233,16 +225,15 @@ lectureslides <- function(lang = "en",
                             latex_engine = latex_engine,
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
-    # post_knit = post_knit,  # used if latex packages should be moved into rmd dir 
     pre_processor = pre_processor,
-
     intermediates_generator = intermediates_generator,
-    clean_supporting = !keep_tex,
+    post_processor = 
+    clean_supporting = F,
     df_print = df_print
   )
 }
 
 
-title
+
 
 

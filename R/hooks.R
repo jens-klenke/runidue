@@ -4,7 +4,7 @@ set_hooks <- function() {
   list(
     chunk = function(x, options) {
       x <- default_hooks$chunk(x, options)
-      ifelse(!is.null(options$fontsize), paste0("\n", options$fontsize,"\n\n", x, "\n\n \\normalsize"), x)
+      ifelse(!is.null(options$fontsize), paste0("\n", options$fontsize,"\n", x, "\\normalsize"), x)
     },
     cex = function(before, options, envir) {
       if (before) par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
@@ -15,6 +15,13 @@ set_hooks <- function() {
       x <- ifelse(is.null(options$shadeoutput),
                   x,
                   paste0("\\Shaded\n", x, "\\endShaded\n"))
+      x
+    },
+    plot = function(x, options) {
+      x <- hook_plot_tex(x, options)
+      print(x)
+      x <- gsub("^(?:[\t ]*(?:\r?\n|\r))+", "", x)
+      x <- gsub("\n\n$", "\n", x)
       x
     }
   )
