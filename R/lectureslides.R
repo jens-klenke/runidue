@@ -153,7 +153,7 @@ lectureslides <- function(lang = "en",
   if (!identical(logo, "default"))
     args <- c(args, pandoc_variable_arg("logo", logo))
     
-  
+  args <- c(args, "--pdf-engine-opt=-output-directory=ZRAFILES")
   
   
   pre_knit <- function(input, ...) {
@@ -194,7 +194,6 @@ lectureslides <- function(lang = "en",
     general_intermediates_generator(saved_files_dir, ...)
   }
   
-  post_processor <- function(metadata, input_file, output_file, clean, verbose)
   
   # default knitr options
   default_chunk_opts <- list(echo = T, 
@@ -226,14 +225,10 @@ lectureslides <- function(lang = "en",
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
     pre_processor = pre_processor,
-    intermediates_generator = intermediates_generator,
-    post_processor = 
+    intermediates_generator = intermediates_generator, 
     clean_supporting = F,
     df_print = df_print
   )
 }
-
-
-
 
 
