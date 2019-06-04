@@ -153,7 +153,7 @@ lectureslides <- function(lang = "en",
   if (!identical(logo, "default"))
     args <- c(args, pandoc_variable_arg("logo", logo))
     
-  args <- c(args, "--pdf-engine-opt=-output-directory=ZRAFILES")
+  
   
   
   pre_knit <- function(input, ...) {
@@ -176,7 +176,7 @@ lectureslides <- function(lang = "en",
     
     
     options(digits = 4)
-    
+    library(runidue)
   }
   
 
