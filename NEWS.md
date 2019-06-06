@@ -1,4 +1,4 @@
-# CHANGES IN knitr VERSION 1.23
+# CHANGES IN runidue VERSION 0.2.5
 
 ## NEW FEATURES
 
