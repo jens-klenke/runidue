@@ -27,7 +27,7 @@ find_resource <- function(template, file) {
 }
 
 find_res_path <- function(template) {
-  system.file("rmarkdown", "templates", template, "resources", package = "runidue")  
+  system.file("rmarkdown", "templates", template, "resources", package = "runidue") 
 }
 
 highlighters <- function() {

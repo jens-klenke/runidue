@@ -266,10 +266,10 @@ $endfor$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Additional packages
 \makeatletter
-\def\input@path{{$resources$/}}  % make them visible to tex to overcome warnings
+\def\input@path{{"$resources$/"}}  % make them visible to tex to overcome warnings
 \makeatother
 
-\usepackage{ee}
+\input{$resources$/ee.sty}
 \usepackage{BeamerColor}
 \usepackage{hypernat}
 \usepackage{mathtools}
@@ -560,7 +560,7 @@ $endif$
 \setbeamertemplate{description subitem}[defaultperiod]
 
 
-\providecommand{\tightlist}{\setlength{\itemsep}{1ex}\setlength{\parskip}{1.3ex}}
+\providecommand{\tightlist}{\setlength{\itemsep}{.75ex}\setlength{\parskip}{1.2ex}}
 % allow environments inside environments
 \let\otherbegin\begin
 \let\otherend\end
@@ -571,6 +571,7 @@ $endif$
 
 \begin{document}
 
+TEST2
 
 $if(title)$
   $if(towers)$
