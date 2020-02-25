@@ -21,6 +21,7 @@
 #' @import rmarkdown knitr
 #' @export
 lectureslides <- function(lang = "en",
+                          footerstyle = "default",
                           towers = T,
                           template = "default",
                           colorlinks = T,
@@ -115,6 +116,10 @@ lectureslides <- function(lang = "en",
   # lang
   lang <- match.arg(lang, c("de", "en"))
   args <- c(args, pandoc_variable_arg("lang", lang))
+  
+  # footerstyle
+  footerstyle <- match.arg(footerstyle, c("colored", "default"))
+  args <- c(args, pandoc_variable_arg("footerstyle", footerstyle))
   
   # colorlinks
   args <- c(args, pandoc_variable_arg("colorlinks", colorlinks))

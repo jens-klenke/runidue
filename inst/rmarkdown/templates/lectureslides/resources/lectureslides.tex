@@ -321,17 +321,7 @@ $endif$
 \newcommand{\blue}[1]{{\color{dueblue}{#1}\color{black}}}
 \newcommand{\hil}[1]{\textbf{\color{dueblue}{#1}\color{black}}}
 \newcommand{\hilm}[1]{\mathbf{\color{dueblue}{#1}\color{black}}}
-\newcommand{\GP}{\operatorname{GP}}
-\newcommand{\GEV}{\operatorname{GEV}}
-\newcommand{\mattheta}{\boldmath\theta}
-\newcommand{\di}{\mathrm{i}}
 \newcommand{\mps}{\par\medbreak}
-
-% MATH
-\newcommand{\AIC}{\text{AIC}}
-\newcommand{\BIC}{\text{BIC}}
-\newcommand{\HQ}{\text{HQ}}
-
 
 % Kahoot Block
 \newenvironment<>{kahoot}[1]{%
@@ -480,7 +470,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 \end{minipage}\hfill
 \begin{minipage}[t][1cm]{1.9cm}
 $if(logo)$
-\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}
+\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}}
 $else$
 \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
 $endif$
@@ -490,9 +480,26 @@ $endif$
 \makeatother
 
 % Footer
+\setbeamercolor{footlinecolor}{bg=dueblue,fg=white}
+
+
+\ifstrequal{$footerstyle$}{colored}{
+\setbeamertemplate{footline}{
+  % \hbox{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.4cm, leftskip=0cm, rightskip=0cm]{footlinecolor}
+    \hfill \scriptsize{{\insertshortauthor : }
+    \insertshorttitle---\insertsection \hfill \thesection-\insertframenumber\hspace*{.15cm}}\vspace{1mm}
+  \end{beamercolorbox}
+  % }
+}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+}{
 \setbeamertemplate{footline}{\hspace*{.1cm}%
 \hfill \scriptsize{{\insertshortauthor : }
 \insertshorttitle---\insertsection \hfill \thesection-\insertframenumber\hspace*{.2cm}}\vspace{1mm}}
+}
+
+
 
 
 % TOC
