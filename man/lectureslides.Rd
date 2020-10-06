@@ -4,34 +4,97 @@
 \alias{lectureslides}
 \title{Beamer Lecture Slides}
 \usage{
-lectureslides(lang = "en", towers = T, template = "default",
-  colorlinks = T, tables = T, institute = T, blockstyle = "box",
-  shadecolor = "default", logo = "default", toc = TRUE,
-  slide_level = 2, incremental = FALSE, fig_width = 10,
-  fig_height = 7, fig_crop = TRUE, fig_caption = TRUE, dev = "pdf",
-  df_print = "default", theme = "default", colortheme = "default",
-  fonttheme = "default", highlight = "default", keep_tex = FALSE,
-  latex_engine = "pdflatex", citation_package = c("none", "natbib",
-  "biblatex"), self_contained = TRUE, includes = NULL,
-  md_extensions = "+fancy_lists", pandoc_args = NULL)
+lectureslides(
+  lang = "en",
+  footerstyle = c("default", "colored"),
+  towers = T,
+  template = "default",
+  colorlinks = T,
+  tables = T,
+  institute = T,
+  blockstyle = c("box", "blank"),
+  shadecolor = "default",
+  logo = "default",
+  toc = TRUE,
+  slide_level = 2,
+  incremental = FALSE,
+  fig_width = 10,
+  fig_height = 7,
+  fig_crop = TRUE,
+  fig_caption = TRUE,
+  dev = "pdf",
+  df_print = "default",
+  theme = "default",
+  colortheme = "default",
+  fonttheme = "default",
+  highlight = "default",
+  keep_tex = FALSE,
+  latex_engine = "pdflatex",
+  citation_package = c("none", "natbib", "biblatex"),
+  self_contained = TRUE,
+  includes = NULL,
+  md_extensions = "+fancy_lists",
+  pandoc_args = NULL
+)
 }
 \arguments{
-\item{lang}{\code{character}. Language of the presentation. One of \code{"de"} or \code{"en"}. Defaults to \code{"en"}.}
+\item{lang}{\code{character}. Language of the presentation. One of
+\code{"de"} or \code{"en"}. Defaults to \code{"en"}.}
 
-\item{towers}{\code{logical}. Should the title page include a gradient logo of the university buildings.}
+\item{footerstyle}{\code{character} One of "default" or "colored".}
 
-\item{template}{\code{character}. The template to be used. Defaults to \code{default}}
+\item{towers}{\code{logical}. Should the title page include a gradient logo
+of the university buildings.}
 
-\item{institute}{\code{logical} or \code{character}. Should the name of the institution be included on the title page.
-Defaults to \code{T} and includes the name of the University Duisburg-Essen in the language specified by \code{lang}.
-If a \code{character} object is provided, this string is shown underneath the title.}
+\item{template}{\code{character}. The template to be used. Defaults to
+\code{default}}
 
-\item{blockstyle}{\code{character}. The style of the beamer block environments (theorems, examples, etc.). One of \code{"box"} or \code{"blank"}.
-Defaults to \code{"box"}.}
+\item{colorlinks}{\code{logical} Should links be colored.}
 
-\item{shadecolor}{\code{numeric}. The shade of grey used as the background color for code chunks. A number between 0 and 1.}
+\item{tables}{\code{logical} Should the latex packages "longtables" and "bookstabs" be included.}
+
+\item{institute}{\code{logical} or \code{character}. Should the name of the
+institution be included on the title page. Defaults to \code{T} and
+includes the name of the University Duisburg-Essen in the language
+specified by \code{lang}. If a \code{character} object is provided, this
+string is shown underneath the title.}
+
+\item{blockstyle}{\code{character}. The style of the beamer block
+environments (theorems, examples, etc.). One of \code{"box"} or
+\code{"blank"}. Defaults to \code{"box"}.}
+
+\item{shadecolor}{\code{numeric}. The shade of grey used as the background
+color for code chunks. A number between 0 and 1.}
+
+\item{logo}{\code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.}
+
+\item{toc}{\code{logical} Should a table of contents be displayed}
+
+\item{incremental}{\code{logical} Should the slides render icnrementally. Defaults to \code{FALSE}.}
+
+\item{fig_width}{\code{numeric} Default width of figures in inches. Defaults to 10.}
+
+\item{fig_height}{\code{numeric} Default height of figures in inches. Defaults to 7.}
+
+\item{fig_crop}{\code{logical} Should white space be cropped from figures.}
+
+\item{fig_caption}{\code{logical} Should figure captions be used. Defaults to \code{true}.}
+
+\item{dev}{\code{character} The graphic device to be used. Defaults to "pdf".}
+
+\item{df_print}{See \link[rmarkdown]{output_format}}
+
+\item{theme}{\code{character} The theme for the slides.}
+
+\item{colortheme}{\code{character} The color theme for the slides.}
+
+\item{fonttheme}{\code{character} The font theme for the slides.}
+
+\item{highlight}{\code{character} One of \code{rmarkdown:::highlighters()}.}
 
 \item{...}{Arguments to \code{rmarkdown::pdf_document}}
+
+\item{slidelevel}{\code{numeric} Depth of slide numbering. Defaults to 2.}
 }
 \value{
 R Markdown output format to pass to

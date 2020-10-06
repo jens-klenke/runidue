@@ -1,7 +1,7 @@
 Package: runidue
 Type: Package
 Title: Beamer Template for the University of Duisburg-Essen
-Version: 0.2.7
+Version: 0.2.8
 Author: Martin Schmelzer
 Maintainer: Martin Schmelzer <martin.schmelzer@vwl.uni-due.de>
 Description: So far, this package provides a beamer template.
@@ -12,4 +12,4 @@ Imports:
     rmarkdown,
     tikzDevice
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1

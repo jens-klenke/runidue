@@ -1,33 +1,54 @@
 #' Beamer Lecture Slides
 #'
 #' @param ... Arguments to \code{rmarkdown::pdf_document}
-#' @param template \code{character}. The template to be used. Defaults to \code{default}
-#' @param lang \code{character}. Language of the presentation. One of \code{"de"} or \code{"en"}. Defaults to \code{"en"}.
-#' @param towers \code{logical}. Should the title page include a gradient logo of the university buildings.
-#' @param institute \code{logical} or \code{character}. Should the name of the institution be included on the title page.
-#' Defaults to \code{T} and includes the name of the University Duisburg-Essen in the language specified by \code{lang}.
-#' If a \code{character} object is provided, this string is shown underneath the title.
-#' @param blockstyle \code{character}. The style of the beamer block environments (theorems, examples, etc.). One of \code{"box"} or \code{"blank"}.
-#' Defaults to \code{"box"}.
-#' @param shadecolor \code{numeric}. The shade of grey used as the background color for code chunks. A number between 0 and 1.
+#' @param template \code{character}. The template to be used. Defaults to
+#'   \code{default}
+#' @param lang \code{character}. Language of the presentation. One of
+#'   \code{"de"} or \code{"en"}. Defaults to \code{"en"}.
+#' @param towers \code{logical}. Should the title page include a gradient logo
+#'   of the university buildings.
+#' @param institute \code{logical} or \code{character}. Should the name of the
+#'   institution be included on the title page. Defaults to \code{T} and
+#'   includes the name of the University Duisburg-Essen in the language
+#'   specified by \code{lang}. If a \code{character} object is provided, this
+#'   string is shown underneath the title.
+#' @param blockstyle \code{character}. The style of the beamer block
+#'   environments (theorems, examples, etc.). One of \code{"box"} or
+#'   \code{"blank"}. Defaults to \code{"box"}.
+#' @param footerstyle \code{character} One of "default" or "colored".
+#' @param shadecolor \code{numeric}. The shade of grey used as the background
+#'   color for code chunks. A number between 0 and 1.
+#' @param tables \code{logical} Should the latex packages "longtables" and "bookstabs" be included.
+#' @param colorlinks \code{logical} Should links be colored.
+#' @param logo \code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.
+#' @param toc \code{logical} Should a table of contents be displayed
+#' @param slidelevel \code{numeric} Depth of slide numbering. Defaults to 2.
+#' @param incremental \code{logical} Should the slides render icnrementally. Defaults to \code{FALSE}.
+#' @param fig_width \code{numeric} Default width of figures in inches. Defaults to 10.
+#' @param fig_height \code{numeric} Default height of figures in inches. Defaults to 7.
+#' @param fig_crop \code{logical} Should white space be cropped from figures.
+#' @param fig_caption \code{logical} Should figure captions be used. Defaults to \code{true}.
+#' @param dev \code{character} The graphic device to be used. Defaults to "pdf".
+#' @param df_print See \link[rmarkdown]{output_format}
+#' @param theme \code{character} The theme for the slides.
+#' @param colortheme \code{character} The color theme for the slides.
+#' @param fonttheme \code{character} The font theme for the slides.
+#' @param highlight \code{character} One of \code{rmarkdown:::highlighters()}.
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
-#'
-#'
-#'
 #' @examples
 #' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
 #' package = "runidue") }
 #' @import rmarkdown knitr
 #' @export
 lectureslides <- function(lang = "en",
-                          footerstyle = "default",
+                          footerstyle = c("default", "colored"),
                           towers = T,
                           template = "default",
                           colorlinks = T,
                           tables = T,
                           institute = T,
-                          blockstyle = "box",
+                          blockstyle = c("box", "blank"),
                           shadecolor = "default",
                           logo = "default",
                           toc = TRUE,
@@ -118,7 +139,7 @@ lectureslides <- function(lang = "en",
   args <- c(args, pandoc_variable_arg("lang", lang))
   
   # footerstyle
-  footerstyle <- match.arg(footerstyle, c("colored", "default"))
+  footerstyle <- match.arg(footerstyle)
   args <- c(args, pandoc_variable_arg("footerstyle", footerstyle))
   
   # colorlinks
@@ -139,7 +160,7 @@ lectureslides <- function(lang = "en",
   }
   
   # block style
-  blockstyle <- match.arg(blockstyle, c("box", "blank"))
+  blockstyle <- match.arg(blockstyle)
   args <- c(args, pandoc_variable_arg("blockstyle", blockstyle))
   
   # shadecolor
@@ -149,6 +170,7 @@ lectureslides <- function(lang = "en",
       shadecolor <- "default"
     } else if (shadecolor < 0 | shadecolor > 1) {
       warning("shadecolor should be a numeric value in [0, 1] (shades of grey)")
+      shadecolor <- "default"
     } else {
       args <- c(args, pandoc_variable_arg("shadecolor", shadecolor))
     }

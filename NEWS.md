@@ -1,5 +1,11 @@
 # CHANGES IN runidue VERSION 0.2.7
 
+## CHANGES
+
+# Added documentation for \code{lectureslides()}
+
+# CHANGES IN runidue VERSION 0.2.7
+
 ## NEW FEATURES
 
 - Added tex macros:  \GEV, \GP, \SE, \SBC.
