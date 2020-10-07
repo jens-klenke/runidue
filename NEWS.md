@@ -1,8 +1,16 @@
 # CHANGES IN runidue VERSION 0.2.7
 
-## CHANGES
+## MINOR CHANGES
 
-# Added documentation for \code{lectureslides()}
+- Improve vignette.
+
+
+# CHANGES IN runidue VERSION 0.2.7
+
+## MINOR CHANGES
+
+- Added documentation for \code{lectureslides()}
+- Added package vignette
 
 # CHANGES IN runidue VERSION 0.2.7
 

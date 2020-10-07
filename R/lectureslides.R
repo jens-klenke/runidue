@@ -21,15 +21,14 @@
 #' @param tables \code{logical} Should the latex packages "longtables" and "bookstabs" be included.
 #' @param colorlinks \code{logical} Should links be colored.
 #' @param logo \code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.
-#' @param toc \code{logical} Should a table of contents be displayed
 #' @param slidelevel \code{numeric} Depth of slide numbering. Defaults to 2.
-#' @param incremental \code{logical} Should the slides render icnrementally. Defaults to \code{FALSE}.
+#' @param incremental \code{logical} Should the slides render incrementally. Defaults to \code{FALSE}.
 #' @param fig_width \code{numeric} Default width of figures in inches. Defaults to 10.
 #' @param fig_height \code{numeric} Default height of figures in inches. Defaults to 7.
 #' @param fig_crop \code{logical} Should white space be cropped from figures.
-#' @param fig_caption \code{logical} Should figure captions be used. Defaults to \code{true}.
-#' @param dev \code{character} The graphic device to be used. Defaults to "pdf".
-#' @param df_print See \link[rmarkdown]{output_format}
+#' @param fig_caption \code{logical} Should figure captions be used. Defaults to \code{TRUE}.
+#' @param dev \code{character} The graphic device to be used. Defaults to "tikz".
+#' @param df_print See \link[rmarkdown]{output_format}.
 #' @param theme \code{character} The theme for the slides.
 #' @param colortheme \code{character} The color theme for the slides.
 #' @param fonttheme \code{character} The font theme for the slides.
@@ -51,14 +50,13 @@ lectureslides <- function(lang = "en",
                           blockstyle = c("box", "blank"),
                           shadecolor = "default",
                           logo = "default",
-                          toc = TRUE,
                           slide_level = 2,
                           incremental = FALSE,
                           fig_width = 10,
                           fig_height = 7,
                           fig_crop = TRUE,
                           fig_caption = TRUE,
-                          dev = "pdf",
+                          dev = "tikz",
                           df_print = "default",
                           theme = "default",
                           colortheme = "default",
@@ -83,8 +81,8 @@ lectureslides <- function(lang = "en",
   }
   
   # table of contents
-  if (toc)
-    args <- c(args, "--table-of-contents")
+  # if (toc)
+    # args <- c(args, "--table-of-contents")
   
   # slide level
   if (!is.null(slide_level))
@@ -225,7 +223,7 @@ lectureslides <- function(lang = "en",
   # default knitr options
   default_chunk_opts <- list(echo = T, 
                              fontsize = "\\footnotesize", 
-                             dev = "tikz", 
+                             dev = dev, 
                              # out.extra = "trim=0 0 0 0, clip",
                              cache = T, 
                              message = FALSE, 

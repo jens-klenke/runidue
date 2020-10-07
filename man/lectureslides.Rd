@@ -15,14 +15,13 @@ lectureslides(
   blockstyle = c("box", "blank"),
   shadecolor = "default",
   logo = "default",
-  toc = TRUE,
   slide_level = 2,
   incremental = FALSE,
   fig_width = 10,
   fig_height = 7,
   fig_crop = TRUE,
   fig_caption = TRUE,
-  dev = "pdf",
+  dev = "tikz",
   df_print = "default",
   theme = "default",
   colortheme = "default",
@@ -68,9 +67,7 @@ color for code chunks. A number between 0 and 1.}
 
 \item{logo}{\code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.}
 
-\item{toc}{\code{logical} Should a table of contents be displayed}
-
-\item{incremental}{\code{logical} Should the slides render icnrementally. Defaults to \code{FALSE}.}
+\item{incremental}{\code{logical} Should the slides render incrementally. Defaults to \code{FALSE}.}
 
 \item{fig_width}{\code{numeric} Default width of figures in inches. Defaults to 10.}
 
@@ -78,11 +75,11 @@ color for code chunks. A number between 0 and 1.}
 
 \item{fig_crop}{\code{logical} Should white space be cropped from figures.}
 
-\item{fig_caption}{\code{logical} Should figure captions be used. Defaults to \code{true}.}
+\item{fig_caption}{\code{logical} Should figure captions be used. Defaults to \code{TRUE}.}
 
-\item{dev}{\code{character} The graphic device to be used. Defaults to "pdf".}
+\item{dev}{\code{character} The graphic device to be used. Defaults to "tikz".}
 
-\item{df_print}{See \link[rmarkdown]{output_format}}
+\item{df_print}{See \link[rmarkdown]{output_format}.}
 
 \item{theme}{\code{character} The theme for the slides.}
 
