@@ -1,3 +1,10 @@
+# CHANGES IN runidue VERSION 0.3.0
+
+## NEW FEATURES
+
+- Added tex macros \sd and \SD.
+- Included tex package "empheq"."
+
 # CHANGES IN runidue VERSION 0.2.7
 
 ## MINOR CHANGES
