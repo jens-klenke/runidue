@@ -1,6 +1,5 @@
 #' Beamer Lecture Slides
 #'
-#' @param ... Arguments to \code{rmarkdown::pdf_document}
 #' @param template \code{character}. The template to be used. Defaults to
 #'   \code{default}
 #' @param lang \code{character}. Language of the presentation. One of
@@ -21,7 +20,7 @@
 #' @param tables \code{logical} Should the latex packages "longtables" and "bookstabs" be included.
 #' @param colorlinks \code{logical} Should links be colored.
 #' @param logo \code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.
-#' @param slidelevel \code{numeric} Depth of slide numbering. Defaults to 2.
+#' @param slide_level \code{numeric} Depth of slide numbering. Defaults to 2.
 #' @param incremental \code{logical} Should the slides render incrementally. Defaults to \code{FALSE}.
 #' @param fig_width \code{numeric} Default width of figures in inches. Defaults to 10.
 #' @param fig_height \code{numeric} Default height of figures in inches. Defaults to 7.
@@ -33,6 +32,13 @@
 #' @param colortheme \code{character} The color theme for the slides.
 #' @param fonttheme \code{character} The font theme for the slides.
 #' @param highlight \code{character} One of \code{rmarkdown:::highlighters()}.
+#' @param pandoc_args Further arguments passed on to pandoc.
+#' @param citation_package The citation package to be used. One of c("none", "natbib", "biblatex")
+#' @param md_extensions Markdown extensions for pandoc. Default to \code{+fancy_lists}.
+#' @param self_contained Produce stand-alone intermediate files.
+#' @param includes Files that should be included via pandoc. See pandoc arguments.
+#' @inheritParams rmarkdown::output_format
+#' @inheritParams rmarkdown::pandoc_options
 #' @return R Markdown output format to pass to
 #'   \code{\link[rmarkdown:render]{render}}
 #' @examples
@@ -215,9 +221,9 @@ lectureslides <- function(lang = "en",
   }
   
   # generate intermediates (required to make resources available for publish)
-  intermediates_generator <- function(...) {
-    general_intermediates_generator(saved_files_dir, ...)
-  }
+  # intermediates_generator <- function(...) {
+    # general_intermediates_generator(saved_files_dir, ...)
+  # }
   
   
   # default knitr options
@@ -250,7 +256,7 @@ lectureslides <- function(lang = "en",
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
     pre_processor = pre_processor,
-    intermediates_generator = intermediates_generator, 
+    # intermediates_generator = intermediates_generator, 
     clean_supporting = F,
     df_print = df_print
   )

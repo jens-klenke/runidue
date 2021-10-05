@@ -431,6 +431,10 @@ $endif$
 \preto{\enumerate}{\medskip}
 \AtEndEnvironment{enumerate}{\smallskip}
 
+\let\tempone\itemize
+\let\temptwo\enditemize
+\renewenvironment{itemize}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
+
 
 
 
@@ -471,14 +475,15 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
       \fi
     \fi
 \end{minipage}\hfill
-\begin{minipage}[t][1cm]{1.9cm}
+
+
 $if(logo)$
-\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}}
+\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\end{minipage}\vspace{-.3cm}}
 $else$
 \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
 $endif$
-\end{minipage}
-\vspace{-.3cm}
+
+
 }
 \makeatother
 
@@ -535,6 +540,19 @@ $endif$
 
 \setbeamertemplate{section in toc}[customcircle]
 
+% \usepackage{xpatch}
+% \xpatchcmd{\itemize}
+%   {\def\makelabel}
+%   {\setlength{\itemsep}{1ex}\def\makelabel}
+%   {}
+%   {}
+% \makeatletter
+% \xpatchcmd{\beamer@enum@}
+%   {\def\makelabel}
+%   {\setlength{\itemsep}{1ex}\def\makelabel}
+%   {}
+%   {}
+% \makeatother
 
 % NEW SECTION
 
@@ -570,7 +588,7 @@ $endif$
 \setbeamertemplate{description subitem}[defaultperiod]
 
 
-\providecommand{\tightlist}{\setlength{\itemsep}{.75ex}\setlength{\parskip}{1.2ex}}
+\providecommand{\tightlist}{}%\setlength{\itemsep}{0.75ex}\setlength{\parskip}{1.2ex}
 % allow environments inside environments
 \let\otherbegin\begin
 \let\otherend\end

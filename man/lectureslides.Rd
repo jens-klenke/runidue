@@ -67,6 +67,8 @@ color for code chunks. A number between 0 and 1.}
 
 \item{logo}{\code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.}
 
+\item{slide_level}{\code{numeric} Depth of slide numbering. Defaults to 2.}
+
 \item{incremental}{\code{logical} Should the slides render incrementally. Defaults to \code{FALSE}.}
 
 \item{fig_width}{\code{numeric} Default width of figures in inches. Defaults to 10.}
@@ -89,9 +91,21 @@ color for code chunks. A number between 0 and 1.}
 
 \item{highlight}{\code{character} One of \code{rmarkdown:::highlighters()}.}
 
-\item{...}{Arguments to \code{rmarkdown::pdf_document}}
+\item{keep_tex}{Keep the intermediate tex file used in the conversion to PDF
+(applies only to 'latex' and 'beamer' target formats)}
 
-\item{slidelevel}{\code{numeric} Depth of slide numbering. Defaults to 2.}
+\item{latex_engine}{LaTeX engine to producing PDF output (applies only to
+'latex' and 'beamer' target formats)}
+
+\item{citation_package}{The citation package to be used. One of c("none", "natbib", "biblatex")}
+
+\item{self_contained}{Produce stand-alone intermediate files.}
+
+\item{includes}{Files that should be included via pandoc. See pandoc arguments.}
+
+\item{md_extensions}{Markdown extensions for pandoc. Default to \code{+fancy_lists}.}
+
+\item{pandoc_args}{Further arguments passed on to pandoc.}
 }
 \value{
 R Markdown output format to pass to

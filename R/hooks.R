@@ -7,7 +7,7 @@ set_hooks <- function() {
       ifelse(!is.null(options$fontsize), paste0("\n", options$fontsize,"\n", x, "\\normalsize"), x)
     },
     cex = function(before, options, envir) {
-      if (before) par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
+      if (before) graphics::par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
                       mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.87)
     },
     output = function(x, options) {
