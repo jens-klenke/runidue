@@ -426,19 +426,21 @@ $endif$
 \AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
 \AtBeginEnvironment{center}{\smallbreak}
 \AtEndEnvironment{center}{\smallbreak}
-\AtBeginEnvironment{itemize}{\smallskip}
+\AtBeginEnvironment{itemize}{\smallskip \setlength{\itemsep}{0.3ex}\setlength{\parskip}{1ex}}
 \AtEndEnvironment{itemize}{\smallskip}
-\preto{\enumerate}{\medskip}
+\preto{\enumerate}{\medskip  \setlength{\itemsep}{0.75ex}\setlength{\parskip}{1ex}}
 \AtEndEnvironment{enumerate}{\smallskip}
 
-\let\tempone\itemize
-\let\temptwo\enditemize
-\renewenvironment{itemize}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
 
-\let\tempone\enumerate
-\let\temptwo\endenumerate
-\renewenvironment{enumerate}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
 
+% \let\tempone\itemize
+% \let\temptwo\enditemize
+% \renewenvironment{itemize}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
+
+% \let\tempone\enumerate
+% \let\temptwo\endenumerate
+% \renewenvironment{enumerate}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
+% 
 
 
 
@@ -592,7 +594,7 @@ $endif$
 \setbeamertemplate{description subitem}[defaultperiod]
 
 
-\providecommand{\tightlist}{}%\setlength{\itemsep}{0.75ex}\setlength{\parskip}{1.2ex}
+\providecommand{\tightlist}{}% \setlength{\itemsep}{0.75ex}\setlength{\parskip}{1.2ex}
 % allow environments inside environments
 \let\otherbegin\begin
 \let\otherend\end
