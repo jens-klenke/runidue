@@ -2,13 +2,12 @@
 
 A Beamer Template for the University of Duisburg-Essen.
 
-New:
+## New:
 
 - Added \source, a command to easily add sources for figures and tables 
 - Added \usepackage{subfig} for chunk option fig.subcap
 
-
-ToDos:
+## ToDos:
 
 - Add LaTeX command for gicing scriptsize sources: \scriptsize Quelle: Yahoo Finance -> \source{Quelle: Yahoo Finance}
 - Inline highlighting?
