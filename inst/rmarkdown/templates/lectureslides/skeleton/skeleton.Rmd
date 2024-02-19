@@ -3,6 +3,9 @@ title: "Title"
 author: "Author"
 date: "Term X"
 output: runidue::lectureslides
+fontsize: 16pt
+classoption: aspectratio=11
+
 ---
 
 # Introduction
@@ -15,9 +18,10 @@ head(mtcars)
 
 # Introduction 2
 
+
+gjcgcguvuzvizbubuibuib hvub
+hjvujbubib
+
 ## Key Features 2
 
-```{r, fig.cap = "Test"}
-plot(mpg ~ hp, data = mtcars)
-```
 
