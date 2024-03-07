@@ -94,7 +94,7 @@ classoption: aspectratio=169
 ---
 ````
 
-This leads to the following output: [Output](https://github.com/BanerjeeAbhisek/slides-for-readme/blob/main/README.pdf)
+This leads to the following output: [Output](https://turquoise-kerry-11.tiiny.site)
 
 
 # Environments
