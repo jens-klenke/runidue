@@ -4,31 +4,16 @@ It is a package in latex used for creating lecture slides. The package contains 
 
 This readme documentation gives a detailed description, using code snippets and screenshots, on what can be achieved using the unidue package.
 
-# Installing and loading the package
-The package is contained in the github and can be installed in the local computer. To do so first devtools library needs to be installed and loaded in the local computer. The follwing code checks if the devtools package is installed. If it's not installed, it installs it; otherwise, it prints a message saying that it's already present:
+# Install the latest development version of *runidue* from GitHub:
 
 ```{r}
-# Check if devtools package is installed
-if (!requireNamespace("devtools", quietly = TRUE)) {
-  # If not installed, install devtools
+if (!require("devtools")) {
   install.packages("devtools")
-  # Load devtools
-  library(devtools)
-  print("devtools package has been installed and loaded.")
-} else {
-  # If already installed, print a message
-  print("devtools package is already installed.")
 }
-# Load devtools
-library(devtools)
+devtools::install_github("jens-klenke/runidue")
 ```
 
-Once devtools library is installed, the package *unidue* can be installed from github using the code below:
-
-```{r}
-install_github("https://github.com/jens-klenke/runidue.git")
-```
-Now it can be loaded using:
+The package can be loaded using:
 
 ```{r}
 library(runidue)
