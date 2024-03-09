@@ -146,7 +146,7 @@ The above environment looks like:
 
 ![](some_ss/example_ss.png)
 
-## Long Environments
+### Long Environments
 
 Sometimes, content of the environment can be enormous and can exceed the limits of slide. In such a case, an environment can be extend or continued over to the next slides. An example of how this can be achieved is as follows:
 
@@ -173,7 +173,7 @@ By using `\xmpl[*]` the the previous environment can be continued. The usage of 
 
 
 
-## Kahoot boxes
+### Kahoot boxes
 
 Kahoot boxes can be implemented using following code:
 
@@ -188,16 +188,11 @@ The above implemented Kahoot box looks like:
 
 
 
+# An example
+
+[Here](https://github.com/jens-klenke/runidue/blob/development/inst/rmarkdown/templates/lectureslides/skeleton/skeleton.Rmd) an example of implementation of slides using `runidue` package can be seen. The output is [here](https://cyan-conchita-58.tiiny.site). 
 
 
-
-
-
-
-
-
-
-This leads to the following output: [Output](https://turquoise-kerry-11.tiiny.site)
 
 
 
