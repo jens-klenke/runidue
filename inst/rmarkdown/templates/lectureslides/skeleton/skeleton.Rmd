@@ -1,27 +1,163 @@
 ---
-title: "Title"
-author: "Author"
-date: "Term X"
-output: runidue::lectureslides
-fontsize: 16pt
-classoption: aspectratio=11
-
+title: "Title of Your Document"
+author: "Author Name"
+date: "February 27, 2024"
+output: 
+  runidue::lectureslides:
+    lang: "en"
+    theme: "default"
+    highlight: "zenburn"
+    slide_level: 2
+    incremental: true
+    colorlinks: true
+natbib: true
+natbiboptions:
+    - "round"
+    - "semicolon"
+biblio-style: "plainnat"
+csl-refs: true
+urlcolor: "red"
+citecolor: "green"
+mainfont: "Times New Roman"
+papersize: "a4paper"
+fontenc: "T1"
+linestretch: 1.2
+fontfamily: "times"
+toc: true
+toc_depth: 2
+fontsize: 8pt
+classoption: aspectratio=169
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
 ---
+
+#--- #title: "Title" #author: "Author" #date: "Term X" #output:
+runidue::lectureslides
+
+#fontsize: 16pt #classoption: aspectratio=43
+
+#---
 
 # Introduction
 
 ## Key Features
 
+This slide demonstrates the key features of the YAML header.
+
 ```{r}
 head(mtcars)
 ```
 
+In the code chunk above, we display the head of the mtcars dataset. This
+chunk uses the default syntax highlighting style zenburn, as specified
+in the YAML header.
+
 # Introduction 2
 
+This slide demonstrates the effects of various YAML header components:
 
-gjcgcguvuzvizbubuibuib hvub
-hjvujbubib
+```{=tex}
+\begin{itemize}
+ \item Incremental Display: Each bullet point will appear incrementally as you advance through the slide.
+ \item Color Links: The URL in the text is colored red, and citations are colored green. 
+ \item Font Family: The font family of the slide is set to Times New Roman.
+ \item Line Stretch: The text has a line stretch of 1.2, making it slightly spaced out.
+ \item Table of Contents: The table of contents is enabled and has a depth of 2 levels.
+\end{itemize}
+```
+<https:www.google.com>
+
+# Introduction 2
+
+gjcgcguvuzvizbubuibuib hvub hjvujbubib <https:www.google.com>
 
 ## Key Features 2
 
+\xmpl[Exerciseeeee]hwbdjuwdbuwbd \endxmpl
 
+\mthmn[Theoremmmmm]hwbdjuwdbuwbd \endmthmn
+
+\defn[Definitionnnn]
+
+```{=tex}
+\begin{itemize}
+ \item hwbdjuwdbuwbd
+ \item axwqcdwwc
+\end{itemize} 
+\enddefn
+```
+## Key feature 3
+
+\kahoot {newton kbib} j j jk j jbjbjb \endkahoot
+
+## Mathematic Thermos??
+
+\mthmn[Theoremmmmm]hwbdjuwdbuwbd \endmthmn
+
+\defn[Definitionnnn]
+
+```{=tex}
+\begin{itemize}
+ \item hwbdjuwdbuwbd
+ \item axwqcdwwc
+\end{itemize} 
+\enddefn
+```
+## Ilulustration of the box fonts
+
+\xmpl[Exammmmpleee]hwbdjuwdbuwbd \endxmpl
+
+\exe[Exercisssseeee]hwbdjuwdbuwbd \endexe
+
+##jbjac
+
+\exe[Mattttheesss]
+
+In the vast tapestry of human existence, there exists an intricate
+interplay of dreams, aspirations, and challenges that define the essence
+of our journey. From the serene landscapes of ancient civilizations to
+the bustling metropolises of today, every corner of the world bears
+witness to the collective endeavor of humanity to navigate the
+complexities of life. Within this intricate mosaic, individuals weave
+their narratives, each thread a reflection of their unique experiences,
+hopes, and struggles. We find ourselves immersed in a ceaseless quest
+for understanding, propelled by an insatiable curiosity to unravel the
+mysteries of the universe and our own existence. From the depths of
+scientific inquiry to the heights of artistic expression, we endeavor to
+make sense of the world and leave our mark upon it. Yet, amidst the ebbs
+and flows of progress, we encounter moments of profound introspection
+and introspective contemplation, where the boundaries between the self
+and the cosmos blur, and we are reminded of our interconnectedness with
+all living things. It is in these moments of unity that we glimpse the
+true beauty and complexity of existence, transcending the limitations of
+our individual perspectives to embrace a broader, more inclusive
+understanding of the human experience. And so, we continue to journey
+forward, guided by the light of knowledge, the warmth of empathy, and
+the boundless spirit of exploration, ever seeking to discover, to
+create, and to evolve in harmony with the world around us. \endexe
+
+\exe[*]In the vast tapestry of human existence, there exists an
+intricate interplay of dreams, aspirations, and challenges that define
+the essence of our journey. From the serene landscapes of ancient
+civilizations to the bustling metropolises of today, every corner of the
+world bears witness to the collective endeavor of humanity to navigate
+the complexities of life. Within this intricate mosaic, individuals
+weave their narratives, each thread a reflection of their unique
+experiences, hopes, and struggles. We find ourselves immersed in a
+ceaseless quest for understanding, propelled by an insatiable curiosity
+to unravel the mysteries of the universe and our own existence. From the
+depths of scientific inquiry to the heights of artistic expression, we
+endeavor to make sense of the world and leave our mark upon it. Yet,
+amidst the ebbs and flows of progress, we encounter moments of profound
+introspection and introspective contemplation, where the boundaries
+between the self and the cosmos blur, and we are reminded of our
+interconnectedness with all living things. It is in these moments of
+unity that we glimpse the true beauty and complexity of existence,
+transcending the limitations of our individual perspectives to embrace a
+broader, more inclusive understanding of the human experience. And so,
+we continue to journey forward, guided by the light of knowledge, the
+warmth of empathy, and the boundless spirit of exploration, ever seeking
+to discover, to create, and to evolve in harmony with the world around
+us. \endexe
