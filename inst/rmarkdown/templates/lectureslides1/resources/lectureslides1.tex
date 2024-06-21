@@ -1,5 +1,5 @@
 %\documentclass[$if(fontsize)$$fontsize$,$else$10pt,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
-\documentclass[$if(fontsize)$$fontsize$,$else$12pt,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$if(aspectratio)$$aspectratio$,$else$43,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$else$2pt,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$if(aspectratio)$$aspectratio$,$else$11,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 %\documentclass[aspectratio=1620]{$documentclass$}
 
 
@@ -392,24 +392,23 @@ $endif$
 \setbeamercolor{block title}{bg=duelightblue,fg=black}
 \setbeamercolor{block body}{bg=duelightblue!37,fg=black}
 }%
-\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[rounded][shadow=false]
 
 % Headers for theorems
 \expandafter\ifstrequal\expandafter{$lang$}{de}{%
   \newcommand{\thmncont}{Fortsetzung}
   \newtheorem{thmn}{Theorem}[section]
   \newtheorem{lem}[thmn]{Lemma}
-  \newtheorem{cor}[thmn]{Korollar}
+  \newtheorem{cor}[thmn]{Corollary}
   \newtheorem{defn}[thmn]{Definition}
   \newtheorem{ass}[thmn]{Annahme}
-  \newtheorem{rem}[thmn]{Bemerkung}
+  \newtheorem{rem}[thmn]{Anmerkung}
   \newtheorem{prop}[thmn]{Proposition}
   \theoremstyle{definition}
   \newtheorem{xmpl}[thmn]{Beispiel}
-  \newtheorem{mthmn}[thmn]{Mathematical Theorem} 
   \newtheorem{que}[thmn]{Frage}
   \newtheorem{exe}[thmn]{Aufgabe}
-%  \newtheorem{maththm}[thmn]{Mathematical Theorem} % New theorem environment for mathematical theorems
+  \newtheorem{maththm}[thmn]{Mathematical Theorem} % New theorem environment for mathematical theorems
   \numberwithin{equation}{section}}{%%%
   \newcommand{\thmncont}{Continued}
   \newtheorem{thmn}{Theorem}[section]
@@ -421,7 +420,6 @@ $endif$
   \newtheorem{prop}[thmn]{Proposition}
   \theoremstyle{definition}
   \newtheorem{xmpl}[thmn]{Example}
-  \newtheorem{mthmn}[thmn]{Mathematical Theorem}                   
   \newtheorem{que}[thmn]{Question}
   \newtheorem{exe}[thmn]{Exercise}
   \numberwithin{equation}{section}
@@ -444,58 +442,24 @@ $endif$
 }
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%    COLORS 
 \preto{\xmpl}{
-    \setbeamercolor{block title}{fg=black,bg=yellow!70!white}
-    \setbeamercolor{block body}{fg=black, bg=yellow!20!white}
-    
+    \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
+    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
 }
 
-\preto{\defn}{
-    \setbeamercolor{block title}{fg=black,bg=green!70!white}
-    \setbeamercolor{block body}{fg=black, bg=green!20!white}
-}
-
-\preto{\thmn}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-
-\preto{\cor}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\ass}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\rem}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\prop}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\que}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
 \preto{\exe}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\mthmn}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
 }
 
+\preto{\maththmm}{
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 % Spacings
 \AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
 \AtBeginEnvironment{center}{\smallbreak}
@@ -709,7 +673,6 @@ $endfor$
 % }
 % $endif$
 
-I have this 
 $if(lot)$
 \listoftables
 $endif$

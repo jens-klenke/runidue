@@ -1,27 +1,13 @@
-%\documentclass[$if(fontsize)$$fontsize$,$else$10pt,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
-\documentclass[$if(fontsize)$$fontsize$,$else$12pt,$endif$$if(lang)$$babel-lang$,$endif$$if(papersize)$$papersize$paper,$endif$$if(aspectratio)$$aspectratio$,$else$43,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
-%\documentclass[aspectratio=1620]{$documentclass$}
-
-
-
-$if(fontfamily)$
-\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
-$else$
-\usepackage{lmodern}
-$endif$
-$if(linestretch)$
+\documentclass[8pt,english,a4paperpaper,aspectratio=169]{beamer}
+\usepackage[]{times}
 \usepackage{setspace}
-\setstretch{$linestretch$}
-$endif$
+\setstretch{1.2}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex 
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-$if(euro)$
-  \usepackage{eurosym}
-$endif$
 \else % if luatex or xelatex
   \ifxetex
     \usepackage{mathspec}
@@ -29,25 +15,7 @@ $endif$
     \usepackage{fontspec}
   \fi
   \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
-$if(euro)$
-  \newcommand{\euro}{€}
-$endif$
-$if(mainfont)$
-    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-$endif$
-$if(sansfont)$
-    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-$endif$
-$if(monofont)$
-    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
-$endif$
-$if(mathfont)$
-    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-$endif$
-$if(CJKmainfont)$
-    \usepackage{xeCJK}
-    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-$endif$
+    \setmainfont[]{Times New Roman}
 \fi
 % use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -56,60 +24,26 @@ $endif$
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-$if(geometry)$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-$endif$
 \usepackage{hyperref}
-$if(colorlinks)$
 \PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
-$endif$
 \hypersetup{unicode=true,
-$if(title-meta)$
-            pdftitle={$title-meta$},
-$endif$
-$if(author-meta)$
-            pdfauthor={$author-meta$},
-$endif$
-$if(keywords)$
-            pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
-$endif$
-$if(colorlinks)$
+            pdftitle={Title of Your Document},
+            pdfauthor={Author Name},
             colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$dueblue$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$dueblue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$dueblue$endif$,
-$else$
-            pdfborder={0 0 0},
-$endif$
+            linkcolor=dueblue,
+            citecolor=green,
+            urlcolor=red,
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
-$if(lang)$
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
-$if(babel-newcommands)$
-  $babel-newcommands$
-$endif$
+  \usepackage[shorthands=off,main=english]{babel}
 \else
   \usepackage{polyglossia}
-  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
-$for(polyglossia-otherlangs)$
-  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
-$endfor$
+  \setmainlanguage[]{}
 \fi
-$endif$
-$if(natbib)$
-\usepackage$if(natbiboptions)$[$for(natbiboptions)$$natbiboptions$$sep$,$endfor$]$endif${natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-\usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
-$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
-$for(bibliography)$
-\addbibresource{$bibliography$}
-$endfor$
-$endif$
+\usepackage[round,semicolon]{natbib}
+\bibliographystyle{plainnat}
 
-$if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -133,63 +67,57 @@ $if(csl-refs)$
 \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
 
-$if(listings)$
-\usepackage{listings}
-\newcommand{\passthrough}[1]{#1}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(verbatim-in-note)$
+\usepackage{color}
 \usepackage{fancyvrb}
-\VerbatimFootnotes % allows verbatim text in footnotes
-$endif$
-$if(tables)$
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
 \usepackage{longtable,booktabs}
-$endif$
-$if(graphics)$
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-$endif$
-$if(links-as-notes)$
-% Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-$if(strikeout)$
-\usepackage[normalem]{ulem}
-% avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
-$endif$
-$if(indent)$
-$else$
 \IfFileExists{parskip.sty}{%
 \usepackage{parskip}
 }{% else
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
 }
-$endif$
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 
-$if(numbersections)$
-\setcounter{secnumdepth}{5}
-$else$
 \setcounter{secnumdepth}{0}
-$endif$
-$if(subparagraph)$
-$else$
 % Redefines (sub)paragraphs to behave more like sections
 \ifx\paragraph\undefined\else
 \let\oldparagraph\paragraph
@@ -199,109 +127,36 @@ $else$
 \let\oldsubparagraph\subparagraph
 \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
-$endif$
-$if(dir)$
-\ifxetex
-  % load bidi as late as possible as it modifies e.g. graphicx
-  $if(latex-dir-rtl)$
-  \usepackage[RTLdocument]{bidi}
-  $else$
-  \usepackage{bidi}
-  $endif$
-\fi
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
-  \TeXXeTstate=1
-  \newcommand{\RL}[1]{\beginR #1\endR}
-  \newcommand{\LR}[1]{\beginL #1\endL}
-  \newenvironment{RTL}{\beginR}{\endR}
-  \newenvironment{LTR}{\beginL}{\endL}
-\fi
-$endif$
 
 %%% Use protect on footnotes to avoid problems with footnotes in titles
 \let\rmarkdownfootnote\footnote%
 \def\footnote{\protect\rmarkdownfootnote}
 
-$if(compact-title)$
-%%% Change title format to be more compact
-\usepackage{titling}
 
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-$endif$
-
-$if(title)$
-  \title{$title$}
-  $if(compact-title)$
-  \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-  $endif$
-$else$
-  \title{}
-  $if(compact-title)$
-  \pretitle{\vspace{\droptitle}}
-  \posttitle{}
-  $endif$
-$endif$
-$if(subtitle)$
-\subtitle{$subtitle$}
-$endif$
-$if(author)$
-  \author{$for(author)$$author$$sep$ \\ $endfor$}
-  $if(compact-title)$
-  \preauthor{\centering\large\emph}
-  \postauthor{\par}
-  $endif$
-$else$
-  \author{}
-  $if(compact-title)$
-  \preauthor{}\postauthor{}
-  $endif$
-$endif$
-
-$if(institute)$
+  \title{Title of Your Document}
+    \author{Author Name}
+  
   \providecommand{\institute}[1]{}
-  \expandafter\ifstrequal\expandafter{$institute$}{default}{%
-  \institute{\expandafter\ifstrequal\expandafter{$lang$}{de}{%
+  \expandafter\ifstrequal\expandafter{default}{default}{%
+  \institute{\expandafter\ifstrequal\expandafter{en}{de}{%
   Universität Duisburg-Essen}{%
   University of Duisburg-Essen}}}{%
   
-  \institute{$institute$}
+  \institute{default}
 }
-$endif$
 
 
-$if(date)$
-  $if(compact-title)$
-  \predate{\centering\large\emph}
-  \postdate{\par}
-  $endif$
-  \date{$date$}
-$else$
-  \date{}
-  $if(compact-title)$
-  \predate{}\postdate{}
-  $endif$
-$endif$
+    \date{February 27, 2024}
 
-$for(header-includes)$
-$header-includes$
-$endfor$
 
 % up until here https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Additional packages
 \makeatletter
-\def\input@path{{"$resources$/"}}  % make them visible to tex to overcome warnings
+\def\input@path{{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/"}}  % make them visible to tex to overcome warnings
 \makeatother
 
-\input{"$resources$/ee.sty"}
+\input{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/ee.sty"}
 \usepackage{BeamerColor}
 \usepackage{hypernat}
 \usepackage{mathtools}
@@ -330,10 +185,6 @@ $endfor$
 \makeatother
 
 %%% ZREF
-$if(zref-path)$
-\zexternaldocument[S-]{$zref-path$}
-\newcommand{\zeqref}[1]{(\zref{#1})}
-$endif$
 
 %%% New colors
 \definecolor{dueblue}{RGB}{0,76,147}
@@ -371,7 +222,7 @@ $endif$
      }%
       \usebeamertemplate{block begin}
       \begin{center}
-\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+\includegraphics[width=0.25\textwidth]{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/kahootlogo2"}
 \end{center}}
     {\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
@@ -379,37 +230,35 @@ $endif$
 \makeatletter
 \newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
 \makeatother
-\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{"$resources$/Rlogo"}\ }
+\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/Rlogo"}\ }
 \newcommand{\btVFill}{\vskip0pt plus 1filll}
-\newcommand{\source}[1]{\btVFill\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
+\newcommand{\source}[1]{\btVFill\scriptsize \textit{\expandafter\ifstrequal\expandafter{en}{de}{Quelle: }{Source: }}#1}
 
 
 
 % BLOCK ENVIRONMENTS (THEOREMS)
-\expandafter\ifstrequal\expandafter{$blockstyle$}{blank}{
+\expandafter\ifstrequal\expandafter{box}{blank}{
 }{
 \setbeamerfont{block title}{size=\normalsize}
 \setbeamercolor{block title}{bg=duelightblue,fg=black}
 \setbeamercolor{block body}{bg=duelightblue!37,fg=black}
 }%
-\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{blocks}[rounded][shadow=false]
 
 % Headers for theorems
-\expandafter\ifstrequal\expandafter{$lang$}{de}{%
+\expandafter\ifstrequal\expandafter{en}{de}{%
   \newcommand{\thmncont}{Fortsetzung}
   \newtheorem{thmn}{Theorem}[section]
   \newtheorem{lem}[thmn]{Lemma}
-  \newtheorem{cor}[thmn]{Korollar}
+  \newtheorem{cor}[thmn]{Corollary}
   \newtheorem{defn}[thmn]{Definition}
   \newtheorem{ass}[thmn]{Annahme}
-  \newtheorem{rem}[thmn]{Bemerkung}
+  \newtheorem{rem}[thmn]{Anmerkung}
   \newtheorem{prop}[thmn]{Proposition}
   \theoremstyle{definition}
   \newtheorem{xmpl}[thmn]{Beispiel}
-  \newtheorem{mthmn}[thmn]{Mathematical Theorem} 
   \newtheorem{que}[thmn]{Frage}
   \newtheorem{exe}[thmn]{Aufgabe}
-%  \newtheorem{maththm}[thmn]{Mathematical Theorem} % New theorem environment for mathematical theorems
   \numberwithin{equation}{section}}{%%%
   \newcommand{\thmncont}{Continued}
   \newtheorem{thmn}{Theorem}[section]
@@ -421,7 +270,6 @@ $endif$
   \newtheorem{prop}[thmn]{Proposition}
   \theoremstyle{definition}
   \newtheorem{xmpl}[thmn]{Example}
-  \newtheorem{mthmn}[thmn]{Mathematical Theorem}                   
   \newtheorem{que}[thmn]{Question}
   \newtheorem{exe}[thmn]{Exercise}
   \numberwithin{equation}{section}
@@ -444,58 +292,19 @@ $endif$
 }
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%    COLORS 
 \preto{\xmpl}{
-    \setbeamercolor{block title}{fg=black,bg=yellow!70!white}
-    \setbeamercolor{block body}{fg=black, bg=yellow!20!white}
-    
+    \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
+    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
 }
 
-\preto{\defn}{
-    \setbeamercolor{block title}{fg=black,bg=green!70!white}
-    \setbeamercolor{block body}{fg=black, bg=green!20!white}
-}
-
-\preto{\thmn}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-
-\preto{\cor}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\ass}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\rem}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\prop}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\que}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
 \preto{\exe}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
-}
-\preto{\mthmn}{
-    \setbeamercolor{block title}{fg=black,bg=blue!70!white}
-    \setbeamercolor{block body}{fg=black, bg=blue!20!white}
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
 }
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Spacings
 \AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
 \AtBeginEnvironment{center}{\smallbreak}
@@ -538,7 +347,7 @@ $endif$
 \setlength{\abovedisplayskip}{3pt}
 %\setlength{\belowdisplayskip}{3pt}
 
-$if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
+ % 
 
 % Frame Head
 \makeatletter
@@ -557,11 +366,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 \end{minipage}\hfill
 
 
-$if(logo)$
-\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\end{minipage}\vspace{-.3cm}}
-$else$
-\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
-$endif$
+\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/duelogo"}
 
 
 }
@@ -571,7 +376,7 @@ $endif$
 \setbeamercolor{footlinecolor}{bg=dueblue,fg=white}
 
 
-\ifstrequal{$footerstyle$}{colored}{
+\ifstrequal{default}{colored}{
 \setbeamertemplate{footline}{
   % \hbox{
   \begin{beamercolorbox}[wd=\paperwidth,ht=0.4cm, leftskip=0cm, rightskip=0cm]{footlinecolor}
@@ -591,17 +396,7 @@ $endif$
 
 
 % TOC
-$if(startatzero)$ 
-\makeatletter
-\patchcmd{\beamer@sectionintoc}
-  {\ifnum\beamer@tempcount>0}
-  {\ifnum\beamer@tempcount>-1}
-  {}
-  {}
-\beamer@tocsectionnumber=-1
-\setcounter{section}{-1}
-\makeatother
-$endif$
+
 
 \setbeamertemplate{section in toc shaded}[default][50]
 \defbeamertemplate{section in toc}{customcircle}
@@ -640,7 +435,7 @@ $endif$
 \AtBeginSection[] {
 {
 \setbeamertemplate{footline}{}
-\begin{frame}{\expandafter\ifstrequal\expandafter{$lang$}{de}{Überblick}{Outline}}
+\begin{frame}{\expandafter\ifstrequal\expandafter{en}{de}{Überblick}{Outline}}
 \vspace{0.5cm}
 \tableofcontents[currentsection]
 \end{frame}
@@ -680,79 +475,174 @@ $endif$
 \begin{document}
 
 
-$if(title)$
-  $if(towers)$
-    {\usebackgroundtemplate{\includegraphics[scale=0.25]{"$resources$/duetower"}}
+      {\usebackgroundtemplate{\includegraphics[scale=0.25]{"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/runidue/rmarkdown/templates/lectureslides/resources/duetower"}}
     \frame[plain]{\titlepage}}
-  $else$
-      \frame[plain]{\titlepage}
-  $endif$
-$endif$
-$if(abstract)$
-  \begin{abstract}
-  $abstract$
-  \end{abstract}
-$endif$
+  
 
-$for(include-before)$
-$include-before$
-
-$endfor$
-
-% $if(toc)$
-% {
-% $if(colorlinks)$
-% \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
-% $endif$
-% \setcounter{tocdepth}{$toc-depth$}
+% % {
+% % \hypersetup{linkcolor=black}
+% % \setcounter{tocdepth}{3}
 % \tableofcontents
 % }
-% $endif$
+% 
+\begin{frame}
+\#--- \#title: ``Title'' \#author: ``Author'' \#date: ``Term X''
+\#output: runidue::lectureslides
 
-I have this 
-$if(lot)$
-\listoftables
-$endif$
-$if(lof)$
-\listoffigures
-$endif$
-$body$
+\#fontsize: 16pt \#classoption: aspectratio=43
 
-$if(natbib)$
-  $if(bibliography)$
-    $if(beamer)$
-      \begin{frame}[allowframebreaks]{$biblio-title$}
-      \bibliographytrue
-    $endif$
-    $if(biblio-title)$
-      $if(book-class)$
-        \renewcommand\bibname{$biblio-title$}
-      $else$
-        \renewcommand\refname{$biblio-title$}
-      $endif$
-    $endif$
-    \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-    $if(beamer)$
-    \end{frame}
-    $endif$
-  $endif$
+\#---
+\end{frame}
 
-$endif$
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
-$if(biblatex)$
-  $if(beamer)$
-    \begin{frame}[allowframebreaks]{$biblio-title$}
-    \bibliographytrue
-  $endif$
-  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-  $if(beamer)$
-    \end{frame}
-  $endif$
-$endif$
+\begin{frame}[fragile]{Key Features}
+\protect\hypertarget{key-features}{}
+This slide demonstrates the key features of the YAML header.
 
-$for(include-after)$
-$include-after$
+\footnotesize
 
-$endfor$
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+\end{verbatim}
+
+\normalsize
+
+In the code chunk above, we display the head of the mtcars dataset. This
+chunk uses the default syntax highlighting style zenburn, as specified
+in the YAML header.
+\end{frame}
+
+\hypertarget{introduction-2}{%
+\section{Introduction 2}\label{introduction-2}}
+
+\begin{frame}{Introduction 2}
+This slide demonstrates the effects of various YAML header components:
+
+\begin{itemize}
+ \item Incremental Display: Each bullet point will appear incrementally as you advance through the slide.
+ \item Color Links: The URL in the text is colored red, and citations are colored green. 
+ \item Font Family: The font family of the slide is set to Times New Roman.
+ \item Line Stretch: The text has a line stretch of 1.2, making it slightly spaced out.
+ \item Table of Contents: The table of contents is enabled and has a depth of 2 levels.
+\end{itemize}
+
+\url{https:www.google.com}
+\end{frame}
+
+\hypertarget{introduction-2-1}{%
+\section{Introduction 2}\label{introduction-2-1}}
+
+\begin{frame}{Introduction 2}
+gjcgcguvuzvizbubuibuib hvub hjvujbubib \url{https:www.google.com}
+\end{frame}
+
+\begin{frame}{Key Features 2}
+\protect\hypertarget{key-features-2}{}
+\xmpl[Exerciseeeee]hwbdjuwdbuwbd \endxmpl
+
+\mthmn[Theoremmmmm]hwbdjuwdbuwbd \endmthmn
+
+\defn[Definitionnnn]
+
+\begin{itemize}
+ \item hwbdjuwdbuwbd
+ \item axwqcdwwc
+\end{itemize} 
+\enddefn
+\end{frame}
+
+\begin{frame}{Key feature 3}
+\protect\hypertarget{key-feature-3}{}
+\kahoot {newton kbib} j j jk j jbjbjb \endkahoot
+\end{frame}
+
+\begin{frame}{Mathematic Thermos??}
+\protect\hypertarget{mathematic-thermos}{}
+\mthmn[Theoremmmmm]hwbdjuwdbuwbd \endmthmn
+
+\defn[Definitionnnn]
+
+\begin{itemize}
+ \item hwbdjuwdbuwbd
+ \item axwqcdwwc
+\end{itemize} 
+\enddefn
+\end{frame}
+
+\begin{frame}{Ilulustration of the box fonts}
+\protect\hypertarget{ilulustration-of-the-box-fonts}{}
+\xmpl[Exammmmpleee]hwbdjuwdbuwbd \endxmpl
+
+\exe[Exercisssseeee]hwbdjuwdbuwbd \endexe
+
+\#\#jbjac
+
+\exe[Mattttheesss]
+
+In the vast tapestry of human existence, there exists an intricate
+interplay of dreams, aspirations, and challenges that define the essence
+of our journey. From the serene landscapes of ancient civilizations to
+the bustling metropolises of today, every corner of the world bears
+witness to the collective endeavor of humanity to navigate the
+complexities of life. Within this intricate mosaic, individuals weave
+their narratives, each thread a reflection of their unique experiences,
+hopes, and struggles. We find ourselves immersed in a ceaseless quest
+for understanding, propelled by an insatiable curiosity to unravel the
+mysteries of the universe and our own existence. From the depths of
+scientific inquiry to the heights of artistic expression, we endeavor to
+make sense of the world and leave our mark upon it. Yet, amidst the ebbs
+and flows of progress, we encounter moments of profound introspection
+and introspective contemplation, where the boundaries between the self
+and the cosmos blur, and we are reminded of our interconnectedness with
+all living things. It is in these moments of unity that we glimpse the
+true beauty and complexity of existence, transcending the limitations of
+our individual perspectives to embrace a broader, more inclusive
+understanding of the human experience. And so, we continue to journey
+forward, guided by the light of knowledge, the warmth of empathy, and
+the boundless spirit of exploration, ever seeking to discover, to
+create, and to evolve in harmony with the world around us. \endexe
+
+\exe[*]In the vast tapestry of human existence, there exists an
+intricate interplay of dreams, aspirations, and challenges that define
+the essence of our journey. From the serene landscapes of ancient
+civilizations to the bustling metropolises of today, every corner of the
+world bears witness to the collective endeavor of humanity to navigate
+the complexities of life. Within this intricate mosaic, individuals
+weave their narratives, each thread a reflection of their unique
+experiences, hopes, and struggles. We find ourselves immersed in a
+ceaseless quest for understanding, propelled by an insatiable curiosity
+to unravel the mysteries of the universe and our own existence. From the
+depths of scientific inquiry to the heights of artistic expression, we
+endeavor to make sense of the world and leave our mark upon it. Yet,
+amidst the ebbs and flows of progress, we encounter moments of profound
+introspection and introspective contemplation, where the boundaries
+between the self and the cosmos blur, and we are reminded of our
+interconnectedness with all living things. It is in these moments of
+unity that we glimpse the true beauty and complexity of existence,
+transcending the limitations of our individual perspectives to embrace a
+broader, more inclusive understanding of the human experience. And so,
+we continue to journey forward, guided by the light of knowledge, the
+warmth of empathy, and the boundless spirit of exploration, ever seeking
+to discover, to create, and to evolve in harmony with the world around
+us. \endexe
+\end{frame}
+
+  
+
+
 
 \end{document}

@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/1157718/a93988f037ae4767aeb68d0cdb7e0173
+bundleId: https://api.rpubs.com/api/v1/document/1157718/a93988f037ae4767aeb68d0cdb7e0173
+url: http://rpubs.com/BanerjeeAbhisek/1157718
+version: 1

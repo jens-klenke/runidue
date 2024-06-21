@@ -1,0 +1,52 @@
+---
+title: "Title"
+author: "Author"
+date: "Term X"
+output: runidue::lectureslides
+
+
+fontsize: 16pt
+classoption: aspectratio=43
+
+---
+
+# Introduction
+
+## Key Features
+
+```{r}
+head(mtcars)
+```
+
+# Introduction 2
+
+
+gjcgcguvuzvizbubuibuib hvub
+hjvujbubib
+
+## Key Features 2
+
+\exe[Exerciseeeee]
+hwbdjuwdbuwbd
+\endexe
+
+\thmn[Theoremmmmm]
+hwbdjuwdbuwbd
+\endthmn
+
+
+\defn[Definitionnnn]
+
+\begin{itemize}
+ \item hwbdjuwdbuwbd
+ \item axwqcdwwc
+\end{itemize} 
+\enddefn
+
+## Key feature 3
+\kahoot {newton kbib} j j jk j 
+jbjbjb
+\endkahoot
+
+
+## Mathematic Thermos??
