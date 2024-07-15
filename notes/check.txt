@@ -1,0 +1,172 @@
+> devtools::check()
+══ Documenting ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+ℹ Installed roxygen2 version (7.3.1) doesn't match required (7.1.2)
+✖ `check()` will not re-document this package
+══ Building ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Setting env vars:
+• CFLAGS    : -Wall -pedantic -fdiagnostics-color=always
+• CXXFLAGS  : -Wall -pedantic -fdiagnostics-color=always
+• CXX11FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX14FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX17FLAGS: -Wall -pedantic -fdiagnostics-color=always
+• CXX20FLAGS: -Wall -pedantic -fdiagnostics-color=always
+── R CMD build ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+✔  checking for file 'C:\Users\jens.klenke\Documents\GitHub\runidue/DESCRIPTION' ... 
+─  preparing 'runidue':
+✔  checking DESCRIPTION meta-information ...
+─  installing the package to build vignettes
+✔  creating vignettes (3.9s)
+─  checking for LF line-endings in source and make files and shell scripts
+─  checking for empty or unneeded directories
+   Omitted 'LazyData' from DESCRIPTION
+     NB: this package now depends on R (>= 3.5.0)
+     WARNING: Added dependency on R >= 3.5.0 because serialized objects in
+     serialize/load version 3 cannot be read in older versions of R.
+     File(s) containing such objects:
+       'runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData'
+       'runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx'
+       'runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData'
+       'runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx'
+─  building 'runidue_0.3.3.tar.gz'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb'
+   Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+     storing paths of more than 100 bytes is not portable:
+     'runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx'
+   
+══ Checking ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Setting env vars:
+• _R_CHECK_CRAN_INCOMING_REMOTE_               : FALSE
+• _R_CHECK_CRAN_INCOMING_                      : FALSE
+• _R_CHECK_FORCE_SUGGESTS_                     : FALSE
+• _R_CHECK_PACKAGES_USED_IGNORE_UNUSED_IMPORTS_: FALSE
+• NOT_CRAN                                     : true
+── R CMD check ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─  using log directory 'C:/Users/jens.klenke/AppData/Local/Temp/Rtmp6LreVP/file3da472b763ea/runidue.Rcheck'
+─  using R version 4.3.3 (2024-02-29 ucrt)
+─  using platform: x86_64-w64-mingw32 (64-bit)
+─  R was compiled by
+       gcc.exe (GCC) 12.3.0
+       GNU Fortran (GCC) 12.3.0
+─  running under: Windows 11 x64 (build 22000)
+─  using session charset: UTF-8
+─  using options '--no-manual --as-cran'
+✔  checking for file 'runidue/DESCRIPTION'
+─  checking extension type ... Package
+─  this is package 'runidue' version '0.3.3'
+─  package encoding: UTF-8
+✔  checking package namespace information
+✔  checking package dependencies (755ms)
+✔  checking if this is a source package ...
+✔  checking if there is a namespace
+✔  checking for executable files (1.4s)
+✔  checking for hidden files and directories ...
+W  checking for portable file names
+   Found the following file with a non-portable file name:
+     rsconnect/documents/README.md/rpubs.com/rpubs/Publish Document.dcf
+   These are not fully portable file names.
+   See section 'Package structure' in the 'Writing R Extensions' manual.
+   Found the following non-portable file paths:
+     runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData
+     runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb
+     runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx
+     runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData
+     runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb
+     runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx
+   
+   Tarballs are only required to store paths of up to 100 bytes and cannot
+   store those of more than 256 bytes, with restrictions including to 100
+   bytes for the final component.
+   See section 'Package structure' in the 'Writing R Extensions' manual.
+✔  checking whether package 'runidue' can be installed (3.2s)
+✔  checking installed package size (451ms)
+✔  checking package directory
+✔  checking for future file timestamps ... 
+✔  checking 'build' directory ...
+✔  checking DESCRIPTION meta-information (335ms)
+N  checking top-level files
+   Non-standard files/directories found at top level:
+     'Resources' 'rsconnect' 'some_ss'
+✔  checking for left-over files
+✔  checking index information ... 
+✔  checking package subdirectories (598ms)
+✔  checking R files for non-ASCII characters ... 
+✔  checking R files for syntax errors ... 
+✔  checking whether the package can be loaded (566ms)
+✔  checking whether the package can be loaded with stated dependencies (451ms)
+✔  checking whether the package can be unloaded cleanly (566ms)
+✔  checking whether the namespace can be loaded with stated dependencies (449ms)
+✔  checking whether the namespace can be unloaded cleanly (568ms)
+N  checking dependencies in R code (1.2s)
+   Namespace in Imports field not imported from: 'tikzDevice'
+     All declared Imports should be used.
+✔  checking S3 generic/method consistency (610ms)
+✔  checking replacement functions (552ms)
+✔  checking foreign function calls (567ms)
+✔  checking R code for possible problems (4.1s)
+✔  checking Rd files (335ms)
+✔  checking Rd metadata ... 
+✔  checking Rd line widths ... 
+✔  checking Rd cross-references ... 
+✔  checking for missing documentation entries (555ms)
+✔  checking for code/documentation mismatches (1.5s)
+✔  checking Rd \usage sections (886ms)
+✔  checking Rd contents ... 
+✔  checking for unstated dependencies in examples ... 
+✔  checking installed files from 'inst/doc'
+✔  checking files in 'vignettes' ...
+✔  checking examples (897ms)
+✔  checking for unstated dependencies in vignettes (351ms)
+✔  checking package vignettes in 'inst/doc' ...
+✔  checking re-building of vignette outputs (2.1s)
+✔  checking for non-standard things in the check directory
+✔  checking for detritus in the temp directory ...
+   
+   See
+     'C:/Users/jens.klenke/AppData/Local/Temp/Rtmp6LreVP/file3da472b763ea/runidue.Rcheck/00check.log'
+   for details.
+   
+   
+── R CMD check results ─────────────────────────────────────────────────────────────────────────────────────────────────── runidue 0.3.3 ────
+Duration: 27.1s
+
+❯ checking for portable file names ... WARNING
+  Found the following file with a non-portable file name:
+    rsconnect/documents/README.md/rpubs.com/rpubs/Publish Document.dcf
+  These are not fully portable file names.
+  See section 'Package structure' in the 'Writing R Extensions' manual.
+  Found the following non-portable file paths:
+    runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData
+    runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb
+    runidue/inst/rmarkdown/templates/lectureslides/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx
+    runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.RData
+    runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdb
+    runidue/inst/rmarkdown/templates/lectureslides1/skeleton/Resources/Cache/unnamed-chunk-1_bb878e6efc543075ae7b0f948febe5dd.rdx
+  
+  Tarballs are only required to store paths of up to 100 bytes and cannot
+  store those of more than 256 bytes, with restrictions including to 100
+  bytes for the final component.
+  See section 'Package structure' in the 'Writing R Extensions' manual.
+
+❯ checking top-level files ... NOTE
+  Non-standard files/directories found at top level:
+    'Resources' 'rsconnect' 'some_ss'
+
+❯ checking dependencies in R code ... NOTE
+  Namespace in Imports field not imported from: 'tikzDevice'
+    All declared Imports should be used.
+
+0 errors ✔ | 1 warning ✖ | 2 notes ✖
