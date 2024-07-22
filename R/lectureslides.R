@@ -37,6 +37,7 @@
 #' @param md_extensions Markdown extensions for pandoc. Default to \code{+fancy_lists}.
 #' @param self_contained Produce stand-alone intermediate files.
 #' @param includes Files that should be included via pandoc. See pandoc arguments.
+#' @param tinytex_clean \code{logical} Should tinytex clean auxiliary files. Defaults to \code{TRUE}.
 #' @inheritParams rmarkdown::output_format
 #' @inheritParams rmarkdown::pandoc_options
 #' @return R Markdown output format to pass to
@@ -74,7 +75,8 @@ lectureslides <- function(lang = "en",
                           self_contained = TRUE,
                           includes = NULL,
                           md_extensions = "+fancy_lists",
-                          pandoc_args = NULL) {
+                          pandoc_args = NULL,
+                          tinytex_clean = TRUE) {
   
   # base pandoc options for all beamer output
   args <- c()
@@ -121,6 +123,8 @@ lectureslides <- function(lang = "en",
   
   # generate a self-contained LaTeX document (including preamble)
   if (self_contained) args <- c(args, "--self-contained")
+ 
+  
   
   # content includes
   args <- c(args, includes_to_pandoc_args(includes))
@@ -207,6 +211,13 @@ lectureslides <- function(lang = "en",
     
     
     options(digits = 4)
+    if (tinytex_clean) {
+      options(tinytex.clean = TRUE)  #  Default for package
+    }
+    
+    if (!tinytex_clean) {
+      options(tinytex.clean = FALSE)  # Set tinytex.clean to FALSE if specified
+    }
     library(runidue)
   }
   

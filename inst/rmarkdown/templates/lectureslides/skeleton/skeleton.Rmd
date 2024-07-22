@@ -10,6 +10,7 @@ output:
     slide_level: 2
     incremental: true
     colorlinks: true
+    tinytex_clean: false
 natbib: true
 natbiboptions:
     - "round"
