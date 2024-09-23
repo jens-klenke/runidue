@@ -10,7 +10,7 @@ This readme documentation gives a detailed description, using code snippets and 
 if (!require("devtools")) {
   install.packages("devtools")
 }
-devtools::install_github("jens-klenke/runidue")
+devtools::install_github("jens-klenke/runidue", ref = "development")
 ```
 
 The package can be loaded using:

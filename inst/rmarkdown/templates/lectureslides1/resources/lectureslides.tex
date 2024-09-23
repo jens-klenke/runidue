@@ -3,3 +3,719 @@
 %\documentclass[aspectratio=1620]{$documentclass$}
 
 
+
+$if(fontfamily)$
+\usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+$else$
+\usepackage{lmodern}
+$endif$
+$if(linestretch)$
+\usepackage{setspace}
+\setstretch{$linestretch$}
+$endif$
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex 
+  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+  \usepackage[utf8]{inputenc}
+$if(euro)$
+  \usepackage{eurosym}
+$endif$
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+$if(euro)$
+  \newcommand{\euro}{€}
+$endif$
+$if(mainfont)$
+    \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+$endif$
+$if(sansfont)$
+    \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+$endif$
+$if(monofont)$
+    \setmonofont[Mapping=tex-ansi$if(monofontoptions)$,$for(monofontoptions)$$monofontoptions$$sep$,$endfor$$endif$]{$monofont$}
+$endif$
+$if(mathfont)$
+    \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+$endif$
+$if(CJKmainfont)$
+    \usepackage{xeCJK}
+    \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+$endif$
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+\usepackage{hyperref}
+$if(colorlinks)$
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+$endif$
+\hypersetup{unicode=true,
+$if(title-meta)$
+            pdftitle={$title-meta$},
+$endif$
+$if(author-meta)$
+            pdfauthor={$author-meta$},
+$endif$
+$if(keywords)$
+            pdfkeywords={$for(keywords)$$keywords$$sep$; $endfor$},
+$endif$
+$if(colorlinks)$
+            colorlinks=true,
+            linkcolor=$if(linkcolor)$$linkcolor$$else$dueblue$endif$,
+            citecolor=$if(citecolor)$$citecolor$$else$dueblue$endif$,
+            urlcolor=$if(urlcolor)$$urlcolor$$else$dueblue$endif$,
+$else$
+            pdfborder={0 0 0},
+$endif$
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+$if(lang)$
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[shorthands=off,$for(babel-otherlangs)$$babel-otherlangs$,$endfor$main=$babel-lang$]{babel}
+$if(babel-newcommands)$
+  $babel-newcommands$
+$endif$
+\else
+  \usepackage{polyglossia}
+  \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
+$for(polyglossia-otherlangs)$
+  \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
+$endfor$
+\fi
+$endif$
+$if(natbib)$
+\usepackage$if(natbiboptions)$[$for(natbiboptions)$$natbiboptions$$sep$,$endfor$]$endif${natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage$if(biblio-style)$[style=$biblio-style$]$endif${biblatex}
+$if(biblatexoptions)$\ExecuteBibliographyOptions{$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$}$endif$
+$for(bibliography)$
+\addbibresource{$bibliography$}
+$endfor$
+$endif$
+
+$if(csl-refs)$
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+$endif$
+
+$if(listings)$
+\usepackage{listings}
+\newcommand{\passthrough}[1]{#1}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+\VerbatimFootnotes % allows verbatim text in footnotes
+$endif$
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+$if(graphics)$
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+$endif$
+$if(links-as-notes)$
+% Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+% avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+$if(indent)$
+$else$
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
+}
+$endif$
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+$if(subparagraph)$
+$else$
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+$endif$
+$if(dir)$
+\ifxetex
+  % load bidi as late as possible as it modifies e.g. graphicx
+  $if(latex-dir-rtl)$
+  \usepackage[RTLdocument]{bidi}
+  $else$
+  \usepackage{bidi}
+  $endif$
+\fi
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \TeXXeTstate=1
+  \newcommand{\RL}[1]{\beginR #1\endR}
+  \newcommand{\LR}[1]{\beginL #1\endL}
+  \newenvironment{RTL}{\beginR}{\endR}
+  \newenvironment{LTR}{\beginL}{\endL}
+\fi
+$endif$
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+$if(compact-title)$
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+$endif$
+
+$if(title)$
+  \title{$title$}
+  $if(compact-title)$
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  $endif$
+$else$
+  \title{}
+  $if(compact-title)$
+  \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+  $endif$
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+$if(author)$
+  \author{$for(author)$$author$$sep$ \\ $endfor$}
+  $if(compact-title)$
+  \preauthor{\centering\large\emph}
+  \postauthor{\par}
+  $endif$
+$else$
+  \author{}
+  $if(compact-title)$
+  \preauthor{}\postauthor{}
+  $endif$
+$endif$
+
+$if(institute)$
+  \providecommand{\institute}[1]{}
+  \expandafter\ifstrequal\expandafter{$institute$}{default}{%
+  \institute{\expandafter\ifstrequal\expandafter{$lang$}{de}{%
+  Universität Duisburg-Essen}{%
+  University of Duisburg-Essen}}}{%
+  
+  \institute{$institute$}
+}
+$endif$
+
+
+$if(date)$
+  $if(compact-title)$
+  \predate{\centering\large\emph}
+  \postdate{\par}
+  $endif$
+  \date{$date$}
+$else$
+  \date{}
+  $if(compact-title)$
+  \predate{}\postdate{}
+  $endif$
+$endif$
+
+$for(header-includes)$
+$header-includes$
+$endfor$
+
+% up until here https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Additional packages
+\makeatletter
+\def\input@path{{"$resources$/"}}  % make them visible to tex to overcome warnings
+\makeatother
+
+\input{"$resources$/ee.sty"}
+\usepackage{BeamerColor}
+\usepackage{hypernat}
+\usepackage{mathtools}
+\usepackage[export]{adjustbox}
+\usepackage{makecell}
+\usepackage{diagbox}
+\usepackage{bm, bbm}
+\usepackage{subfig}
+\usepackage{forest}
+\usepackage[labelfont={footnotesize,color=dueblue},font=footnotesize]{caption}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{zref}
+\usepackage{zref-user}
+\usepackage{zref-xr}
+\usepackage{empheq}
+\usepackage{tikz}
+\usetikzlibrary{arrows, decorations.markings}
+\tikzstyle{arrow} = [ultra thick, - latex, shorten >= 2pt, shorten <= 2pt] % default arrow
+\tikzstyle{box} = [rectangle,rounded corners,fill=dueblue, text=white, align=center, node distance=1.25cm] % default node
+
+% \usepackage{etoolbox}
+
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
+%%% ZREF
+$if(zref-path)$
+\zexternaldocument[S-]{$zref-path$}
+\newcommand{\zeqref}[1]{(\zref{#1})}
+$endif$
+
+%%% New colors
+\definecolor{dueblue}{RGB}{0,76,147}
+\definecolor{duelightblue}{RGB}{223,228,242}
+\definecolor{duebeige}{RGB}{239,228,191}
+\definecolor{darkgrey}{RGB}{40, 40, 40}
+\definecolor{salmon}{RGB}{239, 148, 108}
+\definecolor{lime}{RGB}{219, 254, 135}
+\definecolor{sandy}{RGB}{255, 227, 129}
+\definecolor{darklime}{RGB}{153, 194, 77}
+
+
+%%% Additional commands
+\newcommand{\npt}{\\[1ex]\pause}
+\newcommand{\nbs}{\protect{~}}
+\newcommand{\qedb}{\hfill \textsquare} % to be used outside proof environments
+\newcommand{\pausealt}{ }
+\newcommand{\blue}[1]{{\color{dueblue}{#1}\color{black}}}
+\newcommand{\hil}[1]{\textbf{\color{dueblue}{#1}\color{black}}}
+\newcommand{\hilm}[1]{\mathbf{\color{dueblue}{#1}\color{black}}}
+\newcommand{\mps}{\par\medbreak}
+\newcommand{\sd}{\operatorname{sd}}
+\newcommand{\SD}{\operatorname{SD}}
+
+% Kahoot Block
+\newenvironment<>{kahoot}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+      \setbeamercolor{block title}{fg=black,bg=yellow}
+       \setbeamercolor{block body}{fg=black,bg=yellow!20}
+       \setbeamercolor{itemize item}{fg=orange!20!black}
+       \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}
+      \begin{center}
+\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+\end{center}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+\newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
+
+\makeatletter
+\newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
+\makeatother
+\newcommand{\R}{\includegraphics[height=.85\fsize, clip=T]{"$resources$/Rlogo"}\ }
+\newcommand{\btVFill}{\vskip0pt plus 1filll}
+\newcommand{\source}[1]{\btVFill\scriptsize \textit{\expandafter\ifstrequal\expandafter{$lang$}{de}{Quelle: }{Source: }}#1}
+
+
+
+% BLOCK ENVIRONMENTS (THEOREMS)
+\expandafter\ifstrequal\expandafter{$blockstyle$}{blank}{
+}{
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamercolor{block title}{bg=duelightblue,fg=black}
+\setbeamercolor{block body}{bg=duelightblue!37,fg=black}
+}%
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+% Headers for theorems
+\expandafter\ifstrequal\expandafter{$lang$}{de}{%
+  \newcommand{\thmncont}{Fortsetzung}
+  \newtheorem{thmn}{Theorem}[section]
+  \newtheorem{lem}[thmn]{Lemma}
+  \newtheorem{cor}[thmn]{Corollary}
+  \newtheorem{defn}[thmn]{Definition}
+  \newtheorem{ass}[thmn]{Annahme}
+  \newtheorem{rem}[thmn]{Anmerkung}
+  \newtheorem{prop}[thmn]{Proposition}
+  \theoremstyle{definition}
+  \newtheorem{xmpl}[thmn]{Beispiel}
+  \newtheorem{que}[thmn]{Frage}
+  \newtheorem{exe}[thmn]{Aufgabe}
+  \newtheorem{maththm}[thmn]{Mathematical Theorem} % New theorem environment for mathematical theorems
+  \numberwithin{equation}{section}}{%%%
+  \newcommand{\thmncont}{Continued}
+  \newtheorem{thmn}{Theorem}[section]
+  \newtheorem{lem}[thmn]{Lemma}
+  \newtheorem{cor}[thmn]{Corollary}
+  \newtheorem{defn}[thmn]{Definition}
+  \newtheorem{ass}[thmn]{Assumption}
+  \newtheorem{rem}[thmn]{Remark}
+  \newtheorem{prop}[thmn]{Proposition}
+  \theoremstyle{definition}
+  \newtheorem{xmpl}[thmn]{Example}
+  \newtheorem{que}[thmn]{Question}
+  \newtheorem{exe}[thmn]{Exercise}
+  \numberwithin{equation}{section}
+}%
+
+
+
+\setbeamertemplate{theorems}[numbered]
+\setbeamerfont{block title}{size=\normalsize}
+\setbeamertemplate{theorem begin}
+{%
+  \expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\addtocounter{thmn}{-1}}{}
+  \normalfont
+  \begin{\inserttheoremblockenv}{%
+    \structure{%
+      \textcolor{darkgrey}{\textbf{\inserttheoremname \inserttheoremnumber}:
+      \ifx\inserttheoremaddition\empty\else\expandafter\ifstrequal\expandafter{\inserttheoremaddition}{*}{\thmncont\inserttheorempunctuation}{\inserttheoremaddition\inserttheorempunctuation}\fi}%
+    }%
+  }%
+}
+\setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
+
+\preto{\xmpl}{
+    \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
+    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
+}
+
+\preto{\exe}{
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+}
+
+\preto{\maththmm}{
+    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+}
+
+
+
+
+% Spacings
+\AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
+\AtBeginEnvironment{center}{\smallbreak}
+\AtEndEnvironment{center}{\smallbreak}
+\AtBeginEnvironment{itemize}{\smallskip \setlength{\itemsep}{0.3ex}\setlength{\parskip}{1ex}}
+\AtEndEnvironment{itemize}{\smallskip}
+\preto{\enumerate}{\medskip  \setlength{\itemsep}{0.75ex}\setlength{\parskip}{1ex}}
+\AtEndEnvironment{enumerate}{\smallskip}
+
+
+
+% \let\tempone\itemize
+% \let\temptwo\enditemize
+% \renewenvironment{itemize}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
+
+% \let\tempone\enumerate
+% \let\temptwo\endenumerate
+% \renewenvironment{enumerate}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
+% 
+
+
+
+
+%%% LAYOUT
+\usecolortheme[named=dueblue]{structure}
+\beamertemplatenavigationsymbolsempty
+\setbeamersize{text margin left=10pt, text margin right=10pt}
+
+
+% Spacing before and after code chunks / output
+\makeatletter
+\preto{\@verbatim}{\topsep=-2pt \partopsep=2pt \parskip=-2ex}
+\makeatother
+
+% spacing before figure captions
+\setlength{\abovecaptionskip}{0pt}
+\setlength{\belowcaptionskip}{-1em plus 1em minus 0em}
+
+% spacing aorund display equations
+\setlength{\abovedisplayskip}{3pt}
+%\setlength{\belowdisplayskip}{3pt}
+
+$if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
+
+% Frame Head
+\makeatletter
+\setbeamertemplate{frametitle}{%
+\vspace{.1cm}
+\begin{minipage}[t][1cm]{.84\textwidth}
+    \ifbeamer@plainframe%
+      \Large\insertframetitle%
+    \else
+      \Large\insertframetitle%
+      \ifx\insertframesubtitle\empty
+      \else
+        \\ \small \insertframesubtitle
+      \fi
+    \fi
+\end{minipage}\hfill
+
+
+$if(logo)$
+\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\end{minipage}\vspace{-.3cm}}
+$else$
+\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+$endif$
+
+
+}
+\makeatother
+
+% Footer
+\setbeamercolor{footlinecolor}{bg=dueblue,fg=white}
+
+
+\ifstrequal{$footerstyle$}{colored}{
+\setbeamertemplate{footline}{
+  % \hbox{
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.4cm, leftskip=0cm, rightskip=0cm]{footlinecolor}
+    \hfill \scriptsize{{\insertshortauthor : }
+    \insertshorttitle---\insertsection \hfill \thesection-\insertframenumber\hspace*{.15cm}}\vspace{1mm}
+  \end{beamercolorbox}
+  % }
+}
+\addtobeamertemplate{footline}{\hypersetup{linkcolor=.}}{}
+}{
+\setbeamertemplate{footline}{\hspace*{.1cm}%
+\hfill \scriptsize{{\insertshortauthor : }
+\insertshorttitle---\insertsection \hfill \thesection-\insertframenumber\hspace*{.2cm}}\vspace{1mm}}
+}
+
+
+
+
+% TOC
+$if(startatzero)$ 
+\makeatletter
+\patchcmd{\beamer@sectionintoc}
+  {\ifnum\beamer@tempcount>0}
+  {\ifnum\beamer@tempcount>-1}
+  {}
+  {}
+\beamer@tocsectionnumber=-1
+\setcounter{section}{-1}
+\makeatother
+$endif$
+
+\setbeamertemplate{section in toc shaded}[default][50]
+\defbeamertemplate{section in toc}{customcircle}
+{\leavevmode\leftskip=4ex%
+  \llap{%
+    \usebeamerfont*{section number projected}%
+    \usebeamercolor{section number projected}%
+    \begin{pgfpicture}{-1ex}{-.2ex}{1ex}{2ex}
+      \color{bg}
+      \pgfpathcircle{\pgfpoint{0pt}{.75ex}}{1.3ex}
+      \pgfusepath{fill}
+      \pgftext[base]{\color{fg}\inserttocsectionnumber}
+    \end{pgfpicture}\kern1.25ex%
+  }%
+  \hspace{0.8ex}\inserttocsection\par}
+
+\setbeamertemplate{section in toc}[customcircle]
+
+% \usepackage{xpatch}
+% \xpatchcmd{\itemize}
+%   {\def\makelabel}
+%   {\setlength{\itemsep}{1ex}\def\makelabel}
+%   {}
+%   {}
+% \makeatletter
+% \xpatchcmd{\beamer@enum@}
+%   {\def\makelabel}
+%   {\setlength{\itemsep}{1ex}\def\makelabel}
+%   {}
+%   {}
+% \makeatother
+
+% NEW SECTION
+
+
+\AtBeginSection[] {
+{
+\setbeamertemplate{footline}{}
+\begin{frame}{\expandafter\ifstrequal\expandafter{$lang$}{de}{Überblick}{Outline}}
+\vspace{0.5cm}
+\tableofcontents[currentsection]
+\end{frame}
+\addtocounter{framenumber}{-\insertframenumber} % collect all begin section commands in one env.!
+}
+}
+
+% ITEMIZE, ENUMERATE, DESCRIPTION
+\defbeamertemplate*{description item}{defaultperiod}{\insertdescriptionitem.}
+\setbeamersize{description width=15pt} % left margin for description
+
+\setlength{\topsep}{1ex}
+\setlength{\leftmargini}{10pt+.5\labelwidth}
+\setlength{\leftmarginii}{15pt}
+\setlength{\leftmarginiii}{15pt}
+
+
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[triangle]
+\setbeamertemplate{enumerate item}[default]
+\setbeamertemplate{enumerate subitem}[default]
+\setbeamertemplate{description item}[defaultperiod]
+\setbeamertemplate{description subitem}[defaultperiod]
+
+
+\providecommand{\tightlist}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{1.2ex}}
+% allow environments inside environments
+\let\otherbegin\begin
+\let\otherend\end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
+
+
+
+\begin{document}
+
+
+$if(title)$
+  $if(towers)$
+    {\usebackgroundtemplate{\includegraphics[scale=0.25]{"$resources$/duetower"}}
+    \frame[plain]{\titlepage}}
+  $else$
+      \frame[plain]{\titlepage}
+  $endif$
+$endif$
+$if(abstract)$
+  \begin{abstract}
+  $abstract$
+  \end{abstract}
+$endif$
+
+$for(include-before)$
+$include-before$
+
+$endfor$
+
+% $if(toc)$
+% {
+% $if(colorlinks)$
+% \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$black$endif$}
+% $endif$
+% \setcounter{tocdepth}{$toc-depth$}
+% \tableofcontents
+% }
+% $endif$
+
+$if(lot)$
+\listoftables
+$endif$
+$if(lof)$
+\listoffigures
+$endif$
+$body$
+
+$if(natbib)$
+  $if(bibliography)$
+    $if(beamer)$
+      \begin{frame}[allowframebreaks]{$biblio-title$}
+      \bibliographytrue
+    $endif$
+    $if(biblio-title)$
+      $if(book-class)$
+        \renewcommand\bibname{$biblio-title$}
+      $else$
+        \renewcommand\refname{$biblio-title$}
+      $endif$
+    $endif$
+    \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+    $if(beamer)$
+    \end{frame}
+    $endif$
+  $endif$
+
+$endif$
+
+$if(biblatex)$
+  $if(beamer)$
+    \begin{frame}[allowframebreaks]{$biblio-title$}
+    \bibliographytrue
+  $endif$
+  \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+  $if(beamer)$
+    \end{frame}
+  $endif$
+$endif$
+
+$for(include-after)$
+$include-after$
+
+$endfor$
+
+\end{document}
