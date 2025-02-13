@@ -503,13 +503,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
     \else
       \Large\insertframetitle%
       \hfill
-      $if(logo)$
-      	$if(logo != "FALSE")$
-      		\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}
-      	$endif$
-      $else$
-      \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
-      $endif$ 
+      \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"} 
       \ifx\insertframesubtitle\empty
       \else
         \\ \small \insertframesubtitle
