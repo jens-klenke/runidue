@@ -504,10 +504,12 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
       \Large\insertframetitle%
       \hfill
       $if(logo)$
-      \ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}}
+      	$if(logo != "FALSE")$
+      		\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}
+      	$endif$
       $else$
       \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
-      $endif$    
+      $endif$ 
       \ifx\insertframesubtitle\empty
       \else
         \\ \small \insertframesubtitle
@@ -517,6 +519,16 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 
 }
 \makeatother
+
+%$if(logo)$
+%\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}}
+%$else$
+%\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+%$endif$    
+
+
+
+
 
 % Footer
 \setbeamercolor{footlinecolor}{bg=dueblue,fg=white}
