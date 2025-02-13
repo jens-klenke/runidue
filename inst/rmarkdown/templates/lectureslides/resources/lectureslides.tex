@@ -502,20 +502,18 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
       \Large\insertframetitle%
     \else
       \Large\insertframetitle%
+      \hfill
+      $if(logo)$
+      \ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}}
+      $else$
+      \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+      $endif$    
       \ifx\insertframesubtitle\empty
       \else
         \\ \small \insertframesubtitle
       \fi
     \fi
-\end{minipage}\hfill
-
-
-$if(logo)$
-\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\end{minipage}\vspace{-.3cm}}
-$else$
-\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
-$endif$
-
+\end{minipage}
 
 }
 \makeatother
