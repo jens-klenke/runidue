@@ -371,6 +371,27 @@ $endif$
     {\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
 
+% QuizAcademy Block
+\newenvironment<>{QuizAcademy}[1]{%
+	\begin{actionenv}#2%
+		\def\insertblocktitle{#1}%
+		\par%
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=black,bg=yellow}
+			\setbeamercolor{block body}{fg=black,bg=yellow!20}
+			\setbeamercolor{itemize item}{fg=orange!20!black}
+			\setbeamertemplate{itemize item}[triangle]
+		}%
+		\usebeamertemplate{block begin}
+		\begin{center}
+			\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}
+	\end{center}}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+\newcommand{\QuizAcademyblock}[1]{\begin{QuizAcademy}{#1}\end{QuizAcademy}}
+
+
+
+% Rlogo
 \makeatletter
 \newcommand*\fsize{\dimexpr\f@size pt\relax} % returns current font size
 \makeatother
