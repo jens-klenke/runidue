@@ -446,6 +446,15 @@ $endif$
   \numberwithin{equation}{section}
 }%
 
+% CONTINUING BLOCKS
+\newenvironment{thmn*}{\addtocounter{thmn}{-1}\thmn[\thmncont]}{\endthmn}
+\newenvironment{lem*}{\addtocounter{thmn}{-1}\lem[\thmncont]}{\endlem}
+\newenvironment{cor*}{\addtocounter{thmn}{-1}\cor[\thmncont]}{\endcor}
+\newenvironment{defn*}{\addtocounter{thmn}{-1}\thmn[\thmncont]}{\endthmn}
+\newenvironment{ass*}{\addtocounter{thmn}{-1}\ass[\thmncont]}{\endass}
+\newenvironment{rem*}{\addtocounter{thmn}{-1}\rem[\thmncont]}{\endrem}
+\newenvironment{xmpl*}{\addtocounter{thmn}{-1}\xmpl[\thmncont]}{\endxmpl}
+\newenvironment{que*}{\addtocounter{thmn}{-1}\que[\thmncont]}{\endque}
 
 
 \setbeamertemplate{theorems}[numbered]
