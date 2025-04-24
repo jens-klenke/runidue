@@ -13,5 +13,11 @@ if (!require("devtools")) {
 devtools::install_github("jens-klenke/runidue", ref = "dev")
 ```
 # ToDo
-- Logo Logic &mdash; old logic introduces empty line which breaks the code
-- QuizAcadem env
+
+- Logo logic &mdash; old logic introduces empty line which breaks the code
+- Set color parameter
+- Solve warnings in Pandoc, e.g. `self_contained`
+- Make a new class for quizzes, were the logo can be set
+- Keep intermediate files like `aux` &mdash; maybe it already is solved in branch `dev` &mdash; please check 
+- Yannicks Comments
+- Envoirmnets in German and English; use same logic as for [institute](https://github.com/jens-klenke/runidue/blob/dev/inst/rmarkdown/templates/lectureslides/resources/lectureslides.tex#L475).
