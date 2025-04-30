@@ -533,21 +533,30 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 % Frame Head
 \makeatletter
 \setbeamertemplate{frametitle}{%
-\vspace{.1cm}
-\begin{minipage}[t][1cm]{1\textwidth}
-    \ifbeamer@plainframe%
-      \Large\insertframetitle%
-    \else
-      \Large\insertframetitle%
-      \hfill
-      \includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"} 
-      \ifx\insertframesubtitle\empty
-      \else
-        \\ \small \insertframesubtitle
-      \fi
-    \fi
-\end{minipage}
-
+	\makebox[\textwidth]{%
+		\vspace{.1cm}
+		\begin{minipage}[t][1cm]{.84\textwidth}
+			\ifbeamer@plainframe%
+			\Large\insertframetitle%
+			\else
+			\Large\insertframetitle%
+			\ifx\insertframesubtitle\empty
+			\else
+			\\ \small \insertframesubtitle
+			\fi
+			\fi
+		\end{minipage}
+		
+		\hfill
+	
+	$if(logo)$
+	\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}\vspace{-.3cm}}
+	$else$
+	\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+	$endif$
+	
+	} % close makebox to have the header in one row
+	
 }
 \makeatother
 
