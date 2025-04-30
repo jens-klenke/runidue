@@ -397,6 +397,26 @@ $endif$
 \newcommand{\QuizAcademyblock}[1]{\begin{QuizAcademy}{#1}\end{QuizAcademy}}
 
 
+% New code for General Quiz 
+\newenvironment<>{Quiz}[1]{%
+	\begin{actionenv}#2%
+		\def\insertblocktitle{#1}%
+		\par%
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=black,bg=yellow}
+			\setbeamercolor{block body}{fg=black,bg=yellow!20}
+			\setbeamercolor{itemize item}{fg=orange!20!black}
+			\setbeamertemplate{itemize item}[triangle]
+		}%
+		\usebeamertemplate{block begin}
+		\begin{center}
+			\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}
+	\end{center}}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+\newcommand{\Quizblock}[1]{\begin{Quiz}{#1}\end{Quiz}}
+
+
+
 
 % Rlogo
 \makeatletter
