@@ -56,7 +56,6 @@ lectureslides <- function(lang = "en",
                           blockstyle = c("box", "blank"),
                           shadecolor = "default",
                           logo = "default",
-                          quiz_logo = "default",
                           slide_level = 2,
                           incremental = FALSE,
                           fig_width = 10,
@@ -184,12 +183,8 @@ lectureslides <- function(lang = "en",
   # logo
   if (!identical(logo, "default"))
     args <- c(args, pandoc_variable_arg("logo", logo))
-  
-  # quiz logo
-  if (quiz_logo != "default") {
-    args <- c(args, pandoc_variable_arg("quiz_logo", quiz_logo))
-  }
 
+  
   
   
   
