@@ -373,10 +373,17 @@ $endif$
      }%
       \usebeamertemplate{block begin}
       \begin{center}
-\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+      	
+		$if(logo)$
+			\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}\vspace{-.3cm}}
+		$else$
+			\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+		$endif$
+
 \end{center}}
     {\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
+
 
 % QuizAcademy Block
 \newenvironment<>{QuizAcademy}[1]{%
@@ -391,14 +398,30 @@ $endif$
 		}%
 		\usebeamertemplate{block begin}
 		\begin{center}
-			\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}
+			
+		$if(logo)$
+		\ifstrequal{$logo$}{FALSE}{}{
+			\ifstrequal{$logo$}{kahoot}{
+				\begin{minipage}[t][1cm]{1.9cm}
+					\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+				\end{minipage}\vspace{-.3cm}
+			}{
+				\begin{minipage}[t][1cm]{1.9cm}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$logo$}
+				\end{minipage}\vspace{-.3cm}
+			}
+		}
+		$else$
+		\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}  
+		$endif$
+
 	\end{center}}
 	{\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\QuizAcademyblock}[1]{\begin{QuizAcademy}{#1}\end{QuizAcademy}}
 
 
 % New code for General Quiz 
-\newenvironment<>{Quiz}[1]{%
+\newenvironment<>{GeneralQuiz}[1]{%	
 	\begin{actionenv}#2%
 		\def\insertblocktitle{#1}%
 		\par%
@@ -410,10 +433,25 @@ $endif$
 		}%
 		\usebeamertemplate{block begin}
 		\begin{center}
-			\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}
+		$if(logo)$
+		\ifstrequal{$logo$}{FALSE}{}{
+			\ifstrequal{$logo$}{kahoot}{
+				\begin{minipage}[t][1cm]{1.9cm}
+					\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
+				\end{minipage}\vspace{-.3cm}
+			}{
+				\begin{minipage}[t][1cm]{1.9cm}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$logo$}
+				\end{minipage}\vspace{-.3cm}
+			}
+		}
+		$else$
+		\includegraphics[width=0.25\textwidth]{"$resources$/QuizAcademy.png"}  
+		$endif$
+	
 	\end{center}}
 	{\par\usebeamertemplate{block end}\end{actionenv}}
-\newcommand{\Quizblock}[1]{\begin{Quiz}{#1}\end{Quiz}}
+\newcommand{\Quizblock}[1]{\begin{GeneralQuiz}{#1}\end{GeneralQuiz}}
 
 
 
@@ -585,8 +623,6 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 %$else$
 %\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
 %$endif$    
-
-
 
 
 
