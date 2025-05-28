@@ -120,7 +120,7 @@ lectureslides <- function(lang = "en",
   if (citation_package != "none") args <- c(args, paste0("--", citation_package))
   
   # generate a self-contained LaTeX document (including preamble)
-  if (self_contained) args <- c(args, "--self-contained")
+  if (self_contained) args <- c(args, "--embed-resources")
   
   # content includes
   args <- c(args, includes_to_pandoc_args(includes))
