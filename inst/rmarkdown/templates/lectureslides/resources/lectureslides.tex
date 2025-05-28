@@ -399,15 +399,15 @@ $endif$
 		\usebeamertemplate{block begin}
 		\begin{center}
 			
-		$if(logo)$
-		\ifstrequal{$logo$}{FALSE}{}{
-			\ifstrequal{$logo$}{kahoot}{
+		$if(quiz_logo)$
+		\ifstrequal{$quiz_logo$}{FALSE}{}{
+			\ifstrequal{$quiz_logo$}{kahoot}{
 				\begin{minipage}[t][1cm]{1.9cm}
 					\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
 				\end{minipage}\vspace{-.3cm}
 			}{
 				\begin{minipage}[t][1cm]{1.9cm}
-					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$logo$}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$quiz_logo$}
 				\end{minipage}\vspace{-.3cm}
 			}
 		}
@@ -433,15 +433,15 @@ $endif$
 		}%
 		\usebeamertemplate{block begin}
 		\begin{center}
-		$if(logo)$
-		\ifstrequal{$logo$}{FALSE}{}{
-			\ifstrequal{$logo$}{kahoot}{
+		$if(quiz_logo)$
+		\ifstrequal{$quiz_logo$}{FALSE}{}{
+			\ifstrequal{$quiz_logo$}{kahoot}{
 				\begin{minipage}[t][1cm]{1.9cm}
 					\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
 				\end{minipage}\vspace{-.3cm}
 			}{
 				\begin{minipage}[t][1cm]{1.9cm}
-					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$logo$}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$quiz_logo$}
 				\end{minipage}\vspace{-.3cm}
 			}
 		}

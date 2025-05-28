@@ -20,6 +20,7 @@
 #' @param tables \code{logical} Should the latex packages "longtables" and "bookstabs" be included.
 #' @param colorlinks \code{logical} Should links be colored.
 #' @param logo \code{character} Path to a logo for the slides. If not set otherwise, a UDE logo is used.
+#' @param quiz_logo \code{character} Path to a logo for the slides. If not set otherwise, a quiz academy logo is used.
 #' @param slide_level \code{numeric} Depth of slide numbering. Defaults to 2.
 #' @param incremental \code{logical} Should the slides render incrementally. Defaults to \code{FALSE}.
 #' @param fig_width \code{numeric} Default width of figures in inches. Defaults to 10.
@@ -56,6 +57,7 @@ lectureslides <- function(lang = "en",
                           blockstyle = c("box", "blank"),
                           shadecolor = "default",
                           logo = "default",
+                          quiz_logo = "default",
                           slide_level = 2,
                           incremental = FALSE,
                           fig_width = 10,
@@ -185,6 +187,9 @@ lectureslides <- function(lang = "en",
     args <- c(args, pandoc_variable_arg("logo", logo))
 
   
+  # quiz_logo--------------
+  if (!identical(quiz_logo, "default"))
+    args <- c(args, pandoc_variable_arg("quiz_logo",quiz_logo))
   
   
   
