@@ -531,16 +531,29 @@ $endif$
 }
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
-\preto{\xmpl}{
-    \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
-    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
-}
+
+%\preto{\xmpl}{
+%   \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
+%    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
+%}
+
+%\preto{\exe}{
+%    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
+%    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+%}
+
+
+% user-defined color for exe\Exercise
+$if(exercise_box_color)$
+\def\exerciseboxcolor{$exercise_box_color$}
+$else$
+\def\exerciseboxcolor{blue}
+$endif$
 
 \preto{\exe}{
-    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
-    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
+	\setbeamercolor{block title}{fg=black, bg=\exerciseboxcolor!70!white}
+	\setbeamercolor{block body}{fg=black, bg=\exerciseboxcolor!20!white}
 }
-
 
 
 
