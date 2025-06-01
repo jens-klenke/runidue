@@ -549,10 +549,112 @@ $if(exercise_box_color)$
 $else$
 \def\exerciseboxcolor{blue}
 $endif$
-
 \preto{\exe}{
 	\setbeamercolor{block title}{fg=black, bg=\exerciseboxcolor!70!white}
 	\setbeamercolor{block body}{fg=black, bg=\exerciseboxcolor!20!white}
+}
+
+
+$if(beispiel_box_color)$
+\def\beispielboxcolor{$beispiel_box_color$}
+$else$
+\def\beispielboxcolor{yellow}
+$endif$
+\preto{\xmpl}{
+    \setbeamercolor{block title}{fg=black,bg=\beispielboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\beispielboxcolor!20!white}
+   
+}
+
+$if(lemma_box_color)$
+\def\lemmaboxcolor{$lemma_box_color$}
+$else$
+\def\lemmaboxcolor{blue}
+$endif$
+\preto{\lem}{
+    \setbeamercolor{block title}{fg=black,bg=\lemmaboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\lemmaboxcolor!20!white}
+   
+}
+
+$if(definition_box_color)$
+\def\definitionboxcolor{$definition_box_color$}
+$else$
+\def\definitionboxcolor{green}
+$endif$
+\preto{\defn}{
+    \setbeamercolor{block title}{fg=black,bg=\definitionboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\definitionboxcolor!20!white}
+}
+
+$if(theorem_box_color)$
+\def\theoremboxcolor{$theorem_box_color$}
+$else$
+\def\theoremboxcolor{blue}
+$endif$
+\preto{\thmn}{
+    \setbeamercolor{block title}{fg=black,bg=\theoremboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\theoremboxcolor!20!white}
+}
+
+$if(corollary_box_color)$
+\def\corollaryboxcolor{$corollary_box_color$}
+$else$
+\def\corollaryboxcolor{blue}
+$endif$
+\preto{\cor}{
+    \setbeamercolor{block title}{fg=black,bg=\corollaryboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\corollaryboxcolor!20!white}
+}
+
+$if(assumption_box_color)$
+\def\assumptionboxcolor{$assumption_box_color$}
+$else$
+\def\assumptionboxcolor{blue}
+$endif$
+\preto{\ass}{
+    \setbeamercolor{block title}{fg=black,bg=\assumptionboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\assumptionboxcolor!20!white}
+}
+
+$if(remark_box_color)$
+\def\remarkboxcolor{$remark_box_color$}
+$else$
+\def\remarkboxcolor{blue}
+$endif$
+\preto{\rem}{
+    \setbeamercolor{block title}{fg=black,bg=\remarkboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\remarkboxcolor!20!white}
+}
+
+$if(proposition_box_color)$
+\def\propositionboxcolor{$proposition_box_color$}
+$else$
+\def\propositionboxcolor{blue}
+$endif$
+\preto{\prop}{
+    \setbeamercolor{block title}{fg=black,bg=\propositionboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\propositionboxcolor!20!white}
+}
+
+$if(frage_box_color)$
+\def\frageboxcolor{$frage_box_color$}
+$else$
+\def\frageboxcolor{blue}
+$endif$
+\preto{\que}{
+    \setbeamercolor{block title}{fg=black,bg=\frageboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\frageboxcolor!20!white}
+}
+
+$if(mathematical_theorem_box_color)$
+\def\mathematicaltheoremboxcolor{$mathematical_theorem_box_color$}
+$else$
+\def\mathematicaltheoremboxcolor{blue}
+$endif$
+\preto{\mthmn}{
+    \setbeamercolor{block title}{fg=black,bg=\mathematicaltheoremboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\mathematicaltheoremboxcolor!20!white}
 }
 
 
