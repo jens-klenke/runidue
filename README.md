@@ -10,14 +10,14 @@ This readme documentation gives a detailed description, using code snippets and 
 if (!require("devtools")) {
   install.packages("devtools")
 }
-devtools::install_github("jens-klenke/runidue", ref = "dev")
+devtools::install_github("jens-klenke/runidue", ref = "vineet")
 ```
 # ToDo
 
 &check; Logo logic &mdash; old logic introduces empty line which breaks the code
-- Set color parameter
-- Solve warnings in Pandoc, e.g. `self_contained`
-- Make a new class for quizzes, were the logo can be set
+- Set color parameter (Done) (Note - Document all the predefined function for easy use)
+- Solve warnings in Pandoc, e.g. `self_contained` (Done)
+- Make a new class for quizzes, were the logo can be set (Done)
 - Keep intermediate files like `aux` &mdash; maybe it already is solved in branch `dev` &mdash; please check 
 - Yannicks Comments
 - Envoirmnets in German and English; use same logic as for [institute](https://github.com/jens-klenke/runidue/blob/dev/inst/rmarkdown/templates/lectureslides/resources/lectureslides.tex#L475).
