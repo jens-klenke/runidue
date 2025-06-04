@@ -421,7 +421,7 @@ $endif$
 
 
 % New code for General Quiz 
-\newenvironment<>{GeneralQuiz}[1]{%	
+\newenvironment<>{Quiz}[1]{%	
 	\begin{actionenv}#2%
 		\def\insertblocktitle{#1}%
 		\par%
@@ -442,7 +442,7 @@ $endif$
 			}{
 				\begin{minipage}[t][1cm]{1.9cm}
 					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$quiz_logo$}
-				\end{minipage}\vspace{-.3cm}
+				\end{minipage}\vspace
 			}
 		}
 		$else$
@@ -451,7 +451,7 @@ $endif$
 	
 	\end{center}}
 	{\par\usebeamertemplate{block end}\end{actionenv}}
-\newcommand{\Quizblock}[1]{\begin{GeneralQuiz}{#1}\end{GeneralQuiz}}
+\newcommand{\Quizblock}[1]{\begin{Quiz}{#1}\end{Quiz}}
 
 
 
