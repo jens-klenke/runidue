@@ -70,7 +70,7 @@ lectureslides <- function(lang = "en",
                           colortheme = "default",
                           fonttheme = "default",
                           highlight = "default",
-                          keep_tex = FALSE,
+                          keep_tex = TRUE,
                           latex_engine = "pdflatex",
                           citation_package = c("none", "natbib", "biblatex"),
                           self_contained = TRUE,
@@ -263,7 +263,7 @@ lectureslides <- function(lang = "en",
     pre_knit = pre_knit,
     pre_processor = pre_processor,
     # intermediates_generator = intermediates_generator, 
-    clean_supporting = F,
+    clean_supporting = FALSE,
     df_print = df_print
   )
 }
