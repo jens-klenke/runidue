@@ -25,3 +25,33 @@ devtools::install_github("jens-klenke/runidue", ref = "vineet")
 # Workflow 
 
 `devtools::install()`
+
+# Environments
+
+Several environments which are predefined in the package, can be called during knitting the files. These environments are used for highlighting Lemma, corollary, proofs, examples, math functions, etc. A comprehensive lists of all such environments which the package offers is as follow:
+
+| Command | Use | Default Color |
+| ------- | ----------- | --------:|
+| `theorem_box_color` | Theorem | Blue |
+| `lemma_box_color` | Lemma | Blue |
+| `corollary_box_color` | Corollary | Blue |
+| `definition_box_color` | Definition | Green |
+| `assumption_box_color` | Annahme or Assumption | Blue |
+| `remark_box_color` | Anmerkung or Remark | Blue |
+| `proposition_box_color` | Proposition | Blue |
+| `beispiel_box_color` | Beispiel | Yellow |
+| `frage_box_color` | Frage or Question | Blue |
+| `exercise_box_color` | Aufgabe or Exercise | Blue |
+| `mathematical_theorem_box_color` | Mathematical Theorem | Blue |
+
+---
+title: "Induktive Statistik"
+author: "Prof. Dr. Christoph Hanck"
+date: "Sommersemester 2025"
+output: 
+  runidue::lectureslides:
+    lang: "en" 
+    keep_tex: true
+    
+exercise_box_color: yellow
+---
