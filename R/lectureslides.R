@@ -71,6 +71,8 @@ lectureslides <- function(lang = "en",
                           fonttheme = "default",
                           highlight = "default",
                           keep_tex = TRUE,
+                          keep_md = TRUE,
+                          keep_aux  = TRUE,
                           latex_engine = "pdflatex",
                           citation_package = c("none", "natbib", "biblatex"),
                           self_contained = TRUE,
@@ -217,19 +219,51 @@ lectureslides <- function(lang = "en",
   }
   
 
-  pre_processor <- function(metadata, input_file, runtime, knit_meta,
-                            files_dir, output_dir) {
-    # save files dir (for generating intermediates)
-    saved_files_dir <<- files_dir
-    
-    # no-op other than caching dir location
-    invisible(NULL)
-  }
+  # pre_processor <- function(metadata, input_file, runtime, knit_meta,
+  #                           files_dir, output_dir) {
+  #   # save files dir (for generating intermediates)
+  #   saved_files_dir <<- files_dir
+  #   
+  #   # no-op other than caching dir location
+  #   invisible(NULL)
+  # }
   
+  # post_processor <- function(metadata, input_file, output_file, clean, verbose) {
+  #   output_dir <- dirname(output_file)
+  #   # Copy all files from saved_files_dir to output directory
+  #   file.copy(list.files(saved_files_dir, full.names = TRUE), 
+  #             output_dir, 
+  #             recursive = TRUE)
+  #   return(output_file)
+  # }
+  # 
   # generate intermediates (required to make resources available for publish)
   # intermediates_generator <- function(...) {
     # general_intermediates_generator(saved_files_dir, ...)
   # }
+  
+  pre_processor <- function(metadata, input_file, runtime,
+                            knit_meta, files_dir, output_dir) {
+    if (keep_aux) {
+      options(tinytex.clean = FALSE)                  # ②  NO on.exit() here!
+      saved_files_dir <<- files_dir                  # ③  remember where aux land
+    }
+    invisible(NULL)
+  }
+  
+  ## ---------------------------------------------------------------
+  ## 2.  Return every auxiliary file in that folder
+  ## ---------------------------------------------------------------
+  intermediates_generator <- if (keep_aux) {
+    function(original_input, encoding) {
+      list.files(
+        saved_files_dir,
+        pattern = "\\.(aux|log|out|nav|snm|toc|vrb)$",  # what to keep
+        full.names = TRUE
+      )
+    }
+  } else NULL
+  
   
   
   # default knitr options
@@ -261,9 +295,11 @@ lectureslides <- function(lang = "en",
                             latex_engine = latex_engine,
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
+    # post_processor = post_processor,
     pre_processor = pre_processor,
-    # intermediates_generator = intermediates_generator, 
+    intermediates_generator = intermediates_generator,
     clean_supporting = FALSE,
+    keep_md = keep_md,
     df_print = df_print
   )
 }
