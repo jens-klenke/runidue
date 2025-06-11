@@ -44,7 +44,10 @@ Several environments which are predefined in the package, can be called during k
 | `exercise_box_color` | Aufgabe or Exercise | Blue |
 | `mathematical_theorem_box_color` | Mathematical Theorem | Blue |
 
----
+An example of implementation of an environment is as follows: 
+
+```
+--- 
 title: "Induktive Statistik"
 author: "Prof. Dr. Christoph Hanck"
 date: "Sommersemester 2025"
@@ -55,3 +58,4 @@ output:
     
 exercise_box_color: yellow
 ---
+```
