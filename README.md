@@ -42,7 +42,7 @@ Several environments which are predefined in the package, can be called during k
 | `beispiel_box_color` | Beispiel | Yellow |
 | `frage_box_color` | Frage or Question | Blue |
 | `exercise_box_color` | Aufgabe or Exercise | Blue |
-| `mathematical_theorem_box_color` | Mathematical Theorem | Blue |
+| `math_theorem_box_color` | Mathematical Theorem | Blue |
 
 An example of implementation of an environment is as follows: 
 
