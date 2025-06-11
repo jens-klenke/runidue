@@ -219,29 +219,7 @@ lectureslides <- function(lang = "en",
   }
   
 
-  # pre_processor <- function(metadata, input_file, runtime, knit_meta,
-  #                           files_dir, output_dir) {
-  #   # save files dir (for generating intermediates)
-  #   saved_files_dir <<- files_dir
-  #   
-  #   # no-op other than caching dir location
-  #   invisible(NULL)
-  # }
-  
-  # post_processor <- function(metadata, input_file, output_file, clean, verbose) {
-  #   output_dir <- dirname(output_file)
-  #   # Copy all files from saved_files_dir to output directory
-  #   file.copy(list.files(saved_files_dir, full.names = TRUE), 
-  #             output_dir, 
-  #             recursive = TRUE)
-  #   return(output_file)
-  # }
-  # 
-  # generate intermediates (required to make resources available for publish)
-  # intermediates_generator <- function(...) {
-    # general_intermediates_generator(saved_files_dir, ...)
-  # }
-  
+  # ----------------changes---------------------------------------------
   pre_processor <- function(metadata, input_file, runtime,
                             knit_meta, files_dir, output_dir) {
     if (keep_aux) {
@@ -251,9 +229,6 @@ lectureslides <- function(lang = "en",
     invisible(NULL)
   }
   
-  ## ---------------------------------------------------------------
-  ## 2.  Return every auxiliary file in that folder
-  ## ---------------------------------------------------------------
   intermediates_generator <- if (keep_aux) {
     function(original_input, encoding) {
       list.files(
