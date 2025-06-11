@@ -532,17 +532,6 @@ $endif$
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
 
-%\preto{\xmpl}{
-%   \setbeamercolor{block title}{fg=black,bg=sandy!70!white}
-%    \setbeamercolor{block body}{fg=black, bg=sandy!20!white}
-%}
-
-%\preto{\exe}{
-%    \setbeamercolor{block title}{fg=black,bg=darklime!70!white}
-%    \setbeamercolor{block body}{fg=black, bg=darklime!20!white}
-%}
-
-
 % user-defined color for exe\Exercise
 $if(exercise_box_color)$
 \def\exerciseboxcolor{$exercise_box_color$}
@@ -647,14 +636,14 @@ $endif$
     \setbeamercolor{block body}{fg=black, bg=\frageboxcolor!20!white}
 }
 
-$if(mathematical_theorem_box_color)$
-\def\mathematicaltheoremboxcolor{$mathematical_theorem_box_color$}
+$if(math_theorem_box_color)$
+\def\maththeoremboxcolor{$math_theorem_box_color$}
 $else$
-\def\mathematicaltheoremboxcolor{blue}
+\def\maththeoremboxcolor{blue}
 $endif$
 \preto{\mthmn}{
-    \setbeamercolor{block title}{fg=black,bg=\mathematicaltheoremboxcolor!70!white}
-    \setbeamercolor{block body}{fg=black, bg=\mathematicaltheoremboxcolor!20!white}
+    \setbeamercolor{block title}{fg=black,bg=\maththeoremboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\maththeoremboxcolor!20!white}
 }
 
 
