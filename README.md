@@ -55,7 +55,6 @@ output:
   runidue::lectureslides:
     lang: "en" 
     keep_tex: true
-    
 exercise_box_color: yellow
 ---
 ```
