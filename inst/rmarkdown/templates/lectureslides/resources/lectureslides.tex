@@ -8,6 +8,8 @@ $endif$
 	\usepackage[final,nopatch=footnote]{microtype}
 	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
+\RequirePackage{silence}
+\WarningFilter{latex}{Command \showhyphens has changed}
 $if(linestretch)$
 \usepackage{setspace}
 \setstretch{$linestretch$}
@@ -103,31 +105,34 @@ $for(bibliography)$
 \addbibresource{$bibliography$}
 $endfor$
 $endif$
+
+
 $if(csl-refs)$
+%---------------- CSL / citeproc for Beamer -------------------------
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newlength{\cslentryspacingunit} % times entry-spacing
-\setlength{\cslentryspacingunit}{\parskip}
-\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
- {% don't indent paragraphs
-  \setlength{\parindent}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-  \let\oldpar\par
-  \def\par{\hangindent=\cslhangindent\oldpar}
-  \fi
-  % set entry spacing
-  \setlength{\parskip}{#2\cslentryspacingunit}
- }%
- {}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{#1\hfill\break}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+% 1 ▸ dummy definition so the macro exists immediately
+\providecommand{\CSLLeftMargin}[1]{\item}
+
+% 2 ▸ bibliography environment
+\newenvironment{CSLReferences}[2]{
+	\ifodd #1\relax\fi          
+	\begin{list}{}{%
+			\setlength{\leftmargin}{\cslhangindent}
+			\setlength{\itemindent}{-\cslhangindent}
+			\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}
+			\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}
+		}\raggedright
+	}{\end{list}\par}
+
+% required helpers (ignored if Pandoc already supplied them)
+\providecommand{\CSLBlock}[1]{#1\hfill\break}
+\providecommand{\CSLRightInline}[1]{\hspace{1em}#1}
+\providecommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\providecommand{\citeproctext}{}        % silent fallback
 $endif$
+
 
 $if(listings)$
 \usepackage{listings}
