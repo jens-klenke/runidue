@@ -4,12 +4,17 @@ $if(fontfamily)$
 $else$
 \usepackage{lmodern}
 $endif$
-\IfFileExists{microtype.sty}{%
-	\usepackage[final,nopatch=footnote]{microtype}
-	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
+
 \RequirePackage{silence}
 \WarningFilter{latex}{Command \showhyphens has changed}
+\WarningFilter{microtype}{Unable to apply patch}
+
+\IfFileExists{microtype.sty}{%
+	\usepackage{microtype}
+	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+
+
 $if(linestretch)$
 \usepackage{setspace}
 \setstretch{$linestretch$}
