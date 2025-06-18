@@ -300,6 +300,7 @@ $endfor$
 
 \input{ee.sty}
 \input{BeamerColor.sty}
+\usepackage{xcolor}
 \usepackage{hypernat}
 \usepackage{mathtools}
 \usepackage[export]{adjustbox}
@@ -361,6 +362,7 @@ $endif$
 \newcommand{\mps}{\par\medbreak}
 \newcommand{\sd}{\operatorname{sd}}
 \newcommand{\SD}{\operatorname{SD}}
+\newcommand{\mathcolor}[2]{\begingroup\color{#1}#2\endgroup}
 
 % Kahoot Block
 \newenvironment<>{kahoot}[1]{%
