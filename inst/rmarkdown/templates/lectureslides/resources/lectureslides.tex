@@ -112,19 +112,17 @@ $if(csl-refs)$
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 
-% 1 ▸ dummy definition so the macro exists immediately
-\providecommand{\CSLLeftMargin}[1]{\item}
-
 % 2 ▸ bibliography environment
-\newenvironment{CSLReferences}[2]{
-	\ifodd #1\relax\fi          
-	\begin{list}{}{%
-			\setlength{\leftmargin}{\cslhangindent}
-			\setlength{\itemindent}{-\cslhangindent}
-			\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}
-			\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}
-		}\raggedright
-	}{\end{list}\par}
+\newenvironment{CSLReferences}[2]
+{
+\ifodd #1\relax\fi          
+\begin{list}{}{%
+		\setlength{\leftmargin}{\cslhangindent}
+		\setlength{\itemindent}{-\cslhangindent}
+		\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}
+		\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}
+	}\raggedright
+}{\end{list}\par}
 
 % required helpers (ignored if Pandoc already supplied them)
 \providecommand{\CSLBlock}[1]{#1\hfill\break}
