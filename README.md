@@ -27,7 +27,7 @@ devtools::install_github("jens-klenke/runidue", ref = "vineet")
 
 `devtools::install()`
 
-Enter 3
+Then enter 3 in prompt
 
 The package can be loaded using:
 
