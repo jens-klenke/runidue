@@ -5,15 +5,16 @@ $else$
 \usepackage{lmodern}
 $endif$
 
-\RequirePackage{silence}
-\WarningFilter{latex}{Command \showhyphens has changed}
-\WarningFilter{microtype}{Unable to apply patch}
+
+%\WarningFilter{microtype}{Unable to apply patch}
 
 \IfFileExists{microtype.sty}{%
-	\usepackage{microtype}
+	\usepackage[final,nopatch=footnote]{microtype}
 	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
 
+\RequirePackage{silence}
+\WarningFilter{latex}{Command \showhyphens has changed}
 
 $if(linestretch)$
 \usepackage{setspace}
@@ -99,6 +100,7 @@ $for(polyglossia-otherlangs)$
 $endfor$
 \fi
 $endif$
+
 $if(natbib)$
 \usepackage$if(natbiboptions)$[$for(natbiboptions)$$natbiboptions$$sep$,$endfor$]$endif${natbib}
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
@@ -113,27 +115,43 @@ $endif$
 
 
 $if(csl-refs)$
-%---------------- CSL / citeproc for Beamer -------------------------
+%---------------- CSL / citeproc for Beamer - clickable -------------------------
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 
-% 2 ▸ bibliography environment
+% 1) bibliography environment
 \newenvironment{CSLReferences}[2]
-{
-\ifodd #1\relax\fi          
-\begin{list}{}{%
-		\setlength{\leftmargin}{\cslhangindent}
-		\setlength{\itemindent}{-\cslhangindent}
-		\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}
-		\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}
-	}\raggedright
-}{\end{list}\par}
-
-% required helpers (ignored if Pandoc already supplied them)
+{%
+	\ifodd #1\relax\fi
+	\begin{list}{}{%
+			\setlength{\leftmargin}{\cslhangindent}%
+			\setlength{\itemindent}{-\cslhangindent}%
+			\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}%
+			\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}%
+		\raggedright
+	}{\end{list}\par}
+\providecommand{\citeproctext}{} % silent fallback
 \providecommand{\CSLBlock}[1]{#1\hfill\break}
 \providecommand{\CSLRightInline}[1]{\hspace{1em}#1}
 \providecommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-\providecommand{\citeproctext}{}        % silent fallback
+
+%------------------- Changes for hyperlink -------------------------
+% 2) Hyperlink layer (Beamer already loads hyperref)
+\providecommand{\Hypertarget}[2]{\hypertarget{#1}{#2}}
+\providecommand{\Hyperlink}[2]{\hyperlink{#1}{#2}}
+\providecommand{\citeproc}[2]{\Hyperlink{#1}{#2}}
+
+% 3) Patch \bibitem so each entry gets an anchor BEFORE the real \item
+\AtBeginEnvironment{CSLReferences}{
+	\let\oldbibitem\bibitem
+	\renewcommand\bibitem[2][]{
+		\Hypertarget{#2}{} 
+		\oldbibitem[#1]{#2}
+	}%
+}
+\AtEndEnvironment{CSLReferences}{
+	\let\bibitem\oldbibitem
+}
 $endif$
 
 
