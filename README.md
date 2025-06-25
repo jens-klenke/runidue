@@ -8,6 +8,9 @@
 - Yannicks Comments
 - Envoirmnets in German and English; use same logic as for [institute](https://github.com/jens-klenke/runidue/blob/dev/inst/rmarkdown/templates/lectureslides/resources/lectureslides.tex#L475)
 
+# Changes for references 
+- References works now with clickable links
+- Not compatible with natbib for citation but works fine with our own defined csl function 
   
 # runidue package
 
