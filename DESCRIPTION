@@ -13,4 +13,4 @@ Imports:
     tikzDevice
 VignetteBuilder: knitr
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.2

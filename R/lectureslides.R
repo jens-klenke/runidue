@@ -36,6 +36,78 @@
 #' @param pandoc_args Further arguments passed on to pandoc.
 #' @param citation_package The citation package to be used. One of c("none", "natbib", "biblatex")
 #' @param md_extensions Markdown extensions for pandoc. Default to \code{+fancy_lists}.
+#' 
+#' @section Available Environment for Box:
+#' \tabular{ll}{
+#'   \strong{Command} \tab \strong{Purpose} \cr
+#'   \code{thmn}  \tab Theorem                    \cr
+#'   \code{lem}   \tab Lemma                      \cr
+#'   \code{cor}   \tab Corollary                  \cr
+#'   \code{defn}  \tab Definition                 \cr
+#'   \code{ass}   \tab Assumption (Annahme)       \cr
+#'   \code{rem}   \tab Remark (Anmerkung)         \cr
+#'   \code{prop}  \tab Proposition                \cr
+#'   \code{xmpl}  \tab Example (Beispiel)         \cr
+#'   \code{que}   \tab Question (Frage)           \cr
+#'   \code{exe}   \tab Exercise (Aufgabe)         \cr
+#'   \code{mthmn} \tab Mathematical Theorem block \cr
+#' }
+#' 
+#' \preformatted{
+#' 
+#' ```{Example}
+#' \xmpl[Heading of the example]
+#'   The example itself …
+#' \endxmpl
+#' ```
+#' 
+#' ```{=latex}
+#' # Example of a long environment
+#' \xmpl[Long Environments]
+#' A very long example which may not fit the slide
+#' \endxmpl
+#' # Continuation of the previous example
+#' \xmpl[*]
+#' This is the continuation of the long example in the next slide.
+#' \endxmpl
+#' ```
+#' 
+#' ```{=latex}
+#' # Example of kahoot box
+#' \kahoot {Kahoot Heading} Kahoot Contents \endkahoot
+#' ```
+#' }
+#' 
+#' @section Box‐color variables:
+#' \tabular{lll}{
+#'   \strong{Variable}                \tab \strong{Use}                       \tab \strong{Default Color} \cr
+#'   \code{theorem_box_color}         \tab Theorem                             \tab blue   \cr
+#'   \code{lemma_box_color}           \tab Lemma                               \tab blue   \cr
+#'   \code{corollary_box_color}       \tab Corollary                           \tab blue   \cr
+#'   \code{definition_box_color}      \tab Definition                          \tab green  \cr
+#'   \code{assumption_box_color}      \tab Assumption (Annahme)                \tab blue   \cr
+#'   \code{remark_box_color}          \tab Remark (Anmerkung)                  \tab blue   \cr
+#'   \code{proposition_box_color}     \tab Proposition                         \tab blue   \cr
+#'   \code{beispiel_box_color}        \tab Example (Beispiel)                  \tab yellow \cr
+#'   \code{frage_box_color}           \tab Question (Frage)                    \tab blue   \cr
+#'   \code{exercise_box_color}        \tab Exercise (Aufgabe)                  \tab blue   \cr
+#'   \code{math_theorem_box_color}    \tab Mathematical Theorem                \tab blue   \cr
+#' }
+#' 
+#' \preformatted{
+#' 
+#' ```{Example}
+#' title: "Induktive Statistik"
+#' author: "Prof. Dr. Christoph Hanck"
+#' date: "Sommersemester 2025"
+#' output: 
+#'   runidue::lectureslides:
+#'   lang: "en" 
+#' keep_tex: true
+#' exercise_box_color: yellow
+#' ```
+#' }
+#' 
 #' @param self_contained Produce stand-alone intermediate files.
 #' @param includes Files that should be included via pandoc. See pandoc arguments.
 #' @inheritParams rmarkdown::output_format
@@ -74,7 +146,7 @@ lectureslides <- function(lang = "en",
                           keep_md = TRUE,
                           keep_aux  = TRUE,
                           latex_engine = "pdflatex",
-                          citation_package = c("none", "natbib", "biblatex"),
+                          citation_package = c("none", "biblatex"),
                           self_contained = TRUE,
                           includes = NULL,
                           md_extensions = "+fancy_lists",
@@ -90,9 +162,6 @@ lectureslides <- function(lang = "en",
       args <- c(args, "--template", pandoc_path_arg(template))
   }
   
-  # table of contents
-  # if (toc)
-    # args <- c(args, "--table-of-contents")
   
   # slide level
   if (!is.null(slide_level))
@@ -278,5 +347,12 @@ lectureslides <- function(lang = "en",
     df_print = df_print
   )
 }
+
+
+#  ←–– BLANK LINE that is *not* "#'"  separates the blocks  -----------------
+
+
+
+
 
 
