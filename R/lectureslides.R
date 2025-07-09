@@ -1,5 +1,5 @@
 #' Beamer Lecture Slides
-#'
+#' 
 #' @param template \code{character}. The template to be used. Defaults to
 #'   \code{default}
 #' @param lang \code{character}. Language of the presentation. One of
@@ -88,8 +88,8 @@
 #'   \code{assumption_box_color}      \tab Assumption (Annahme)                \tab blue   \cr
 #'   \code{remark_box_color}          \tab Remark (Anmerkung)                  \tab blue   \cr
 #'   \code{proposition_box_color}     \tab Proposition                         \tab blue   \cr
-#'   \code{beispiel_box_color}        \tab Example (Beispiel)                  \tab yellow \cr
-#'   \code{frage_box_color}           \tab Question (Frage)                    \tab blue   \cr
+#'   \code{example_box_color}        \tab Example (Beispiel)                  \tab yellow \cr
+#'   \code{question_box_color}           \tab Question (Frage)                    \tab blue   \cr
 #'   \code{exercise_box_color}        \tab Exercise (Aufgabe)                  \tab blue   \cr
 #'   \code{math_theorem_box_color}    \tab Mathematical Theorem                \tab blue   \cr
 #' }
@@ -339,7 +339,6 @@ lectureslides <- function(lang = "en",
                             latex_engine = latex_engine,
                             keep_tex = keep_tex),
     pre_knit = pre_knit,
-    # post_processor = post_processor,
     pre_processor = pre_processor,
     intermediates_generator = intermediates_generator,
     clean_supporting = FALSE,
@@ -347,12 +346,3 @@ lectureslides <- function(lang = "en",
     df_print = df_print
   )
 }
-
-
-#  ←–– BLANK LINE that is *not* "#'"  separates the blocks  -----------------
-
-
-
-
-
-

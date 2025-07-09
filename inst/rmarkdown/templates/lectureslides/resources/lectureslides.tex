@@ -571,14 +571,14 @@ $endif$
 }
 
 
-$if(beispiel_box_color)$
-\def\beispielboxcolor{$beispiel_box_color$}
+$if(example_box_color)$
+\def\exampleboxcolor{$example_box_color$}
 $else$
-\def\beispielboxcolor{yellow}
+\def\exampleboxcolor{yellow}
 $endif$
 \preto{\xmpl}{
-    \setbeamercolor{block title}{fg=black,bg=\beispielboxcolor!70!white}
-    \setbeamercolor{block body}{fg=black, bg=\beispielboxcolor!20!white}
+    \setbeamercolor{block title}{fg=black,bg=\exampleboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\exampleboxcolor!20!white}
    
 }
 
@@ -653,14 +653,14 @@ $endif$
     \setbeamercolor{block body}{fg=black, bg=\propositionboxcolor!20!white}
 }
 
-$if(frage_box_color)$
-\def\frageboxcolor{$frage_box_color$}
+$if(question_box_color)$
+\def\questionboxcolor{$question_box_color$}
 $else$
-\def\frageboxcolor{blue}
+\def\questionboxcolor{blue}
 $endif$
 \preto{\que}{
-    \setbeamercolor{block title}{fg=black,bg=\frageboxcolor!70!white}
-    \setbeamercolor{block body}{fg=black, bg=\frageboxcolor!20!white}
+    \setbeamercolor{block title}{fg=black,bg=\questionboxcolor!70!white}
+    \setbeamercolor{block body}{fg=black, bg=\questionboxcolor!20!white}
 }
 
 $if(math_theorem_box_color)$
