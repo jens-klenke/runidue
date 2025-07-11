@@ -53,31 +53,6 @@
 #'   \code{mthmn} \tab Mathematical Theorem block \cr
 #' }
 #' 
-#' \preformatted{
-#' 
-#' ```{Example}
-#' \xmpl[Heading of the example]
-#'   The example itself …
-#' \endxmpl
-#' ```
-#' 
-#' ```{=latex}
-#' # Example of a long environment
-#' \xmpl[Long Environments]
-#' A very long example which may not fit the slide
-#' \endxmpl
-#' # Continuation of the previous example
-#' \xmpl[*]
-#' This is the continuation of the long example in the next slide.
-#' \endxmpl
-#' ```
-#' 
-#' ```{=latex}
-#' # Example of kahoot box
-#' \kahoot {Kahoot Heading} Kahoot Contents \endkahoot
-#' ```
-#' }
-#' 
 #' @section Box‐color variables:
 #' \tabular{lll}{
 #'   \strong{Variable}                \tab \strong{Use}                       \tab \strong{Default Color} \cr
@@ -94,9 +69,9 @@
 #'   \code{math_theorem_box_color}    \tab Mathematical Theorem                \tab blue   \cr
 #' }
 #' 
-#' \preformatted{
+#' @examples
 #' 
-#' ```{Example}
+#' ```{Color Box Variable Use}
 #' title: "Induktive Statistik"
 #' author: "Prof. Dr. Christoph Hanck"
 #' date: "Sommersemester 2025"
@@ -106,7 +81,28 @@
 #' keep_tex: true
 #' exercise_box_color: yellow
 #' ```
-#' }
+#' 
+#' ```{Environment Use}
+#' \xmpl[Heading of the example]
+#'   The example itself …
+#' \endxmpl
+#' ```
+#' 
+#' ```{Long Enironment Use}
+#' # Example of a long environment
+#' \xmpl[Long Environments]
+#' A very long example which may not fit the slide
+#' \endxmpl
+#' # Continuation of the previous example
+#' \xmpl[*]
+#' This is the continuation of the long example in the next slide.
+#' \endxmpl
+#' ```
+#' 
+#' ```{Kahoot Box Use}
+#' # Example of kahoot box
+#' \kahoot {Kahoot Heading} Kahoot Contents \endkahoot
+#' ```
 #' 
 #' @param self_contained Produce stand-alone intermediate files.
 #' @param includes Files that should be included via pandoc. See pandoc arguments.
@@ -116,7 +112,7 @@
 #'   \code{\link[rmarkdown:render]{render}}
 #' @examples
 #' \dontrun{ library(rmarkdown) draft("MyLecture.Rmd", template = "lectureslides",
-#' package = "runidue") }
+#' package = ("runidue") }
 #' @import rmarkdown knitr
 #' @export
 lectureslides <- function(lang = "en",
