@@ -34,6 +34,7 @@ lectureslides(
   latex_engine = "pdflatex",
   citation_package = c("none", "biblatex"),
   self_contained = TRUE,
+  link_citations = TRUE,
   includes = NULL,
   md_extensions = "+fancy_lists",
   pandoc_args = NULL
@@ -115,6 +116,8 @@ this is \code{TRUE} then \code{clean_supporting} will always be
 \item{md_extensions}{Markdown extensions for pandoc. Default to \code{+fancy_lists}.}
 
 \item{pandoc_args}{Further arguments passed on to pandoc.}
+
+\item{link-citations}{\code{logical} Should links be clickable. Defaults to \code{TRUE}}
 }
 \value{
 R Markdown output format to pass to

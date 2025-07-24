@@ -36,6 +36,7 @@
 #' @param pandoc_args Further arguments passed on to pandoc.
 #' @param citation_package The citation package to be used. One of c("none", "natbib", "biblatex")
 #' @param md_extensions Markdown extensions for pandoc. Default to \code{+fancy_lists}.
+#' @param link-citations \code{logical} Should links be clickable. Defaults to \code{TRUE}
 #' 
 #' @section Available Environment for Box:
 #' \tabular{ll}{
@@ -144,6 +145,7 @@ lectureslides <- function(lang = "en",
                           latex_engine = "pdflatex",
                           citation_package = c("none", "biblatex"),
                           self_contained = TRUE,
+                          link_citations = TRUE,
                           includes = NULL,
                           md_extensions = "+fancy_lists",
                           pandoc_args = NULL) {
@@ -158,7 +160,7 @@ lectureslides <- function(lang = "en",
       args <- c(args, "--template", pandoc_path_arg(template))
   }
   
-  
+
   # slide level
   if (!is.null(slide_level))
     args <- c(args, "--slide-level", as.character(slide_level))
@@ -247,6 +249,11 @@ lectureslides <- function(lang = "en",
     } else {
       args <- c(args, pandoc_variable_arg("shadecolor", shadecolor))
     }
+  }
+  
+  # clickable link
+  if (link_citations) {
+    pandoc_args <- c(pandoc_args, "--citeproc", "--link-citations")
   }
   
   # logo
