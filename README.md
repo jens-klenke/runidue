@@ -27,6 +27,9 @@ if (!require("devtools")) {
 devtools::install_github("jens-klenke/runidue", ref = "vineet")
 ```
 
+## Helper function 
+?runidue::lectureslides (In console)
+
 # Workflow 
 
 `devtools::install()`
