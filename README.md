@@ -98,6 +98,7 @@ toc: true
 toc_depth: 2
 fontsize: 8pt
 classoption: aspectratio=169
+link-citations: true 
 ---
 ````
 In the above YAML header, `title`, `author`, `date`, `output`, `natbib`, `natbiboptions`, `biblio-style`, csl-refs, `urlcolor`, `citecolor`, `mainfont`, `papersize`, `fontenc`, `linestretch`, `fontfamily`, `toc`, `toc_depth`, `fontsize`, and `classoption` are keys specifying different properties of the document. These keys are aligned at the same level. A description of each of the keys are:
@@ -108,8 +109,6 @@ In the above YAML header, `title`, `author`, `date`, `output`, `natbib`, `natbib
 | `author` | Specifies the author(s) of the document. |
 | `date` | Specifies the date of the document. |
 | `output` | Specifies the output format and options for the document. In our case, the format is specified in lectureslides.tex |
-| `natbib` | Specifies whether to use the `natbib` citation package, which provides enhanced citation capabilities for LaTeX documents. |
-| `natbiboptions` | Specifies additional options for the `natbib` citation package. |
 | `biblio-style` | Specifies the bibliography style to be used. |
 | `csl-refs` | Specifies whether to use CSL (Citation Style Language) references. |
 | `urlcolor` |  Specifies the color for URLs in the document. |
@@ -123,6 +122,7 @@ In the above YAML header, `title`, `author`, `date`, `output`, `natbib`, `natbib
 | `toc_depth` | Specifies the depth of the table of contents. |
 | `fontsize` | Specifies the font size to be used in the document. |
 | `classoption` | Specifies additional options for the document class. |
+| `link-citations` | Specifies whether you want to use clickable link in the document. |
 
 In the `òutput` key, `runidue::lectureslides` as output option is specified, a further specification used in this YAML header is as follows:
 
