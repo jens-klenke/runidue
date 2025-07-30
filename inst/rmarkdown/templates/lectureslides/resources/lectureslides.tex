@@ -402,12 +402,12 @@ $endif$
       \begin{center}
       	
 		$if(logo)$
-			\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}\vspace{-.3cm}}
+			\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{2.3cm} \hspace{0.5cm} \includegraphics[height=1cm,keepaspectratio=true,valign=t]{$logo$}\end{minipage}\vspace{-0.3cm}}
 		$else$
 			\includegraphics[width=0.25\textwidth]{"$resources$/kahootlogo2"}
 		$endif$
 
-\end{center}}
+	  \end{center}}
     {\par\usebeamertemplate{block end}\end{actionenv}}
 \newcommand{\kahootblock}[1]{\begin{kahoot}{#1}\end{kahoot}}
 
@@ -676,7 +676,7 @@ $endif$
 
 
 % Spacings
-\AtBeginEnvironment{figure}{\setlength{\parskip}{-2ex}}
+\AtBeginEnvironment{figure}{\setlength{\parskip}{-1.5ex}}
 \AtBeginEnvironment{center}{\smallbreak}
 \AtEndEnvironment{center}{\smallbreak}
 \AtBeginEnvironment{itemize}{\smallskip \setlength{\itemsep}{0.3ex}\setlength{\parskip}{1ex}}
@@ -706,7 +706,7 @@ $endif$
 
 % Spacing before and after code chunks / output
 \makeatletter
-\preto{\@verbatim}{\topsep=-2pt \partopsep=2pt \parskip=-2ex}
+\preto{\@verbatim}{\topsep=-2pt \partopsep=1.5pt \parskip=-2ex}
 \makeatother
 
 % spacing before figure captions
@@ -723,37 +723,29 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 \makeatletter
 \setbeamertemplate{frametitle}{%
 	\makebox[\textwidth]{%
-		\vspace{.1cm}
-		\begin{minipage}[t][1cm]{.84\textwidth}
+		\begin{minipage}[t][1.2cm]{.80\textwidth}
 			\ifbeamer@plainframe%
-			\Large\insertframetitle%
+				\Large\insertframetitle \\ [0.1cm]
 			\else
-			\Large\insertframetitle%
-			\ifx\insertframesubtitle\empty
-			\else
-			\\ \small \insertframesubtitle
-			\fi
-			\fi
+				\Large\insertframetitle%
+				\ifx\insertframesubtitle\empty \\ [0.1cm]
+				\else
+					\\ \small \insertframesubtitle \\ [0.1cm]
+				\fi
+		    \fi
 		\end{minipage}
 		
-		\hfill
-	
+	\hfill
 	$if(logo)$
-	\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}\vspace{-.3cm}}
+	\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}}}
 	$else$
-	\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+	\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
 	$endif$
 	
 	} % close makebox to have the header in one row
 	
 }
 \makeatother
-
-%$if(logo)$
-%\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=2cm,keepaspectratio=true, valign=t]{$logo$}\vspace{-.3cm}}
-%$else$
-%\includegraphics[width=2cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
-%$endif$    
 
 
 
@@ -831,7 +823,7 @@ $endif$
 {
 \setbeamertemplate{footline}{}
 \begin{frame}{\expandafter\ifstrequal\expandafter{$lang$}{de}{Überblick}{Outline}}
-\vspace{0.5cm}
+\setlength{\parskip}{10pt}% 
 \tableofcontents[currentsection]
 \end{frame}
 \addtocounter{framenumber}{-\insertframenumber} % collect all begin section commands in one env.!

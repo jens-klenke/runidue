@@ -253,8 +253,7 @@ lectureslides <- function(lang = "en",
   
   # clickable link
   if (link_citations) {
-    pandoc_args <- c(pandoc_args, "--citeproc", "--link-citations")
-  }
+    args <- c(args, "--metadata=link-citations:true")}
   
   # logo
   if (!identical(logo, "default"))
