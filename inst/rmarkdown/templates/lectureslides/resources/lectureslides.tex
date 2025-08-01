@@ -434,7 +434,7 @@ $endif$
 				\end{minipage}\vspace{-.3cm}
 			}{
 				\begin{minipage}[t][1cm]{1.9cm}
-					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$quiz_logo$}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t]{$quiz_logo$}
 				\end{minipage}\vspace{-.3cm}
 			}
 		}
@@ -468,7 +468,7 @@ $endif$
 				\end{minipage}\vspace{-.3cm}
 			}{
 				\begin{minipage}[t][1cm]{1.9cm}
-					\includegraphics[height=1cm, keepaspectratio=true, valign=t, right]{$quiz_logo$}
+					\includegraphics[height=1cm, keepaspectratio=true, valign=t]{$quiz_logo$}
 				\end{minipage}\vspace
 			}
 		}
@@ -722,8 +722,9 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 % Frame Head
 \makeatletter
 \setbeamertemplate{frametitle}{%
+	\vspace{0.08cm}
 	\makebox[\textwidth]{%
-		\begin{minipage}[t][1.2cm]{.80\textwidth}
+		\begin{minipage}[t][1.2cm]{0.80\textwidth}
 			\ifbeamer@plainframe%
 				\Large\insertframetitle \\ [0.1cm]
 			\else
@@ -737,13 +738,11 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 		
 	\hfill
 	$if(logo)$
-	\ifstrequal{$logo$}{FALSE}{}{\begin{minipage}[t][1cm]{1.9cm}\includegraphics[height=1cm,keepaspectratio=true,valign=t, right]{$logo$}\end{minipage}}}
+		\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=1.9, height=1cm,keepaspectratio=true,valign=t]{$logo$}}\hspace{-0.3cm}}
 	$else$
-	\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}
+		\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}\hspace{-0.3cm}
 	$endif$
-	
 	} % close makebox to have the header in one row
-	
 }
 \makeatother
 
