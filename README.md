@@ -150,7 +150,7 @@ Several environments which are predefined in the package, can be called during k
 | `prop` | Proposition | duelightblue |
 | `xmpl` | Beispiel | sandy |
 | `que` | Frage or Question | duelightblue |
-| `exe` | Aufgabe or Exercise | duelightblue |
+| `exe` | Aufgabe or Exercise | lightgreen |
 | `mthmn` | Mathematical Theorem | duelightblue |
 
 An example of implementation of an environment is as follows: 
@@ -227,7 +227,7 @@ Several environments which are predefined in the package, can be called during k
 | `proposition_box_color` | Proposition | duelightblue |
 | `beispiel_box_color` | Beispiel | sandy |
 | `frage_box_color` | Frage or Question | duelightblue |
-| `exercise_box_color` | Aufgabe or Exercise | duelightblue |
+| `exercise_box_color` | Aufgabe or Exercise | lightgreen |
 | `math_theorem_box_color` | Mathematical Theorem | duelightblue |
 
 An example of implementation of an environment is as follows: 
