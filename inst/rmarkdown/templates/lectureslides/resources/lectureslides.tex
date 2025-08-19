@@ -563,7 +563,7 @@ $endif$
 $if(exercise_box_color)$
 \def\exerciseboxcolor{$exercise_box_color$}
 $else$
-\def\exerciseboxcolor{blue}
+\def\exerciseboxcolor{duelightblue}
 $endif$
 \preto{\exe}{
 	\setbeamercolor{block title}{fg=black, bg=\exerciseboxcolor!70!white}
@@ -574,7 +574,7 @@ $endif$
 $if(example_box_color)$
 \def\exampleboxcolor{$example_box_color$}
 $else$
-\def\exampleboxcolor{yellow}
+\def\exampleboxcolor{sandy}
 $endif$
 \preto{\xmpl}{
     \setbeamercolor{block title}{fg=black,bg=\exampleboxcolor!70!white}
@@ -585,7 +585,7 @@ $endif$
 $if(lemma_box_color)$
 \def\lemmaboxcolor{$lemma_box_color$}
 $else$
-\def\lemmaboxcolor{blue}
+\def\lemmaboxcolor{duelightblue}
 $endif$
 \preto{\lem}{
     \setbeamercolor{block title}{fg=black,bg=\lemmaboxcolor!70!white}
@@ -596,7 +596,7 @@ $endif$
 $if(definition_box_color)$
 \def\definitionboxcolor{$definition_box_color$}
 $else$
-\def\definitionboxcolor{green}
+\def\definitionboxcolor{salmon}
 $endif$
 \preto{\defn}{
     \setbeamercolor{block title}{fg=black,bg=\definitionboxcolor!70!white}
@@ -606,7 +606,7 @@ $endif$
 $if(theorem_box_color)$
 \def\theoremboxcolor{$theorem_box_color$}
 $else$
-\def\theoremboxcolor{blue}
+\def\theoremboxcolor{duelightblue}
 $endif$
 \preto{\thmn}{
     \setbeamercolor{block title}{fg=black,bg=\theoremboxcolor!70!white}
@@ -616,7 +616,7 @@ $endif$
 $if(corollary_box_color)$
 \def\corollaryboxcolor{$corollary_box_color$}
 $else$
-\def\corollaryboxcolor{blue}
+\def\corollaryboxcolor{duelightblue}
 $endif$
 \preto{\cor}{
     \setbeamercolor{block title}{fg=black,bg=\corollaryboxcolor!70!white}
@@ -626,7 +626,7 @@ $endif$
 $if(assumption_box_color)$
 \def\assumptionboxcolor{$assumption_box_color$}
 $else$
-\def\assumptionboxcolor{blue}
+\def\assumptionboxcolor{duelightblue}
 $endif$
 \preto{\ass}{
     \setbeamercolor{block title}{fg=black,bg=\assumptionboxcolor!70!white}
@@ -636,7 +636,7 @@ $endif$
 $if(remark_box_color)$
 \def\remarkboxcolor{$remark_box_color$}
 $else$
-\def\remarkboxcolor{blue}
+\def\remarkboxcolor{duelightblue}
 $endif$
 \preto{\rem}{
     \setbeamercolor{block title}{fg=black,bg=\remarkboxcolor!70!white}
@@ -646,7 +646,7 @@ $endif$
 $if(proposition_box_color)$
 \def\propositionboxcolor{$proposition_box_color$}
 $else$
-\def\propositionboxcolor{blue}
+\def\propositionboxcolor{duelightblue}
 $endif$
 \preto{\prop}{
     \setbeamercolor{block title}{fg=black,bg=\propositionboxcolor!70!white}
@@ -656,7 +656,7 @@ $endif$
 $if(question_box_color)$
 \def\questionboxcolor{$question_box_color$}
 $else$
-\def\questionboxcolor{blue}
+\def\questionboxcolor{duelightblue}
 $endif$
 \preto{\que}{
     \setbeamercolor{block title}{fg=black,bg=\questionboxcolor!70!white}
@@ -666,13 +666,12 @@ $endif$
 $if(math_theorem_box_color)$
 \def\maththeoremboxcolor{$math_theorem_box_color$}
 $else$
-\def\maththeoremboxcolor{blue}
+\def\maththeoremboxcolor{duelightblue}
 $endif$
 \preto{\mthmn}{
     \setbeamercolor{block title}{fg=black,bg=\maththeoremboxcolor!70!white}
     \setbeamercolor{block body}{fg=black, bg=\maththeoremboxcolor!20!white}
 }
-
 
 
 % Spacings
@@ -683,18 +682,6 @@ $endif$
 \AtEndEnvironment{itemize}{\smallskip}
 \preto{\enumerate}{\medskip  \setlength{\itemsep}{0.75ex}\setlength{\parskip}{1ex}}
 \AtEndEnvironment{enumerate}{\smallskip}
-
-
-
-% \let\tempone\itemize
-% \let\temptwo\enditemize
-% \renewenvironment{itemize}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
-
-% \let\tempone\enumerate
-% \let\temptwo\endenumerate
-% \renewenvironment{enumerate}{\tempone\setlength{\itemsep}{1ex}\setlength{\parskip}{1.2ex}}{\temptwo}
-% 
-
 
 
 
