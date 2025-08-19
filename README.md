@@ -144,7 +144,7 @@ Several environments which are predefined in the package, can be called during k
 | `thmn` | Theorem | duelightblue |
 | `lem` | Lemma | duelightblue |
 | `cor` | Corollary | duelightblue |
-| `defn` | Definition | salmon |
+| `defn` | Definition | duelightblue |
 | `ass` | Annahme or Assumption | duelightblue |
 | `rem` | Anmerkung or Remark | duelightblue |
 | `prop` | Proposition | duelightblue |
@@ -221,7 +221,7 @@ Several environments which are predefined in the package, can be called during k
 | `theorem_box_color` | Theorem | duelightblue |
 | `lemma_box_color` | Lemma | duelightblue |
 | `corollary_box_color` | Corollary | duelightblue |
-| `definition_box_color` | Definition | salmon |
+| `definition_box_color` | Definition | duelightblue |
 | `assumption_box_color` | Annahme or Assumption | duelightblue |
 | `remark_box_color` | Anmerkung or Remark | duelightblue |
 | `proposition_box_color` | Proposition | duelightblue |
