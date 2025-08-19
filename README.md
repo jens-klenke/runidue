@@ -141,17 +141,17 @@ Several environments which are predefined in the package, can be called during k
 
 | Command | Use | Color |
 | ------- | ----------- | --------:|
-| `thmn` | Theorem | Blue |
-| `lem` | Lemma | Blue |
-| `cor` | Corollary | Blue |
-| `defn` | Definition | Green |
-| `ass` | Annahme or Assumption | Blue |
-| `rem` | Anmerkung or Remark | Blue |
-| `prop` | Proposition | Blue |
-| `xmpl` | Beispiel | Yellow |
-| `que` | Frage or Question | Blue |
-| `exe` | Aufgabe or Exercise | Blue |
-| `mthmn` | Mathematical Theorem | Blue |
+| `thmn` | Theorem | duelightblue |
+| `lem` | Lemma | duelightblue |
+| `cor` | Corollary | duelightblue |
+| `defn` | Definition | salmon |
+| `ass` | Annahme or Assumption | duelightblue |
+| `rem` | Anmerkung or Remark | duelightblue |
+| `prop` | Proposition | duelightblue |
+| `xmpl` | Beispiel | sandy |
+| `que` | Frage or Question | duelightblue |
+| `exe` | Aufgabe or Exercise | duelightblue |
+| `mthmn` | Mathematical Theorem | duelightblue |
 
 An example of implementation of an environment is as follows: 
 
@@ -218,17 +218,17 @@ Several environments which are predefined in the package, can be called during k
 
 | Command | Use | Default Color |
 | ------- | ----------- | --------:|
-| `theorem_box_color` | Theorem | Blue |
-| `lemma_box_color` | Lemma | Blue |
+| `theorem_box_color` | Theorem | duelightblue |
+| `lemma_box_color` | Lemma | duelightblue |
 | `corollary_box_color` | Corollary | Blue |
-| `definition_box_color` | Definition | Green |
-| `assumption_box_color` | Annahme or Assumption | Blue |
-| `remark_box_color` | Anmerkung or Remark | Blue |
-| `proposition_box_color` | Proposition | Blue |
-| `beispiel_box_color` | Beispiel | Yellow |
-| `frage_box_color` | Frage or Question | Blue |
-| `exercise_box_color` | Aufgabe or Exercise | Blue |
-| `math_theorem_box_color` | Mathematical Theorem | Blue |
+| `definition_box_color` | Definition | salmon |
+| `assumption_box_color` | Annahme or Assumption | duelightblue |
+| `remark_box_color` | Anmerkung or Remark | duelightblue |
+| `proposition_box_color` | Proposition | duelightblue |
+| `beispiel_box_color` | Beispiel | sandy |
+| `frage_box_color` | Frage or Question | duelightblue |
+| `exercise_box_color` | Aufgabe or Exercise | duelightblue |
+| `math_theorem_box_color` | Mathematical Theorem | duelightblue |
 
 An example of implementation of an environment is as follows: 
 
