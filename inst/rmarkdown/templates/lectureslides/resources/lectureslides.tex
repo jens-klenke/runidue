@@ -372,6 +372,7 @@ $endif$
 \definecolor{lime}{RGB}{219, 254, 135}
 \definecolor{sandy}{RGB}{255, 227, 129}
 \definecolor{darklime}{RGB}{153, 194, 77}
+\definecolor{lightgreen}{RGB}{184, 212, 130}
 
 
 %%% Additional commands
@@ -563,7 +564,7 @@ $endif$
 $if(exercise_box_color)$
 \def\exerciseboxcolor{$exercise_box_color$}
 $else$
-\def\exerciseboxcolor{duelightblue}
+\def\exerciseboxcolor{lightgreen}
 $endif$
 \preto{\exe}{
 	\setbeamercolor{block title}{fg=black, bg=\exerciseboxcolor!70!white}
@@ -596,7 +597,7 @@ $endif$
 $if(definition_box_color)$
 \def\definitionboxcolor{$definition_box_color$}
 $else$
-\def\definitionboxcolor{salmon}
+\def\definitionboxcolor{duelightblue}
 $endif$
 \preto{\defn}{
     \setbeamercolor{block title}{fg=black,bg=\definitionboxcolor!70!white}
