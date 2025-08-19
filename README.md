@@ -220,7 +220,7 @@ Several environments which are predefined in the package, can be called during k
 | ------- | ----------- | --------:|
 | `theorem_box_color` | Theorem | duelightblue |
 | `lemma_box_color` | Lemma | duelightblue |
-| `corollary_box_color` | Corollary | Blue |
+| `corollary_box_color` | Corollary | duelightblue |
 | `definition_box_color` | Definition | salmon |
 | `assumption_box_color` | Annahme or Assumption | duelightblue |
 | `remark_box_color` | Anmerkung or Remark | duelightblue |
