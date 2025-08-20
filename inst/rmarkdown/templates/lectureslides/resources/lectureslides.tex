@@ -726,7 +726,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 		
 	\hfill
 	$if(logo)$
-		\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=1.9, height=1cm,keepaspectratio=true,valign=t]{$logo$}}\hspace{-0.3cm}}
+		\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=1.9, height=1cm,keepaspectratio=true,valign=t]{$logo$}} \hspace{-0.3cm}
 	$else$
 		\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}\hspace{-0.3cm}
 	$endif$
