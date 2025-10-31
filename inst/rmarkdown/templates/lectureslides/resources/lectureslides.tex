@@ -5,7 +5,6 @@ $else$
 \usepackage{lmodern}
 $endif$
 
-
 %\WarningFilter{microtype}{Unable to apply patch}
 
 \IfFileExists{microtype.sty}{%
@@ -679,12 +678,13 @@ $endif$
 \AtBeginEnvironment{figure}{\setlength{\parskip}{-1.5ex}}
 \AtBeginEnvironment{center}{\smallbreak}
 \AtEndEnvironment{center}{\smallbreak}
-\AtBeginEnvironment{itemize}{\smallskip \setlength{\itemsep}{0.3ex}\setlength{\parskip}{1ex}}
-\AtEndEnvironment{itemize}{\smallskip}
-\preto{\enumerate}{\medskip  \setlength{\itemsep}{0.75ex}\setlength{\parskip}{1ex}}
-\AtEndEnvironment{enumerate}{\smallskip}
+\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} %\smallskip
 
+\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 
+%\AtEndEnvironment{itemize}{\smallskip}
+%\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+%\AtEndEnvironment{enumerate}{\smallskip}
 
 %%% LAYOUT
 \usecolortheme[named=dueblue]{structure}
@@ -698,8 +698,8 @@ $endif$
 \makeatother
 
 % spacing before figure captions
-\setlength{\abovecaptionskip}{0pt}
-\setlength{\belowcaptionskip}{-1em plus 1em minus 0em}
+\setlength{\abovecaptionskip}{2pt}
+\setlength{\belowcaptionskip}{-0.1em plus 1em minus 0em}
 
 % spacing aorund display equations
 \setlength{\abovedisplayskip}{3pt}
@@ -710,25 +710,25 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 % Frame Head
 \makeatletter
 \setbeamertemplate{frametitle}{%
-	\vspace{0.08cm}
+	\vspace{0.14cm}
 	\makebox[\textwidth]{%
-		\begin{minipage}[t][1.2cm]{0.80\textwidth}
+		\begin{minipage}[t]{0.70\textwidth}
 			\ifbeamer@plainframe%
-				\Large\insertframetitle \\ [0.1cm]
+				\Large\insertframetitle \\ [0.5cm]
 			\else
-				\Large\insertframetitle%
-				\ifx\insertframesubtitle\empty \\ [0.1cm]
+				\Large\insertframetitle\\[-1.6ex]
+				\ifx\insertframesubtitle\empty \relax
 				\else
-					\\ \small \insertframesubtitle \\ [0.1cm]
+					\\ \small \insertframesubtitle 
 				\fi
 		    \fi
 		\end{minipage}
 		
 	\hfill
 	$if(logo)$
-		\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=1.9, height=1cm,keepaspectratio=true,valign=t]{$logo$}} \hspace{-0.3cm}
+		\ifstrequal{$logo$}{FALSE}{}{\includegraphics[width=1.9, height=1cm,keepaspectratio=true,valign=t]{$logo$}} \hspace{-0.2cm}
 	$else$
-		\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}\hspace{-0.3cm}
+		\includegraphics[width=1.9cm,keepaspectratio=true, valign=t]{"$resources$/duelogo"}\hspace{-0.2cm}
 	$endif$
 	} % close makebox to have the header in one row
 }
@@ -844,7 +844,8 @@ $endif$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 
-
+\usepackage{setspace}
+\setstretch{1.15} 
 
 \begin{document}
 
