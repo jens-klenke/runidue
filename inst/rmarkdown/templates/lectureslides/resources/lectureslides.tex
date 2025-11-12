@@ -350,7 +350,7 @@ postaction = {draw,line width=1.4pt, white,shorten >= 4.5pt}]
 \tikzstyle{innerWhite} = [semithick, white,line width=1.4pt, shorten >= 4.5pt] % vec arrow
 \tikzstyle{box} = [rectangle,rounded corners,fill=dueblue, text=white, align=center, node distance=1.25cm] % default node
 
-% \usepackage{etoolbox}
+\usepackage{etoolbox}
 
 \makeatletter
 \let\@@magyar@captionfix\relax
@@ -675,11 +675,10 @@ $endif$
 
 
 % Spacings
-\AtBeginEnvironment{figure}{\setlength{\parskip}{-1.5ex}}
-\AtBeginEnvironment{center}{\smallbreak}
 \AtEndEnvironment{center}{\smallbreak}
-\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} %\smallskip
-
+\AtBeginEnvironment{figure}{\centering\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{table}{\centering\setlength{\parskip}{0pt}}
+\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
 \AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 
 %\AtEndEnvironment{itemize}{\smallskip}
@@ -693,17 +692,22 @@ $endif$
 
 
 % Spacing before and after code chunks / output
-\makeatletter
-\preto{\@verbatim}{\topsep=-2pt \partopsep=1.5pt \parskip=-2ex}
-\makeatother
+%\makeatletter
+%\preto{\@verbatim}{\topsep=0pt \partopsep=0pt \parskip=4ex}
+%\makeatother
 
 % spacing before figure captions
-\setlength{\abovecaptionskip}{2pt}
-\setlength{\belowcaptionskip}{-0.1em plus 1em minus 0em}
+\setlength{\belowcaptionskip}{-0.9em} 
 
-% spacing aorund display equations
-\setlength{\abovedisplayskip}{3pt}
-%\setlength{\belowdisplayskip}{3pt}
+% Spacing for equation 
+\makeatletter
+\g@addto@macro\normalsize{%
+	\setlength\abovedisplayskip{1pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayskip{1pt plus 1pt minus 1pt}%
+}
+\makeatother
+
+
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
 
@@ -714,14 +718,14 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 	\makebox[\textwidth]{%
 		\begin{minipage}[t]{0.70\textwidth}
 			\ifbeamer@plainframe%
-				\Large\insertframetitle \\ [0.5cm]
+				\Large\insertframetitle \\  
 			\else
-				\Large\insertframetitle\\[-1.6ex]
-				\ifx\insertframesubtitle\empty \relax
-				\else
-					\\ \small \insertframesubtitle 
+				\Large\insertframetitle\\ [-1.6ex] % Spacing between subtitle and title
+				\ifx\insertframesubtitle\empty \\[-0.7cm] % Spacing when no subtitle between title and content
+			\else
+					\\ \small \insertframesubtitle \\ [-0.25cm] % Spacing after the subtitle and content
 				\fi
-		    \fi
+			\fi
 		\end{minipage}
 		
 	\hfill
@@ -733,8 +737,6 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 	} % close makebox to have the header in one row
 }
 \makeatother
-
-
 
 % Footer
 \setbeamercolor{footlinecolor}{bg=dueblue,fg=white}
@@ -755,8 +757,6 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 \hfill \scriptsize{{\insertshortauthor : }
 \insertshorttitle---\insertsection \hfill \thesection-\insertframenumber\hspace*{.2cm}}\vspace{1mm}}
 }
-
-
 
 
 % TOC

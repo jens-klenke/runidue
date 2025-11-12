@@ -8,13 +8,13 @@ set_hooks <- function() {
     },
     cex = function(before, options, envir) {
       if (before) graphics::par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
-                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.87)
+                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.85)
     },
     output = function(x, options) {
       x <- paste0("```\n", x,"```\n")
       x <- ifelse(is.null(options$shadeoutput),
                   x,
-                  paste0("\\Shaded\n", x, "\\endShaded\n"))
+                  paste0("\\Shaded\n\\small\n", x, "\\normalsize\\endShaded\n"))
       x
     },
     plot = function(x, options) {
