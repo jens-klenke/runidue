@@ -12,7 +12,7 @@ $endif$
 %	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 %}{}
 
-\usepackage[final,nopatch=footnote]{microtype/microtype}
+\usepackage[final,nopatch=footnote]{microtypes/microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % same as before
 
 
@@ -195,15 +195,28 @@ $if(strikeout)$
 % avoid problems with \sout in headers with hyperref:
 \pdfstringdefDisableCommands{\renewcommand{\sout}{}}
 $endif$
+
+
+%$if(indent)$
+%$else$
+%\IfFileExists{parskip.sty}{%
+%\usepackage{parskip}
+%}{% else
+%\setlength{\parindent}{0pt}
+%\setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
+%}
+%$endif$
+
 $if(indent)$
 $else$
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
+\IfFileExists{parskips/parskip.sty}{%
+	\usepackage{parskips/parskip}
+}{%
+	\setlength{\parindent}{0pt}
+	\setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
 }
 $endif$
+
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 
 $if(numbersections)$
