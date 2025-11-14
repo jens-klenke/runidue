@@ -7,10 +7,14 @@ $endif$
 
 %\WarningFilter{microtype}{Unable to apply patch}
 
-\IfFileExists{microtype.sty}{%
-	\usepackage[final,nopatch=footnote]{microtype}
-	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
+%\IfFileExists{microtype.sty}{%
+%	\usepackage[final,nopatch=footnote]{microtype}
+%	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+%}{}
+
+\usepackage[final,nopatch=footnote]{microtype/microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % same as before
+
 
 \RequirePackage{silence}
 \WarningFilter{latex}{Command \showhyphens has changed}
