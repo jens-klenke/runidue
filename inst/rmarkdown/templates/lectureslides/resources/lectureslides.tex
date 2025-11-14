@@ -12,9 +12,12 @@ $endif$
 %	\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 %}{}
 
-\usepackage[final,nopatch=footnote]{microtypes/microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % same as before
+\makeatletter
+\def\input@path{{./microtype/}{./}}
+\makeatother
 
+\usepackage[final,nopatch=footnote]{microtype}
+\usepackage{parskip}
 
 \RequirePackage{silence}
 \WarningFilter{latex}{Command \showhyphens has changed}
@@ -207,15 +210,13 @@ $endif$
 %}
 %$endif$
 
-$if(indent)$
-$else$
-\IfFileExists{parskips/parskip.sty}{%
-	\usepackage{parskips/parskip}
+\IfFileExists{parskip.sty}{%
+	\usepackage{parskip}%
 }{%
-	\setlength{\parindent}{0pt}
-	\setlength{\parskip}{3em plus 1pt minus 1pt}%{6pt plus 2pt minus 1pt}
+	% fallback if parskip isn't present locally/system-wide
+	\setlength{\parindent}{0pt}%
+	\setlength{\parskip}{3em plus 1pt minus 1pt}%
 }
-$endif$
 
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 

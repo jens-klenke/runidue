@@ -1,6 +1,10 @@
 #'@import knitr 
 set_hooks <- function() {
-  default_hooks  <- knit_hooks$get()
+  default_hooks <- knit_hooks$get()
+  
+  # Store the original output hook for fallback
+  hook_output_original <- default_hooks$output
+  
   list(
     chunk = function(x, options) {
       x <- default_hooks$chunk(x, options)
@@ -8,10 +12,28 @@ set_hooks <- function() {
     },
     cex = function(before, options, envir) {
       if (before) graphics::par(mar = c(3.5, 3.5, 1.67, 1.3), oma = c(0, 0, 0, 0), pch = 16,
-                      mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.85)
+                                mgp = c(1.75, .5, 0), tcl = -0.33, cex = options$cex, cex.axis=0.85, cex.lab=0.85, cex.main=0.85)
     },
     output = function(x, options) {
-      x <- paste0("```\n", x,"```\n")
+      # First handle output line truncation
+      lines <- options$output.lines
+      if (!is.null(lines)) {
+        x <- unlist(strsplit(x, "\n"))
+        more <- "..."
+        if (length(lines) == 1) {        # first n lines
+          if (length(x) > lines) {
+            # truncate the output, but add ....
+            x <- c(head(x, lines), more)
+          }
+        } else {
+          x <- c(more, x[lines], more)
+        }
+        # paste these lines together
+        x <- paste(c(x, ""), collapse = "\n")
+      }
+      
+      # Then apply the original formatting (backticks and shading)
+      x <- paste0("```\n", x, "```\n")
       x <- ifelse(is.null(options$shadeoutput),
                   x,
                   paste0("\\Shaded\n\\small\n", x, "\\normalsize\\endShaded\n"))

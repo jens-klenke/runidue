@@ -244,3 +244,14 @@ output:
 exercise_box_color: yellow
 ---
 ```
+
+
+# Control Output
+
+Using output.lines now the Output of the R code be controlled. See the below example. For more info refer (https://forum.posit.co/t/showing-only-the-first-few-lines-of-the-results-of-a-code-chunk/6963)
+
+```{r, output.lines=4}
+
+summar(model)
+
+```
