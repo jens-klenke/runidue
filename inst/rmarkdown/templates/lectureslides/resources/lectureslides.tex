@@ -133,7 +133,11 @@ $if(csl-refs)$
 			\setlength{\leftmargin}{\cslhangindent}%
 			\setlength{\itemindent}{-\cslhangindent}%
 			\setlength{\itemsep}{\dimexpr #2\baselineskip\relax}%
-			\setlength{\topsep}{0pt}\setlength{\partopsep}{0pt}}%
+			% Vertical Spacing  
+			\setlength{\parsep}{0pt}%
+			\setlength{\topsep}{0pt}%
+			\setlength{\partopsep}{0pt}}%
+			
 		\raggedright
 	}{\end{list}\par}
 \providecommand{\citeproctext}{} % silent fallback
