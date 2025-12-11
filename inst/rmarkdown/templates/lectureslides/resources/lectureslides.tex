@@ -719,8 +719,10 @@ $endif$
 %\makeatother
 
 % spacing before and above figure captions
-\setlength{\belowcaptionskip}{-0.9em} 
-\setlength{\abovecaptionskip}{0.4em}
+\setlength{\belowcaptionskip}{-0.9em} % spacing between the below content of the table and caption
+\setlength{\abovecaptionskip}{0.0em} % spacing between the fig and caption\begin{flushleft}
+	
+\end{flushleft}
 
 % Spacing for equation 
 \makeatletter
@@ -733,6 +735,10 @@ $endif$
 \usepackage{etoolbox}
 % Add vertical space at the beginning of every table environment
 \AtBeginEnvironment{table}{\vspace{0.6\baselineskip}}
+
+\usepackage{caption}
+% Caption above tables and space between caption and table
+\captionsetup[table]{position=below, skip=0.3\baselineskip}
 
 
 $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ % 
