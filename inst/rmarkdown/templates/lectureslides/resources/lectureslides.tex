@@ -581,6 +581,59 @@ $endif$
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
 
+% Target label continuation for Excercise\Beispiel
+\RequirePackage{refcount}
+% Suffix for continuation title
+\newcommand{\rununiContSuffix}{(Continue)}
+
+\makeatletter
+
+% Label an example once: stores raw thmn + stores title
+\newcommand{\xmpllabel}[2]{%
+	% store raw thmn integer for this label
+	\protected@edef\@currentlabel{\number\value{thmn}}%
+	\label{#1}%
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+\makeatother
+
+% Get stored title (empty if none)
+\newcommand{\rununiGetXmplTitle}[1]{%
+	\ifcsname rununiXmplTitle@#1\endcsname
+	\csname rununiXmplTitle@#1\endcsname
+	\else
+	\fi
+}
+
+% Update the stored title later (no relabel)
+\providecommand{\xmplsettitle}[2]{%
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+
+% ---- continuation environment ----
+\newenvironment{xmplcontlabel}[2][]%
+{%
+	\setcounter{thmn}{\getrefnumber{#2}}%
+	\addtocounter{thmn}{-1}%
+	\def\rununiTmpTitle{#1}%
+	\ifstrempty{#1}{\edef\rununiTmpTitle{\rununiGetXmplTitle{#2}}}{}%
+	\ifstrempty{\rununiTmpTitle}{%
+		\xmpl[\thmncont]%
+	}{%
+		\xmpl[\rununiTmpTitle~\rununiContSuffix]%
+	}%
+}%
+{\endxmpl}
+
+\makeatletter
+\providecommand{\xmplsettitle}[2]{%
+	% Update the stored title for an already-labeled example
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+\makeatother
+% ---------------------------------------------
+
+
 % user-defined color for exe\Exercise
 $if(exercise_box_color)$
 \def\exerciseboxcolor{$exercise_box_color$}
