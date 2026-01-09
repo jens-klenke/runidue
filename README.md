@@ -236,9 +236,10 @@ Using output.lines now the Output of the R code be controlled. See the below exa
 
 Usage 
 
-```{r}
-Slide 1
 
+### Slide 1
+
+```{r}
 ## S\&P 500 I
 
 \xmpl[S\&P 500]
@@ -251,13 +252,13 @@ Slide 1
 \end{itemize}
 \endxmpl
 ```
-![](some_ss/Slide 1.png)
+![](some_ss/Slide1.png)
 
 NOTE:
 The label must be unique (ex:sp500 is just an example).
 \xmpllabel{<label>}{<title>} is used only once for that example (on the first part).
 
-Slide 2
+### Slide 2
 
 ```{r}
 ## S\&P 500 I
@@ -266,12 +267,12 @@ Slide 2
 HELLO 2
 \end{xmplcontlabel}
 ```
-<img width="753" height="432" alt="Screenshot 2026-01-09 104609" src="https://github.com/user-attachments/assets/b430ed0a-f364-411d-895f-802d666b2c05" />
+![](some_ss/Slide2.png)
 
 NOTE: This will automatically reuse the original number and print the header as S\&P 500 (Continue)
 
 
-Slide 3
+### Slide 3
 
 ```{r}
 ## S\&P 500 I
@@ -280,7 +281,7 @@ Slide 3
 HELLO
 \end{xmplcontlabel}
 ```
-<img width="758" height="426" alt="Screenshot 2026-01-09 104617" src="https://github.com/user-attachments/assets/f347a04d-6536-431f-9b36-4d7f0578aad6" />
+![](some_ss/Slide3.png)
 
 NOTE: Use the optional title argument in square brackets. It will have a header as S&P 500 Part 3 (Continue)
 
