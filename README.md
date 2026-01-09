@@ -251,7 +251,7 @@ Slide 1
 \end{itemize}
 \endxmpl
 ```
-<img width="755" height="131" alt="Screenshot 2026-01-09 104555" src="https://github.com/user-attachments/assets/69e80c5e-82a5-4efd-a5d8-b5db43da767f" />
+![](some_ss/Slide 1.png)
 
 NOTE:
 The label must be unique (ex:sp500 is just an example).
