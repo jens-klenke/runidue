@@ -230,4 +230,57 @@ Using output.lines now the Output of the R code be controlled. See the below exa
 ````markdown
  ```{r, output.lines=4}
  summar(model)
- ```
+ ````
+
+# Long Continuation for Example (after several different env in between)
+
+Usage 
+
+```{r}
+Slide 1
+
+## S\&P 500 I
+
+\xmpl[S\&P 500]
+\xmpllabel{ex:sp500}{S&P 500 Part 2} # title name for the next slide
+\begin{itemize}
+  \item On 3/1/1950, S\&P 500 index was 17.03, and was 4778.73 on 31/12/2021.
+  \begin{itemize}
+    \item Implies return of $\mathcal{R}=285.8$ and log-return of $r=5.65$.
+  \end{itemize}
+\end{itemize}
+\endxmpl
+```
+<img width="755" height="425" alt="Screenshot 2026-01-09 104555" src="https://github.com/user-attachments/assets/435fe6eb-81f4-428a-9009-ac38b8f2faa5" />
+
+NOTE:
+The label must be unique (ex:sp500 is just an example).
+\xmpllabel{<label>}{<title>} is used only once for that example (on the first part).
+
+Slide 2
+
+```{r}
+## S\&P 500 I
+
+\begin{xmplcontlabel}{ex:sp500}
+HELLO 2
+\end{xmplcontlabel}
+```
+<img width="753" height="432" alt="Screenshot 2026-01-09 104609" src="https://github.com/user-attachments/assets/b430ed0a-f364-411d-895f-802d666b2c05" />
+
+NOTE: This will automatically reuse the original number and print the header as S\&P 500 (Continue)
+
+
+Slide 3
+
+```{r}
+## S\&P 500 I
+
+\begin{xmplcontlabel}[S\&P 500 Part 3]{ex:sp500}
+HELLO
+\end{xmplcontlabel}
+```
+<img width="758" height="426" alt="Screenshot 2026-01-09 104617" src="https://github.com/user-attachments/assets/f347a04d-6536-431f-9b36-4d7f0578aad6" />
+
+NOTE: Use the optional title argument in square brackets. It will have a header as S&P 500 Part 3 (Continue)
+
