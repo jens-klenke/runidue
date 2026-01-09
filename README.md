@@ -230,7 +230,8 @@ Using output.lines now the Output of the R code be controlled. See the below exa
 ````markdown
  ```{r, output.lines=4}
  summar(model)
- ````
+ ```
+````
 
 # Long Continuation for Example (after several different env in between)
 
