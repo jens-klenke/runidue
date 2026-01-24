@@ -10,7 +10,7 @@ This readme documentation gives a detailed description, using code snippets and 
 if (!require("devtools")) {
   install.packages("devtools")
 }
-devtools::install_github("jens-klenke/runidue")
+devtools::install_github("jens-klenke/runidue", ref = "target-label-issue")
 ```
 
 The package can be loaded using:
@@ -231,3 +231,58 @@ Using output.lines now the Output of the R code be controlled. See the below exa
  ```{r, output.lines=4}
  summar(model)
  ```
+````
+
+# Long Continuation for Example (after several different env in between)
+
+Usage 
+
+
+### Slide 1
+
+```{r}
+## S\&P 500 I
+
+\xmpl[S\&P 500]
+\xmpllabel{ex:sp500}{S&P 500 Part 2} # title name for the next slide
+\begin{itemize}
+  \item On 3/1/1950, S\&P 500 index was 17.03, and was 4778.73 on 31/12/2021.
+  \begin{itemize}
+    \item Implies return of $\mathcal{R}=285.8$ and log-return of $r=5.65$.
+  \end{itemize}
+\end{itemize}
+\endxmpl
+```
+![](some_ss/Slide1.png)
+
+NOTE:
+The label must be unique (ex:sp500 is just an example).
+\xmpllabel{<label>}{<title>} is used only once for that example (on the first part).
+
+### Slide 2
+
+```{r}
+## S\&P 500 I
+
+\begin{xmplcontlabel}{ex:sp500}
+HELLO 2
+\end{xmplcontlabel}
+```
+![](some_ss/Slide2.png)
+
+NOTE: This will automatically reuse the original number and print the header as S\&P 500 (Continue)
+
+
+### Slide 3
+
+```{r}
+## S\&P 500 I
+
+\begin{xmplcontlabel}[S\&P 500 Part 3]{ex:sp500}
+HELLO
+\end{xmplcontlabel}
+```
+![](some_ss/Slide3.png)
+
+NOTE: Use the optional title argument in square brackets. It will have a header as S&P 500 Part 3 (Continue)
+
