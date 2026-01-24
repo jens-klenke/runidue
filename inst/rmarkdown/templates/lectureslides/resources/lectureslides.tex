@@ -753,8 +753,31 @@ $endif$
 \AtEndEnvironment{center}{\smallbreak}
 \AtBeginEnvironment{figure}{\centering\setlength{\parskip}{0pt}}
 \AtBeginEnvironment{table}{\centering\setlength{\parskip}{0pt}}
-\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
-\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+
+%  Item/List Spacing
+
+%\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
+%\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+
+\makeatletter
+% itemize
+\pretocmd{\itemize}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}% level 1 circle
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{0.5ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+	\fi\fi
+}{}{}
+
+% enumerate
+\pretocmd{\enumerate}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}% level 1 numbers
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{1ex}\setlength{\parskip}{1ex}% level 2 numbers
+	\fi\fi
+}{}{}
+\makeatother
 
 %\AtEndEnvironment{itemize}{\smallskip}
 %\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
@@ -764,7 +787,6 @@ $endif$
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
 \setbeamersize{text margin left=10pt, text margin right=10pt}
-
 
 % Spacing before and after code chunks / output
 %\makeatletter
@@ -778,8 +800,10 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{2.6pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayskip{2.6pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{3.5pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{3.5pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{3pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{3pt plus 1pt minus 1pt}%
 }
 \makeatother
 
@@ -928,7 +952,7 @@ $endif$
 % from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 
 \usepackage{setspace}
-\setstretch{1.15} 
+\setstretch{1.20} 
 
 \begin{document}
 
