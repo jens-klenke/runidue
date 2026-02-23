@@ -707,6 +707,26 @@ $endif$
 %\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 %\AtEndEnvironment{enumerate}{\smallskip}
 
+\makeatletter
+% itemize
+\pretocmd{\itemize}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+	\fi\fi
+}{}{}
+
+% enumerate
+\pretocmd{\enumerate}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
+	\fi\fi
+}{}{}
+\makeatother
+
 %%% LAYOUT
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
@@ -714,9 +734,13 @@ $endif$
 
 
 % Spacing before and after code chunks / output
-%\makeatletter
-%\preto{\@verbatim}{\topsep=0pt \partopsep=0pt \parskip=4ex}
-%\makeatother
+\makeatletter
+\preto{\@verbatim}{\topsep=-1.3ex \partopsep=0pt \parskip=4ex}
+\makeatother
+
+% Spacing before and after code output
+\AtBeginEnvironment{Shaded}{\vspace{-0.2ex}} % before
+\AtEndEnvironment{Shaded}{\vspace{-0.4ex}} % after
 
 % spacing before and above figure captions
 \setlength{\belowcaptionskip}{-0.9em} % spacing between the below content of the table and caption
@@ -725,8 +749,10 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{2.6pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayskip{2.6pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{4.5pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{4.5pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{4.5pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{4.5pt plus 1pt minus 1pt}%
 }
 \makeatother
 
@@ -751,7 +777,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 				\Large\insertframetitle \\  
 			\else
 				\Large\insertframetitle\\ [-1.6ex] % Spacing between subtitle and title
-				\ifx\insertframesubtitle\empty \\[-0.7cm] % Spacing when no subtitle between title and content
+				\ifx\insertframesubtitle\empty \\[-1cm] % Spacing when no subtitle between title and content
 			\else
 					\\ \small \insertframesubtitle \\ [-0.25cm] % Spacing after the subtitle and content
 				\fi
