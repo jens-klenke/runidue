@@ -759,22 +759,27 @@ $endif$
 %\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
 %\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 
+% Itemize Spacing
 \makeatletter
-% itemize
 \pretocmd{\itemize}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}% level 1 circle
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{0.5ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+	\ifnum\@itemdepth=0\relax
+	\vspace{0.5ex}
+	\setlength{\itemsep}{1.5ex}\setlength{\parskip}{0.9ex}% level 1 circle
+	\else\ifnum\@itemdepth=1\relax
+	\vspace{0.5ex}
+	\setlength{\itemsep}{1.5ex}\setlength{\parskip}{0.9ex}% level 2 triangle
 	\fi\fi
 }{}{}
 
+
 % enumerate
 \pretocmd{\enumerate}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}% level 1 numbers
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{1ex}\setlength{\parskip}{1ex}% level 2 numbers
+	\ifnum\@itemdepth=0\relax
+	\vspace{0.5ex}
+	\setlength{\itemsep}{1.1ex}\setlength{\parskip}{1ex}% level 1 numbers
+	\else\ifnum\@itemdepth=1\relax
+	\vspace{0.5ex}
+	\setlength{\itemsep}{1.1ex}\setlength{\parskip}{1ex}% level 2 numbers
 	\fi\fi
 }{}{}
 \makeatother
@@ -788,10 +793,14 @@ $endif$
 \beamertemplatenavigationsymbolsempty
 \setbeamersize{text margin left=10pt, text margin right=10pt}
 
-% Spacing before and after code chunks / output
-%\makeatletter
-%\preto{\@verbatim}{\topsep=0pt \partopsep=0pt \parskip=4ex}
-%\makeatother
+% Spacing before and after code chunks
+\makeatletter
+\preto{\@verbatim}{\topsep=-4pt \partopsep=2pt \parskip=-3ex}
+\makeatother
+
+% Spacing before and after code output
+%\AtBeginEnvironment{Shaded}{\vspace{-0.1ex}}
+%\AtEndEnvironment{Shaded}{\vspace{-0.7ex}}
 
 % spacing before and above figure captions
 \setlength{\belowcaptionskip}{-0.9em} % spacing between the below content of the table and caption
@@ -800,14 +809,13 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{3.5pt plus 1.5pt minus 1pt}%
-	\setlength\belowdisplayskip{3.5pt plus 1.5pt minus 1pt}%
-	\setlength\abovedisplayshortskip{3pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayshortskip{3pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{4.5pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{4.5pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{4.5pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{4.5pt plus 1pt minus 1pt}%
 }
 \makeatother
 
-\usepackage{etoolbox}
 % Add vertical space at the beginning of every table environment
 \AtBeginEnvironment{table}{\vspace{0.6\baselineskip}}
 
