@@ -761,27 +761,29 @@ $endif$
 
 % Itemize Spacing
 \makeatletter
-\pretocmd{\itemize}{%
-	\ifnum\@itemdepth=0\relax
-	\vspace{0.5ex}
-	\setlength{\itemsep}{1.5ex}\setlength{\parskip}{0.9ex}% level 1 circle
-	\else\ifnum\@itemdepth=1\relax
-	\vspace{0.5ex}
-	\setlength{\itemsep}{1.5ex}\setlength{\parskip}{0.9ex}% level 2 triangle
-	\fi\fi
-}{}{}
 
+% Level 1 lists (circle bullets / 1.,2.,...)
+\def\@listi{%
+	\leftmargin\leftmargini
+	\topsep    0.8ex  % space before/after the list
+	\itemsep   1.5ex  % space BETWEEN items  (increase this!)
+	\parsep    0pt    % space between paragraphs inside an item
+	\parskip   0pt    % extra paragraph skip inside items (keep small)
+	\partopsep 0pt
+}
 
-% enumerate
-\pretocmd{\enumerate}{%
-	\ifnum\@itemdepth=0\relax
-	\vspace{0.5ex}
-	\setlength{\itemsep}{1.1ex}\setlength{\parskip}{1ex}% level 1 numbers
-	\else\ifnum\@itemdepth=1\relax
-	\vspace{0.5ex}
-	\setlength{\itemsep}{1.1ex}\setlength{\parskip}{1ex}% level 2 numbers
-	\fi\fi
-}{}{}
+% Level 2 lists (triangle bullets / a),i),...)
+\def\@listii{%
+	\leftmargin\leftmarginii
+	\topsep    1.5ex
+	\itemsep   2.3ex
+	\parsep    0pt
+	\parskip   0pt
+	\partopsep 0pt
+}
+
+% Make these take effect (LaTeX uses \@listI for level 1 sometimes)
+\let\@listI\@listi
 \makeatother
 
 %\AtEndEnvironment{itemize}{\smallskip}
@@ -809,10 +811,10 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{4.5pt plus 1.5pt minus 1pt}%
-	\setlength\belowdisplayskip{4.5pt plus 1.5pt minus 1pt}%
-	\setlength\abovedisplayshortskip{4.5pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayshortskip{4.5pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{6pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{6pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{6pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{6pt plus 1pt minus 1pt}%
 }
 \makeatother
 
@@ -961,6 +963,11 @@ $endif$
 
 \usepackage{setspace}
 \setstretch{1.20} 
+
+\AtBeginEnvironment{itemize}{\setstretch{1.1}}
+\AtEndEnvironment{itemize}{\setstretch{1.1}}
+\AtBeginEnvironment{enumerate}{\setstretch{1.1}}
+\AtEndEnvironment{enumerate}{\setstretch{1.1}}
 
 \begin{document}
 
