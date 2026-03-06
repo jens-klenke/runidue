@@ -770,13 +770,14 @@ $endif$
 	\parsep    0pt    % space between paragraphs inside an item
 	\parskip   0pt    % extra paragraph skip inside items (keep small)
 	\partopsep 0pt
+	\setstretch{1}
 }
 
 % Level 2 lists (triangle bullets / a),i),...)
 \def\@listii{%
 	\leftmargin\leftmarginii
 	\topsep    2ex
-	\itemsep   1.3ex
+	\itemsep   1.2ex
 	\parsep    0pt
 	\parskip   0pt
 	\partopsep 0pt
@@ -812,10 +813,10 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{9pt plus 1.5pt minus 1pt}%
-	\setlength\belowdisplayskip{9pt plus 1.5pt minus 1pt}%
-	\setlength\abovedisplayshortskip{9pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayshortskip{9pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{7pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{7pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{7pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{7pt plus 1pt minus 1pt}%
 }
 \makeatother
 
@@ -963,7 +964,7 @@ $endif$
 % from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 
 \usepackage{setspace}
-\setstretch{1.20} 
+\setstretch{1.18} 
 
 \AtBeginEnvironment{itemize}{\setstretch{0.9}}
 \AtEndEnvironment{itemize}{\setstretch{0.9}}
