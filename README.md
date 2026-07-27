@@ -7,10 +7,11 @@ This readme documentation gives a detailed description, using code snippets and 
 # Install the latest development version of *runidue* from GitHub:
 
 ```{r}
-if (!require("devtools")) {
-  install.packages("devtools")
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
 }
-devtools::install_github("jens-klenke/runidue", ref = "target-label-issue")
+
+pak::pak("jens-klenke/runidue")
 ```
 
 The package can be loaded using:
