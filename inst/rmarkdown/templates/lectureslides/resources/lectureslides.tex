@@ -581,6 +581,59 @@ $endif$
 \setbeamertemplate{theorem end}{\leavevmode\end{\inserttheoremblockenv}}
 
 
+% Target label continuation for Excercise\Beispiel
+\RequirePackage{refcount}
+% Suffix for continuation title
+\newcommand{\rununiContSuffix}{(Continue)}
+
+\makeatletter
+
+% Label an example once: stores raw thmn + stores title
+\newcommand{\xmpllabel}[2]{%
+	% store raw thmn integer for this label
+	\protected@edef\@currentlabel{\number\value{thmn}}%
+	\label{#1}%
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+\makeatother
+
+% Get stored title (empty if none)
+\newcommand{\rununiGetXmplTitle}[1]{%
+	\ifcsname rununiXmplTitle@#1\endcsname
+	\csname rununiXmplTitle@#1\endcsname
+	\else
+	\fi
+}
+
+% Update the stored title later (no relabel)
+\providecommand{\xmplsettitle}[2]{%
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+
+% ---- continuation environment ----
+\newenvironment{xmplcontlabel}[2][]%
+{%
+	\setcounter{thmn}{\getrefnumber{#2}}%
+	\addtocounter{thmn}{-1}%
+	\def\rununiTmpTitle{#1}%
+	\ifstrempty{#1}{\edef\rununiTmpTitle{\rununiGetXmplTitle{#2}}}{}%
+	\ifstrempty{\rununiTmpTitle}{%
+		\xmpl[\thmncont]%
+	}{%
+		\xmpl[\rununiTmpTitle~\rununiContSuffix]%
+	}%
+}%
+{\endxmpl}
+
+\makeatletter
+\providecommand{\xmplsettitle}[2]{%
+	% Update the stored title for an already-labeled example
+	\expandafter\gdef\csname rununiXmplTitle@#1\endcsname{#2}%
+}
+\makeatother
+% ---------------------------------------------
+
+
 % user-defined color for exe\Exercise
 $if(exercise_box_color)$
 \def\exerciseboxcolor{$exercise_box_color$}
@@ -700,8 +753,40 @@ $endif$
 \AtEndEnvironment{center}{\smallbreak}
 \AtBeginEnvironment{figure}{\centering\setlength{\parskip}{0pt}}
 \AtBeginEnvironment{table}{\centering\setlength{\parskip}{0pt}}
-\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
-\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+
+%  Item/List Spacing
+
+%\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
+%\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+
+% Itemize Spacing
+\makeatletter
+
+% Level 1 lists (circle bullets / 1.,2.,...)
+\def\@listi{%
+	\leftmargin\leftmargini
+	\topsep    0.8ex  % space before/after the list
+	\itemsep   1.5ex  % space BETWEEN items  (increase this!)
+	\parsep    0pt    % space between paragraphs inside an item
+	\parskip   0pt    % extra paragraph skip inside items (keep small)
+	\partopsep 0pt
+	\setstretch{1}
+}
+
+% Level 2 lists (triangle bullets / a),i),...)
+\def\@listii{%
+	\leftmargin\leftmarginii
+	\topsep    2ex
+	\itemsep   1.2ex
+	\parsep    0pt
+	\parskip   0pt
+	\partopsep 0pt
+	\setstretch{1.1}
+}
+
+% Make these take effect (LaTeX uses \@listI for level 1 sometimes)
+\let\@listI\@listi
+\makeatother
 
 %\AtEndEnvironment{itemize}{\smallskip}
 %\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
@@ -732,15 +817,14 @@ $endif$
 \beamertemplatenavigationsymbolsempty
 \setbeamersize{text margin left=10pt, text margin right=10pt}
 
-
-% Spacing before and after code chunks / output
+% Spacing before and after code chunks
 \makeatletter
-\preto{\@verbatim}{\topsep=-1.3ex \partopsep=0pt \parskip=4ex}
+\preto{\@verbatim}{\topsep=-4pt \partopsep=2pt \parskip=-3ex}
 \makeatother
 
 % Spacing before and after code output
-\AtBeginEnvironment{Shaded}{\vspace{-0.2ex}} % before
-\AtEndEnvironment{Shaded}{\vspace{-0.4ex}} % after
+%\AtBeginEnvironment{Shaded}{\vspace{-0.1ex}}
+%\AtEndEnvironment{Shaded}{\vspace{-0.7ex}}
 
 % spacing before and above figure captions
 \setlength{\belowcaptionskip}{-0.9em} % spacing between the below content of the table and caption
@@ -749,14 +833,13 @@ $endif$
 % Spacing for equation 
 \makeatletter
 \g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{4.5pt plus 1.5pt minus 1pt}%
-	\setlength\belowdisplayskip{4.5pt plus 1.5pt minus 1pt}%
-	\setlength\abovedisplayshortskip{4.5pt plus 1pt minus 1pt}%
-	\setlength\belowdisplayshortskip{4.5pt plus 1pt minus 1pt}%
+	\setlength\abovedisplayskip{7pt plus 1.5pt minus 1pt}%
+	\setlength\belowdisplayskip{7pt plus 1.5pt minus 1pt}%
+	\setlength\abovedisplayshortskip{7pt plus 1pt minus 1pt}%
+	\setlength\belowdisplayshortskip{7pt plus 1pt minus 1pt}%
 }
 \makeatother
 
-\usepackage{etoolbox}
 % Add vertical space at the beginning of every table environment
 \AtBeginEnvironment{table}{\vspace{0.6\baselineskip}}
 
@@ -901,7 +984,12 @@ $endif$
 % from here on https://github.com/rstudio/rmarkdown/blob/master/inst/rmd/latex/default-1.17.0.2.tex
 
 \usepackage{setspace}
-\setstretch{1.15} 
+\setstretch{1.18} 
+
+\AtBeginEnvironment{itemize}{\setstretch{0.9}}
+\AtEndEnvironment{itemize}{\setstretch{0.9}}
+\AtBeginEnvironment{enumerate}{\setstretch{0.9}}
+\AtEndEnvironment{enumerate}{\setstretch{0.9}}
 
 \begin{document}
 
