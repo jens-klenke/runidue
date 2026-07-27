@@ -792,6 +792,26 @@ $endif$
 %\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 %\AtEndEnvironment{enumerate}{\smallskip}
 
+\makeatletter
+% itemize
+\pretocmd{\itemize}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+	\fi\fi
+}{}{}
+
+% enumerate
+\pretocmd{\enumerate}{%
+	\ifnum\@itemdepth=0
+	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
+	\else\ifnum\@itemdepth=1
+	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
+	\fi\fi
+}{}{}
+\makeatother
+
 %%% LAYOUT
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
@@ -840,7 +860,7 @@ $if(shadecolor)$\definecolor{shadecolor}{gray}{$shadecolor$}$endif$ %
 				\Large\insertframetitle \\  
 			\else
 				\Large\insertframetitle\\ [-1.6ex] % Spacing between subtitle and title
-				\ifx\insertframesubtitle\empty \\[-0.7cm] % Spacing when no subtitle between title and content
+				\ifx\insertframesubtitle\empty \\[-1cm] % Spacing when no subtitle between title and content
 			\else
 					\\ \small \insertframesubtitle \\ [-0.25cm] % Spacing after the subtitle and content
 				\fi
