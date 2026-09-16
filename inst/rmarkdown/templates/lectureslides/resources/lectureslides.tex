@@ -756,8 +756,8 @@ $endif$
 
 %  Item/List Spacing
 
-%\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
-%\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
+\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 
 % Itemize Spacing
 \makeatletter
@@ -794,24 +794,24 @@ $endif$
 
 \makeatletter
 % itemize
-\pretocmd{\itemize}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
-	\fi\fi
-}{}{}
+%\pretocmd{\itemize}{%
+%	\ifnum\@itemdepth=0
+%	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
+%	\else\ifnum\@itemdepth=1
+%	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+v	\fi\fi
+%}{}{}
 
 % enumerate
-\pretocmd{\enumerate}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
-	\fi\fi
-}{}{}
-\makeatother
-
+%\pretocmd{\enumerate}{%
+%	\ifnum\@itemdepth=0
+%	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
+%	\else\ifnum\@itemdepth=1
+%	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
+%	\fi\fi
+%}{}{}
+%\makeatother
+%
 %%% LAYOUT
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
