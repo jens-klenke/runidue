@@ -756,8 +756,8 @@ $endif$
 
 %  Item/List Spacing
 
-%\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
-%\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
+\AtBeginEnvironment{itemize}{\setlength{\itemsep}{0.3ex}\setlength{\parskip}{0.4ex}} 
+\AtBeginEnvironment{enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 
 % Itemize Spacing
 \makeatletter
@@ -766,7 +766,7 @@ $endif$
 \def\@listi{%
 	\leftmargin\leftmargini
 	\topsep    0.8ex  % space before/after the list
-	\itemsep   1.5ex  % space BETWEEN items  (increase this!)
+	\setlength{\itemsep}{$if(level1_space)$$level1_space$$else$1ex$endif$}%  % space BETWEEN items  (increase this!)
 	\parsep    0pt    % space between paragraphs inside an item
 	\parskip   0pt    % extra paragraph skip inside items (keep small)
 	\partopsep 0pt
@@ -777,7 +777,7 @@ $endif$
 \def\@listii{%
 	\leftmargin\leftmarginii
 	\topsep    2ex
-	\itemsep   1.2ex
+	\setlength{\itemsep}{$if(level2_space)$$level2_space$$else$1ex$endif$}%
 	\parsep    0pt
 	\parskip   0pt
 	\partopsep 0pt
@@ -792,26 +792,26 @@ $endif$
 %\preto{\enumerate}{\setlength{\itemsep}{0.75ex}\setlength{\parskip}{0.7ex}}
 %\AtEndEnvironment{enumerate}{\smallskip}
 
-\makeatletter
+%\makeatletter
 % itemize
-\pretocmd{\itemize}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
-	\fi\fi
-}{}{}
+%\pretocmd{\itemize}{%
+%	\ifnum\@itemdepth=0
+%	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.4ex}% level 1 circle
+%	\else\ifnum\@itemdepth=1
+%	\setlength{\itemsep}{0.6ex}\setlength{\parskip}{0.6ex}% level 2 triangle
+%v	\fi\fi
+%}{}{}
 
 % enumerate
-\pretocmd{\enumerate}{%
-	\ifnum\@itemdepth=0
-	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
-	\else\ifnum\@itemdepth=1
-	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
-	\fi\fi
-}{}{}
-\makeatother
-
+%\pretocmd{\enumerate}{%
+%	\ifnum\@itemdepth=0
+%	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{0.7ex}% level 1 numbers
+%	\else\ifnum\@itemdepth=1
+%	\setlength{\itemsep}{1.2ex}\setlength{\parskip}{1ex}% level 2 numbers
+%	\fi\fi
+%}{}{}
+%\makeatother
+%
 %%% LAYOUT
 \usecolortheme[named=dueblue]{structure}
 \beamertemplatenavigationsymbolsempty
