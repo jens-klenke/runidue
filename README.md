@@ -110,12 +110,12 @@ In the `òutput` key, `runidue::lectureslides` as output option is specified, a 
 | ------- | ----------- | --------------:|
 | `lang` |  Specifies the language of the slides. | "en" |
 | `theme` | Specifies the theme or style of the slides. | "default" |
-| `highlight` | Specifies the syntax highlighting style to be used in code snippets within the slides.  | "zenburn"
+| `highlight` | Specifies the syntax highlighting style to be used in code snippets within the slides.  | "zenburn" |
 | `slide_level` | Specifies the Markdown heading level that should be treated as a new slide. In Markdown, headings are denoted by `#` characters. | "2" |
 | `incremental` | This setting enables incremental rendering of slide contents, meaning elements on the slide will appear incrementally, often one after another, as the presenter advances through the slides. This is useful for revealing content step by step during a presentation. | "true" |
 | `colorlinks` |  This setting specifies whether links within the slides should be displayed in color. When set to true, links will be colored, providing visual differentiation from regular text. | "true" |
-| `level1_space` | This setting specifies spacing between level 1 item lists or circle bullet points.
-| `level1_space` | This setting specifies spacing between level 2 item lists or triangle bullet points.
+| `level1_space` | This setting specifies spacing between level 1 item lists or circle bullet points. | "1ex" |
+| `level1_space` | This setting specifies spacing between level 2 item lists or triangle bullet points. | "1ex" |
 
 
 # Environments
