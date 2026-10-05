@@ -37,6 +37,10 @@
 #' @param citation_package The citation package to be used. One of c("none", "natbib", "biblatex")
 #' @param md_extensions Markdown extensions for pandoc. Default to \code{+fancy_lists}.
 #' @param link-citations \code{logical} Should links be clickable. Defaults to \code{TRUE}
+#' @param level1_space LaTeX length for spacing between first-level list items.
+#'   Defaults to "1ex".
+#' @param level2_space LaTeX length for spacing between second-level list items.
+#'   Defaults to "1ex"
 #' 
 #' @section Available Environment for Box:
 #' \tabular{ll}{
@@ -148,10 +152,18 @@ lectureslides <- function(lang = "en",
                           link_citations = TRUE,
                           includes = NULL,
                           md_extensions = "+fancy_lists",
+                          level1_space = "1ex",
+                          level2_space = "1ex",
                           pandoc_args = NULL) {
   
   # base pandoc options for all beamer output
   args <- c()
+  
+  args <- c(
+    args,
+    pandoc_variable_arg("level1_space", level1_space),
+    pandoc_variable_arg("level2_space", level2_space)
+  )
   
   # template path and assets
   if (!is.null(template)) {
@@ -207,7 +219,7 @@ lectureslides <- function(lang = "en",
   
   # resource path
   res_path <- find_res_path("lectureslides")
-  args <- c(args, c(args, pandoc_variable_arg("resources", res_path)))
+  args <- c(args, pandoc_variable_arg("resources", res_path))
   
   # lang
   lang <- match.arg(lang, c("de", "en"))

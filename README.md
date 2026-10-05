@@ -59,6 +59,8 @@ output:
     slide_level: 2
     incremental: true
     colorlinks: true
+    level1_space: 1ex
+    level2_space: 1ex
 natbib: true
 natbiboptions:
     - "round"
@@ -112,6 +114,9 @@ In the `òutput` key, `runidue::lectureslides` as output option is specified, a 
 | `slide_level` | Specifies the Markdown heading level that should be treated as a new slide. In Markdown, headings are denoted by `#` characters. | "2" |
 | `incremental` | This setting enables incremental rendering of slide contents, meaning elements on the slide will appear incrementally, often one after another, as the presenter advances through the slides. This is useful for revealing content step by step during a presentation. | "true" |
 | `colorlinks` |  This setting specifies whether links within the slides should be displayed in color. When set to true, links will be colored, providing visual differentiation from regular text. | "true" |
+| `level1_space` | This setting specifies spacing between level 1 item lists or circle bullet points.
+| `level1_space` | This setting specifies spacing between level 2 item lists or triangle bullet points.
+
 
 # Environments
 
