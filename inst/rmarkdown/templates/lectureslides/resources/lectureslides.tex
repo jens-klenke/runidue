@@ -956,6 +956,17 @@ $endif$
 }
 }
 
+% To change the footer style in the References slide
+\makeatletter
+\let\runidue@old@unnumbered\beamer@@ssection
+\long\def\beamer@@ssection*#1{%
+  \runidue@old@unnumbered*{#1}%
+  \setbeamertemplate{footline}{}% Removes footer
+  \setbeamertemplate{frametitle continuation}{}% Removes "I, II" roman numbering
+  \setcounter{framenumber}{0}% Resets sldie counter
+}
+\makeatother
+
 % ITEMIZE, ENUMERATE, DESCRIPTION
 \defbeamertemplate*{description item}{defaultperiod}{\insertdescriptionitem.}
 \setbeamersize{description width=15pt} % left margin for description
@@ -1034,6 +1045,8 @@ $body$
 $if(natbib)$
   $if(bibliography)$
     $if(beamer)$
+      \setbeamertemplate{footline}{}% to set the footer empty
+      \setbeamertemplate{frametitle continuation}{}% removes Roman numerals
       \begin{frame}[allowframebreaks]{$biblio-title$}
       \bibliographytrue
     $endif$
@@ -1054,6 +1067,8 @@ $endif$
 
 $if(biblatex)$
   $if(beamer)$
+  	\setbeamertemplate{footline}{}% to set the footer empty
+  	\setbeamertemplate{frametitle continuation}{}% removes Roman numerals
     \begin{frame}[allowframebreaks]{$biblio-title$}
     \bibliographytrue
   $endif$
