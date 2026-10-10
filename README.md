@@ -250,7 +250,7 @@ Usage
 ## S\&P 500 I
 
 \xmpl[S\&P 500]
-\xmpllabel{ex:sp500}{S&P 500 Part 2} # title name for the next slide
+\xmpllabel{ex:sp500}{S&P 500 Part 2 # Give the title name for the next slide that will be shown in the header} 
 \begin{itemize}
   \item On 3/1/1950, S\&P 500 index was 17.03, and was 4778.73 on 31/12/2021.
   \begin{itemize}
